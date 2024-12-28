@@ -23,6 +23,29 @@
             background-color: #01356c !important;
             /* Custom blue color */
         }
+
+        h1 {
+            color: #01356c;
+            /* Custom dark blue */
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            color: #007bff;
+            /* Custom primary blue */
+            border-bottom: 2px solid #ddd;
+            /* Optional underline */
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #28a745;
+            /* Custom green */
+            font-style: italic;
+        }
+        
     </style>
 </head>
 
@@ -77,27 +100,34 @@
             <h2 class="text-primary">Education</h2>
             <ul class="list-group">
                 <li class="list-group-item d-flex align-items-center">
-                    <img src="./images/universitat-saarland.png" alt="Universität des Saarlandes Logo" style="width: 50px; height: 50px; margin-right: 10px;">
+                    <img src="./images/universitat-saarland.png" alt="Universität des Saarlandes Logo"
+                        style="width: 50px; height: 50px; margin-right: 10px;">
                     <div>
-                        <strong>PhD in Systems Engineering</strong>, <span style="display: block;">Universität des Saarlandes - Presently enrolled, Saarbrücken, Germany </span>
+                        <strong>PhD in Systems Engineering</strong>, <span style="display: block;">Universität des
+                            Saarlandes - Presently enrolled, Saarbrücken, Germany </span>
                     </div>
                 </li>
                 <li class="list-group-item d-flex align-items-center">
-                    <img src="./images/nust-seecs.png" alt="NUST SEECS Logo" style="width: 50px; height: 50px; margin-right: 10px;">
+                    <img src="./images/nust-seecs.png" alt="NUST SEECS Logo"
+                        style="width: 50px; height: 50px; margin-right: 10px;">
                     <div>
-                        <strong>MS in Computer Science</strong>,  <span style="display: block;">School of Electrical Engineering and Computer Science (SEECS), National University of Sciences and Technology (NUST), Islamabad, Pakistan</span>
+                        <strong>MS in Computer Science</strong>, <span style="display: block;">School of Electrical
+                            Engineering and Computer Science (SEECS), National University of Sciences and Technology
+                            (NUST), Islamabad, Pakistan</span>
                     </div>
                 </li>
                 <li class="list-group-item d-flex align-items-center">
-                    <img src="./images/nuces-fast.png" alt="NUCES FAST Logo" style="width: 50px; height: 50px; margin-right: 10px;">
+                    <img src="./images/nuces-fast.png" alt="NUCES FAST Logo"
+                        style="width: 50px; height: 50px; margin-right: 10px;">
                     <div>
-                        <strong>BS in Electrical Engineering</strong>,<span style="display: block;">National University of Computer and Emerging Sciences (NUCES), Islamabad, Pakistan</span>
+                        <strong>BS in Electrical Engineering</strong>,<span style="display: block;">National University
+                            of Computer and Emerging Sciences (NUCES), Islamabad, Pakistan</span>
                     </div>
                     </div>
                 </li>
             </ul>
         </section>
-        
+
 
         <section id="experience" class="mb-5">
             <h2 class="text-primary">Experience</h2>
@@ -207,10 +237,10 @@
 
             // Update the heading with the journal count
             const journalHeading = document.getElementById('journal-heading');
-            journalHeading.textContent = `Journal Publications (${journalCount})`;
+            journalHeading.textContent = `Journal (${journalCount})`;
         </script>
 
-        <h3 id="journal-heading">Conference Publications</h3>
+        <h3 id="journal-heading">Conference (10)</h3>
         <table class="table table-bordered">
             <thead class="table-primary">
                 <tr>
