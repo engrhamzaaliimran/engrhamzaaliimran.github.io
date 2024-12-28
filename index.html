@@ -133,7 +133,7 @@
                     <th style="padding: 10px; text-align: left;">Link</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="journal-body">
                 <tr style="border-bottom: 1px solid #ddd;">
                     <td style="padding: 10px;">Generisch-Net: A Generic Deep Model for Analyzing Human Motion with
                         Wearable Sensors in the Internet of Health Things</td>
@@ -177,8 +177,6 @@
                     <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/document/9669026"
                             target="_blank">Link</a></td>
                 </tr>
-
-                </tr>
                 <tr style="border-bottom: 1px solid #ddd;">
                     <td style="padding: 10px;">Performance Comparison of MPICH and MPI4py on Raspberry Pi-3B Beowulf
                         Cluster</td>
@@ -190,6 +188,20 @@
                 </tr>
             </tbody>
         </table>
+
+        <script>
+            // Select all rows in the table body
+            const journalRows = document.querySelectorAll('#journal-body tr');
+
+            // Loop through each row to bold "Hamza Ali Imran" in the authors' list
+            journalRows.forEach(row => {
+                const authorCell = row.cells[1]; // Get the Authors column (2nd cell)
+                if (authorCell) {
+                    authorCell.innerHTML = authorCell.innerHTML.replace(/Hamza Ali Imran/g, '<strong>Hamza Ali Imran</strong>');
+                }
+            });
+        </script>
+
 
         <script>
             // Count the number of rows in the table body
