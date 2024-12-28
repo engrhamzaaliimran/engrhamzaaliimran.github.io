@@ -5,190 +5,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hamza Ali Imran - Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        header {
-            background: #007acc;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
-        }
-
-        nav {
-            margin: 0 auto;
-            max-width: 900px;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: white;
-        }
-
-        section {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 1rem;
-            border-bottom: 1px solid #ddd;
-        }
-
-        h1,
-        h2 {
-            color: #007acc;
-        }
-
-        footer {
-            text-align: center;
-            background: #007acc;
-            color: white;
-            padding: 1rem 0;
-            margin-top: 2rem;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        ul li {
-            margin: 0.5rem 0;
-        }
-
-        .contact a {
-            color: #007acc;
-            text-decoration: none;
-        }
-
-        .contact a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- <header>
-        <h1>Hamza Ali Imran</h1>
-        <p>Engineer | Researcher | Developer</p>
-        <nav>
-            <a href="#education">Education</a>
-            <a href="#experience">Experience</a>
-            <a href="#publications">Publications</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header> -->
-    <header>
-        <img src="./images/formal-Photoroom.jpg" alt="Hamza Ali Imran"
-            style="width: 150px; height: 190px; border-radius: 0; margin-bottom: 10px;">
-        <h1>Hamza Ali Imran</h1>
-        <p>Engineer | Researcher | Developer</p>
-        <nav>
-            <a href="#education">Education</a>
-            <a href="#experience">Experience</a>
-            <a href="#publications">Publications</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
-        </nav>
+    <header class="bg-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Profile Image -->
+                <div class="col-md-3 text-center">
+                    <img src="./images/formal-Photoroom.jpg" alt="Hamza Ali Imran"
+                        class="img-fluid shadow" style="width: 150px; height: 190px;">
+                </div>
+                <!-- Introduction Text -->
+                <div class="col-md-9">
+                    <h1 class="display-5 fw-bold">Hamza Ali Imran</h1>
+                    <p class="lead">
+                        Hamza Ali Imran received a BS degree in electrical engineering from the National University of
+                        Computer and Emerging Sciences (NUCES-FAST), Islamabad, Pakistan, in 2018, and an MS degree in
+                        computer science from the School of Electrical Engineering and Computer Science (SEECS) at the
+                        National University of Sciences and Technology (NUST), Islamabad, in 2022.
+                    </p>
+                    <p>
+                        He served at Emumba Pvt. Ltd., Islamabad, on different teams from December 2018 until March
+                        2024.
+                        He also worked as a research assistant at the Embedded Systems and Pervasive Computing (EPIC)
+                        Laboratory of NUCES-FAST from 2017 to 2018, where he focused on high-performance computing.
+                        He is a Udemy instructor with over 5000 students worldwide. He is currently pursuing his PhD in
+                        systems engineering at the Lab for Measurement Technology (LMT), Saarland University,
+                        Saarbrücken, Germany, in collaboration with Bosch Sensortec GmbH, Kusterdingen, Germany, as a
+                        Marie Skłodowska-Curie fellow. His research interests include sensor technology, deep learning,
+                        MEMSs, and human motion analysis.
+                    </p>
+                </div>
+            </div>
+            <!-- Navigation Links -->
+            <nav class="mt-4">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item"><a class="nav-link text-white" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#publications">Publications</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <section id="education">
-        <h2>Education</h2>
-        <ul>
-            <li><strong>PhD in Systems Engineering</strong>, Universität des Saarlandes (2024 - Present)</li>
-            <li><strong>MS in Computer Science</strong>, NUST (2018 - 2022)</li>
-            <li><strong>BS in Electrical Engineering</strong>, NUCES (2014 - 2018)</li>
-        </ul>
-    </section>
+    <main class="container my-5">
+        <section id="education" class="mb-5">
+            <h2 class="text-primary">Education</h2>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>PhD in Systems Engineering</strong>, Universität des Saarlandes
+                    (2024 - Present)</li>
+                <li class="list-group-item"><strong>MS in Computer Science</strong>, NUST (2018 - 2022)</li>
+                <li class="list-group-item"><strong>BS in Electrical Engineering</strong>, NUCES (2014 - 2018)</li>
+            </ul>
+        </section>
 
-    <section id="experience">
-        <h2>Experience</h2>
-        <ul>
-            <li><strong>Doktorand</strong>, Bosch Sensortech GmbH (2024 - 2024)</li>
-            <li><strong>Design Engineer & QA Engineer</strong>, Emumba Pvt Ltd (2018 - 2024)</li>
-        </ul>
-    </section>
+        <section id="experience" class="mb-5">
+            <h2 class="text-primary">Experience</h2>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Doktorand</strong>, Bosch Sensortec GmbH (2024 - Present)</li>
+                <li class="list-group-item"><strong>Design Engineer & QA Engineer</strong>, Emumba Pvt Ltd (2018 - 2024)
+                </li>
+            </ul>
+        </section>
 
-    <section id="publications">
-        <h2>Publications</h2>
+        <section id="publications" class="mb-5">
+            <h2 class="text-primary">Publications</h2>
+            <h3 id="journal-heading">Journal Publications</h3>
+            <table class="table table-bordered">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Title</th>
+                        <th>Authors</th>
+                        <th>Venue</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
 
-        <!-- Journal Publications Table -->
-        <h3 id="journal-heading">Journal Publications</h3>
-        <table style="width:100%; border-collapse: collapse;">
-            <thead>
-                <tr style="background-color: #007acc; color: white;">
-                    <th style="padding: 10px; text-align: left;">Title</th>
-                    <th style="padding: 10px; text-align: left;">Authors</th>
-                    <th style="padding: 10px; text-align: left;">Venue</th>
-                    <th style="padding: 10px; text-align: left;">Link</th>
-                </tr>
-            </thead>
-            <tbody id="journal-body">
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">Generisch-Net: A Generic Deep Model for Analyzing Human Motion with
-                        Wearable Sensors in the Internet of Health Things</td>
-                    <td style="padding: 10px;">Kiran Hamza, Qaiser Riaz, Hamza Ali Imran, Mehdi Hussain, Björn Krüger
-                    </td>
-                    <td style="padding: 10px;">MDPI Sensors, 2024</td>
-                    <td style="padding: 10px;"><a href="https://www.mdpi.com/1424-8220/24/19/6167"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">Smart-Wearable Sensors and CNN-BiGRU Model: A Powerful Combination for
-                        Human Activity Recognition</td>
-                    <td style="padding: 10px;">Hamza Ali Imran, Qaiser Riaz, Mehdi Hussain, Hasan Tahir, Razi Arshad
-                    </td>
-                    <td style="padding: 10px;">IEEE Sensors Journal, 2023</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/document/10348511"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">Machines Perceive Emotions: Identifying Affective States from Human Gait
-                        Using On-body Smart Devices</td>
-                    <td style="padding: 10px;">Hamza Ali Imran, Qaiser Riaz, Muhammad Zeeshan, Mehdi Hussain, Razi
-                        Arshad</td>
-                    <td style="padding: 10px;">MDPI Applied Sciences, 2023</td>
-                    <td style="padding: 10px;"><a href="https://www.mdpi.com/2076-3417/13/8/4728"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">Khail-Net: A Shallow Convolutional Neural Network for Recognizing Sports
-                        Activities Using Wearable Inertial Sensors</td>
-                    <td style="padding: 10px;">Hamza Ali Imran</td>
-                    <td style="padding: 10px;">IEEE Sensors Letters, 2022</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/document/9852659"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">UltaNet: An Antithesis Neural Network for Recognizing Human Activity
-                        Using Inertial Sensors Signals</td>
-                    <td style="padding: 10px;">Hamza Ali Imran</td>
-                    <td style="padding: 10px;">IEEE Sensors Letters, 2022</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/document/9669026"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">Performance Comparison of MPICH and MPI4py on Raspberry Pi-3B Beowulf
-                        Cluster</td>
-                    <td style="padding: 10px;">Saad Wazir, Ataul Aziz Ikram, Hamza Ali Imran, Hanif Ullah, Ahmed Jamal
-                        Ikram, Maryam Ehsan</td>
-                    <td style="padding: 10px;">Journal of Advanced Research in Dynamical and Control Systems, 2019</td>
-                    <td style="padding: 10px;"><a href="https://jardcs.org/abstract.php?id=999" target="_blank">Link</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                <tbody id="journal-body">
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;">Generisch-Net: A Generic Deep Model for Analyzing Human Motion with
+                            Wearable Sensors in the Internet of Health Things</td>
+                        <td style="padding: 10px;">Kiran Hamza, Qaiser Riaz, Hamza Ali Imran, Mehdi Hussain, Björn
+                            Krüger
+                        </td>
+                        <td style="padding: 10px;">MDPI Sensors, 2024</td>
+                        <td style="padding: 10px;"><a href="https://www.mdpi.com/1424-8220/24/19/6167"
+                                target="_blank">Link</a></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;">Smart-Wearable Sensors and CNN-BiGRU Model: A Powerful Combination
+                            for
+                            Human Activity Recognition</td>
+                        <td style="padding: 10px;">Hamza Ali Imran, Qaiser Riaz, Mehdi Hussain, Hasan Tahir, Razi Arshad
+                        </td>
+                        <td style="padding: 10px;">IEEE Sensors Journal, 2023</td>
+                        <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/document/10348511"
+                                target="_blank">Link</a></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;">Machines Perceive Emotions: Identifying Affective States from Human
+                            Gait
+                            Using On-body Smart Devices</td>
+                        <td style="padding: 10px;">Hamza Ali Imran, Qaiser Riaz, Muhammad Zeeshan, Mehdi Hussain, Razi
+                            Arshad</td>
+                        <td style="padding: 10px;">MDPI Applied Sciences, 2023</td>
+                        <td style="padding: 10px;"><a href="https://www.mdpi.com/2076-3417/13/8/4728"
+                                target="_blank">Link</a></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;">Khail-Net: A Shallow Convolutional Neural Network for Recognizing
+                            Sports
+                            Activities Using Wearable Inertial Sensors</td>
+                        <td style="padding: 10px;">Hamza Ali Imran</td>
+                        <td style="padding: 10px;">IEEE Sensors Letters, 2022</td>
+                        <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/document/9852659"
+                                target="_blank">Link</a></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;">UltaNet: An Antithesis Neural Network for Recognizing Human Activity
+                            Using Inertial Sensors Signals</td>
+                        <td style="padding: 10px;">Hamza Ali Imran</td>
+                        <td style="padding: 10px;">IEEE Sensors Letters, 2022</td>
+                        <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/document/9669026"
+                                target="_blank">Link</a></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;">Performance Comparison of MPICH and MPI4py on Raspberry Pi-3B Beowulf
+                            Cluster</td>
+                        <td style="padding: 10px;">Saad Wazir, Ataul Aziz Ikram, Hamza Ali Imran, Hanif Ullah, Ahmed
+                            Jamal
+                            Ikram, Maryam Ehsan</td>
+                        <td style="padding: 10px;">Journal of Advanced Research in Dynamical and Control Systems, 2019
+                        </td>
+                        <td style="padding: 10px;"><a href="https://jardcs.org/abstract.php?id=999"
+                                target="_blank">Link</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
+            </table>
+        </section>
         <script>
             // Select all rows in the table body
             const journalRows = document.querySelectorAll('#journal-body tr');
@@ -213,115 +176,18 @@
             journalHeading.textContent = `Journal Publications (${journalCount})`;
         </script>
 
-        <!-- Conference Publications Table -->
-        <!-- <h3 id="conference-heading">Conference Publications</h3>
-        <table style="width:100%; border-collapse: collapse;">
-            <thead>
-                <tr style="background-color: #007acc; color: white;">
-                    <th style="padding: 10px; text-align: left;">Title</th>
-                    <th style="padding: 10px; text-align: left;">Authors</th>
-                    <th style="padding: 10px; text-align: left;">Venue</th>
-                    <th style="padding: 10px; text-align: left;">Link</th>
+        <h3 id="journal-heading">Conference Publications</h3>
+        <table class="table table-bordered">
+            <thead class="table-primary">
+                <tr>
+                    <th>Title</th>
+                    <th>Authors</th>
+                    <th>Venue</th>
+                    <th>Link</th>
                 </tr>
             </thead>
-            <tbody id="conference-body">
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">Metal Oxide Semiconductor Gas Sensor Systems for Food Freshness
-                        Detection: A Review of Recent Studies</td>
-                    <td style="padding: 10px;">Hamza Ali Imran, Bora Ersöz, Richard, Christian Bur, Andreas Schütze</td>
-                    <td style="padding: 10px;">17th Dresdner Sensor-Symposium, 2024</td>
-                    <td style="padding: 10px;"><a href="https://www.ama-science.org/proceedings/details/5812"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">Mukhtasir-Khail-Net: An Ultra-Efficient Convolutional Neural Network for
-                        Sports Activity Recognition with Wearable Inertial Sensors</td>
-                    <td style="padding: 10px;">Hamza Ali Imran, Shaida Muhammad, Saad Wazir, Ataul Aziz Ikram,
-                        Obaidullah Arshad</td>
-                    <td style="padding: 10px;">IEEE 4th ICoDT2, 2024</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/10740217"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">Enhanced Human Activity Recognition Using Inertial Sensor Data from Smart
-                        Wearables: A Neural Network Approach with Residual Connections</td>
-                    <td style="padding: 10px;">Shaida Muhammad, Kiran Hamza, Hamza Ali Imran, Saad Wazir</td>
-                    <td style="padding: 10px;">IEEE ICECT, 2024</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/10581358"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">EdgeHARNet: An Edge-Friendly Shallow Convolutional Neural Network for
-                        Recognizing Human Activities Using Embedded Inertial Sensors of Smart-Wearables</td>
-                    <td style="padding: 10px;">Hamza Ali Imran, Ataul Aziz Ikram, Saad Wazir, Kiran Hamza</td>
-                    <td style="padding: 10px;">IEEE C-CODE, 2023</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/10139860"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">HARResNext: An Efficient ResNext-inspired Network for Human Activity
-                        Recognition with Inertial Sensors</td>
-                    <td style="padding: 10px;">Hamza Ali Imran, Kiran Hamza, Zubair Mehmood</td>
-                    <td style="padding: 10px;">IEEE 2nd ICoDT2, 2022</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/9787447"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">IoT based Smart Fan Dimmer with suppressed Humming Sound and Nonlinear
-                        Effect of Inverter</td>
-                    <td style="padding: 10px;">Ataul Aziz Ikram, Hamza Ali Imran, Ahmed Jamal Ikram, Kiran Hamza,
-                        Khawaja Usman Riaz Sehgal</td>
-                    <td style="padding: 10px;">IEEE 15th ICOSST, 2021</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/9683877"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">HHARNet: Taking inspiration from Inception and Dense Networks for Human
-                        Activity Recognition using Inertial Sensors</td>
-                    <td style="padding: 10px;">Hamza Ali Imran, Usama Latif</td>
-                    <td style="padding: 10px;">IEEE 17th HONET, 2020</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/9322655"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">HARDenseNet: A 1D densenet inspired convolutional neural network for
-                        human activity recognition with inertial sensors</td>
-                    <td style="padding: 10px;">Kiran Mehmood, Hamza Ali Imran, Usama Latif</td>
-                    <td style="padding: 10px;">IEEE 23rd INMIC, 2020</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/9318067"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">Multi-cloud: a comprehensive review</td>
-                    <td style="padding: 10px;">Hamza Ali Imran, Usama Latif, Ataul Aziz Ikram, Maryam Ehsan, Ahmed Jamal
-                        Ikram, Waleed Ahmad Khan, Saad Wazir</td>
-                    <td style="padding: 10px;">IEEE 23rd INMIC, 2020</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/9318176"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">HPC as a Service: A naïve model</td>
-                    <td style="padding: 10px;">Hamza Ali Imran, Usama Latif, Saad Wazir, Ahmed Jamal Ikram, Ataul Aziz
-                        Ikram, Hanif Ullah, Maryam Ehsan</td>
-                    <td style="padding: 10px;">IEEE 8th ICICT, 2019</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/9001912"
-                            target="_blank">Link</a></td>
 
-
-            </tbody>
-        </table> -->
-
-        <h3 id="conference-heading">Conference Publications</h3>
-        <table style="width:100%; border-collapse: collapse;">
-            <thead>
-                <tr style="background-color: #007acc; color: white;">
-                    <th style="padding: 10px; text-align: left;">Title</th>
-                    <th style="padding: 10px; text-align: left;">Authors</th>
-                    <th style="padding: 10px; text-align: left;">Venue</th>
-                    <th style="padding: 10px; text-align: left;">Link</th>
-                </tr>
-            </thead>
-            <tbody id="conference-body">
+            <tbody id="journal-body">
                 <tr style="border-bottom: 1px solid #ddd;">
                     <td style="padding: 10px;">Metal Oxide Semiconductor Gas Sensor Systems for Food Freshness
                         Detection: A Review of Recent Studies</td>
@@ -421,31 +287,26 @@
             conferenceHeading.textContent = `Conference Publications (${conferenceCount})`;
         </script>
 
-
-    </section>
-    <section id="publications">
-
-        <section id="projects">
-            <h2>Projects</h2>
-            <ul>
-                <li><strong>RAG Application using LangChain and Bedrock</strong> - 2024</li>
-                <li><strong>OpenAI LLM GPT 3.5-turbo Based Pizza Delivery Chatbot</strong> - 2024</li>
-                <!-- Add more projects -->
+        <section id="projects" class="mb-5">
+            <h2 class="text-primary">Projects</h2>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>RAG Application using LangChain and Bedrock</strong> - 2024</li>
+                <li class="list-group-item"><strong>OpenAI LLM GPT 3.5-turbo Based Pizza Delivery Chatbot</strong> -
+                    2024</li>
             </ul>
         </section>
 
-        <section id="skills">
-            <h2>Skills</h2>
-            <ul>
-                <li>Programming: Python, C++, C</li>
-                <li>Libraries: Keras, Scikit-learn, TensorFlow</li>
-                <li>Embedded Systems: ESP32, Arduino</li>
-                <!-- Add more skills -->
+        <section id="skills" class="mb-5">
+            <h2 class="text-primary">Skills</h2>
+            <ul class="list-group">
+                <li class="list-group-item">Programming: Python, C++, C</li>
+                <li class="list-group-item">Libraries: Keras, Scikit-learn, TensorFlow</li>
+                <li class="list-group-item">Embedded Systems: ESP32, Arduino</li>
             </ul>
         </section>
 
-        <section id="contact">
-            <h2>Contact</h2>
+        <section id="contact" class="mb-5">
+            <h2 class="text-primary">Contact</h2>
             <p>Email: <a href="mailto:engrhamzaaliimran@gmail.com">engrhamzaaliimran@gmail.com</a></p>
             <p>LinkedIn: <a href="https://www.linkedin.com/in/engr-hamza-ali-imran-a0735a125/"
                     target="_blank">Profile</a></p>
@@ -453,9 +314,14 @@
             <p>ResearchGate: <a href="https://www.researchgate.net/profile/Hamza-Imran-3" target="_blank">Profile</a>
             </p>
         </section>
+    </main>
 
-        <footer>
-        </footer>
+    <footer class="bg-primary text-white text-center py-3">
+        <p>© 2024 Hamza Ali Imran</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
