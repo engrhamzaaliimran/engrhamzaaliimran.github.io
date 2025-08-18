@@ -1,743 +1,444 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamza Ali Imran - Portfolio</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hamza Ali Imran – Portfolio</title>
+  <meta name="description" content="Hamza Ali Imran – PhD researcher (MOS gas sensors, Impedance Spectroscopy) with prior experience in Human Motion Analysis with inertial sensors and AI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config for container widths
+ tailwind.config = { darkMode: 'class',
+      theme: {
+        extend: {
+          container: { center: true, padding: '1rem' },
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
         }
+      }
+    }
+  </script>
+<style>
+  /* Minimal styles for custom helper classes (CDN-safe, no @apply) */
+  .card{
+    border-radius: 1rem;
+    border: 1px solid #e2e8f0;         /* slate-200 */
+    background: #ffffff;               /* white */
+    box-shadow: 0 10px 20px rgba(2,6,23,0.05);
+  }
+  .dark .card{
+    border-color: #334155;             /* slate-700 */
+    background: #0f172a;               /* slate-900-ish */
+  }
 
-        .nav-link:hover {
-            text-decoration: underline;
-        }
+  .btn{
+    display:inline-flex; align-items:center; gap:.5rem;
+    padding:.5rem 1rem; border-radius:.75rem;
+    font-weight:500; border:1px solid transparent;
+    transition: all .15s ease;
+    text-decoration:none;
+  }
+  .btn-primary{ background:#2563eb; color:#fff; }
+  .btn-primary:hover{ background:#1d4ed8; }
 
-        .custom-primary {
-            background-color: #01356c !important;
-            /* Custom blue color */
-        }
+  .btn-soft{
+    background:#f1f5f9;                /* slate-100 */
+    color:#0f172a;                      /* slate-900 */
+  }
+  .btn-soft:hover{ background:#e2e8f0; } /* slate-200 */
+  .dark .btn-soft{
+    background:#334155;                 /* slate-700 */
+    color:#e2e8f0;                      /* slate-200 */
+  }
+  .dark .btn-soft:hover{ background:#475569; } /* slate-600 */
 
-        h3 {
-            color: #28a745;
-            /* Custom green */
-            font-style: italic;
-        }
-    </style>
+  .link{
+    color:#1d4ed8; text-decoration:underline; text-underline-offset:4px;
+  }
+  .link:hover{ color:#1e40af; }
+  .dark .link{ color:#93c5fd; }
+  .dark .link:hover{ color:#bfdbfe; }
+
+  .pill{
+    display:inline-block; padding:.25rem .75rem; border-radius:9999px;
+    font-size:.875rem;
+    background:#f1f5f9;                 /* slate-100 */
+  }
+  .dark .pill{ background:#334155; }    /* slate-700 */
+</style>
+
+
+<script>
+  (function () {
+    try {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const useDark = saved ? (saved === 'dark') : prefersDark;
+      if (useDark) document.documentElement.classList.add('dark');
+    } catch (_) {}
+
+    window.toggleTheme = function () {
+      const isDark = document.documentElement.classList.toggle('dark');
+      try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (_) {}
+    };
+  })();
+</script>
+
+  <!-- <style>
+    /* Smooth shadow + card look */
+    .card { @apply rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800; }
+    .btn { @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl font-medium border border-transparent transition; }
+    .btn-primary { @apply bg-blue-600 hover:bg-blue-700 text-white; }
+    .btn-soft { @apply bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-100; }
+    .link { @apply text-blue-700 hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-200 underline underline-offset-4; }
+    .pill { @apply px-3 py-1 rounded-full text-sm bg-slate-100 dark:bg-slate-700; }
+  </style>
+  <script>
+    // Dark mode toggle (persist in localStorage)
+    const applyTheme = () => {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const useDark = saved ? saved === 'dark' : prefersDark;
+      document.documentElement.classList.toggle('dark', useDark);
+    };
+    applyTheme();
+    function toggleTheme(){
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      document.documentElement.classList.toggle('dark');
+    }
+  </script> -->
 </head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-800">
+    <div class="container max-w-6xl flex items-center justify-between py-3">
+      <a href="#home" class="font-semibold text-lg">Hamza Ali Imran</a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#about" class="hover:opacity-80">About</a>
+        <a href="#publications" class="hover:opacity-80">Publications</a>
+        <a href="#experience" class="hover:opacity-80">Experience</a>
+        <a href="#projects" class="hover:opacity-80">Projects</a>
+        <a href="#skills" class="hover:opacity-80">Skills</a>
+        <a href="#awards" class="hover:opacity-80">Awards</a>
+        <a href="#contact" class="hover:opacity-80">Contact</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button class="btn btn-soft" aria-label="Toggle dark mode" onclick="toggleTheme()">🌙/☀️</button>
+        <a href="#contact" class="btn btn-primary">Get in touch</a>
+      </div>
+    </div>
+  </header>
 
+  <!-- Hero -->
+  <section id="home" class="container max-w-6xl grid md:grid-cols-2 gap-10 items-center py-12 md:py-16">
+    <div class="space-y-6">
+      <div class="inline-flex items-center gap-2 pill"> Would be Open to post‑Doc & Industry roles after PhD</div>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight">MOS Gas Sensors • Impedance Spectroscopy • Machine Learning for Sensing</h1>
+      <p class="text-lg text-slate-600 dark:text-slate-300">
+        PhD researcher at LMT, Saarland University (🇩🇪), collaborating with Bosch Sensortec. Developing
+        temperature–frequency tuned impedance spectroscopy and ML methods for reliable gas sensing for food freshness detection.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a class="btn btn-primary" href="mailto:engrhamzaaliimran@gmail.com" target="_blank" rel="noopener">Email</a>
+        <a class="btn btn-soft" href="https://scholar.google.com/citations?user=wqW4TusAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a class="btn btn-soft" href="https://www.researchgate.net/profile/Hamza-Imran-3" target="_blank" rel="noopener">ResearchGate</a>
+        <a class="btn btn-soft" href="https://www.linkedin.com/in/engr-hamza-ali-imran-a0735a125/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-soft" href="https://github.com/engrhamzaaliimran" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="md:justify-self-end">
+      <!-- Use the path you mentioned -->
+      <img src="./images/formal-Photoroom.jpe" alt="Portrait of Hamza Ali Imran" class="w-full max-w-sm aspect-[3/4] object-cover rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700" />
+    </div>
+  </section>
 
-<body>
-    <header class="custom-primary text-white py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- Profile Image and Contact Icons -->
-                <div class="col-md-3 text-center">
-                    <img src="./images/formal-Photoroom.jpg" alt="Hamza Ali Imran" class="img-fluid shadow"
-                        style="width: 300px; height: 400px;">
-                    <!-- Contact Icons -->
-                    <div class="mt-3 d-flex justify-content-center gap-3">
-                        <a href="mailto:engrhamzaaliimran@gmail.com" class="text-white" title="Email" target="_blank">
-                            <i class="fas fa-envelope fa-2x"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/engr-hamza-ali-imran-a0735a125/" class="text-white"
-                            title="LinkedIn" target="_blank">
-                            <i class="fab fa-linkedin fa-2x"></i>
-                        </a>
-                        <a href="https://github.com/engrhamzaaliimran" class="text-white" title="GitHub"
-                            target="_blank">
-                            <i class="fab fa-github fa-2x"></i>
-                        </a>
-                        <a href="https://www.researchgate.net/profile/Hamza-Imran-3" class="text-white"
-                            title="ResearchGate" target="_blank">
-                            <i class="fab fa-researchgate fa-2x"></i>
-                        </a>
-                        <a href="https://scholar.google.com/citations?user=wqW4TusAAAAJ&hl=en" class="text-white"
-                            title="Google Scholar" target="_blank">
-                            <i class="fas fa-graduation-cap fa-2x"></i>
-                        </a>
-                            <!-- Udemy Button -->
-    <a href="https://www.udemy.com/user/engr-hamza-ali-imran/?srsltid=AfmBOopUpyih388JslfVow8eRx_ux0GqZVnkV3EyqMbc-Dli2qYxj860" class="text-white" title="Udemy" target="_blank">
-        <i class="fas fa-play-circle fa-2x"></i>
-    </a>
-                    </div>
-                </div>
+  <!-- About / Education -->
+  <section id="about" class="container max-w-6xl py-8">
+    <div class="card p-6 md:p-8 grid md:grid-cols-3 gap-8">
+      <div class="md:col-span-2 space-y-4">
+        <h2 class="text-2xl font-semibold">About</h2>
+        <p>
+          I received my BS in Electrical Engineering from NUCES‑FAST (2018) and MS in Computer Science from NUST‑SEECS (2022). Prior industry experience includes Embedded Systems, QA Automation, and Generative‑AI at Emumba (2018–2024). I also served as a Research Assistant at the EPIC Lab (2017–2018).
+        </p>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-3">Education</h3>
+        <ul class="space-y-3 text-sm">
+          <li class="flex gap-3"><span class="pill">PhD</span> <div><strong>Systems Engineering</strong>, Saarland University, Saarbrücken, Germany</div></li>
+          <li class="flex gap-3"><span class="pill">MS</span> <div><strong>Computer Science</strong>, NUST‑SEECS, Islamabad, Pakistan</div></li>
+          <li class="flex gap-3"><span class="pill">BS</span> <div><strong>Electrical Engineering</strong>, NUCES‑FAST, Islamabad, Pakistan</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-                <!-- Introduction Text -->
-                <div class="col-md-9">
-                    <h1 class="display-5 fw-bold">Engr. Hamza Ali Imran</h1>
-                    <p class="lead">
-                        Hamza Ali Imran received a BS degree in electrical engineering from the National University of
-                        Computer and Emerging Sciences (NUCES-FAST), Islamabad, Pakistan, in 2018 🇵🇰, and an MS degree
-                        in
-                        computer science from the School of Electrical Engineering and Computer Science (SEECS) at the
-                        National University of Sciences and Technology (NUST), Islamabad, in 2022. 🎓
-                    </p>
-                    <p>
-                      He served at Emumba Pvt. Ltd., Islamabad, on different teams from December 2018 until March 2024. 💻
-He also worked as a research assistant at the Embedded Systems and Pervasive Computing (EPIC) Laboratory of NUCES-FAST from 2017 to 2018, where he focused on high-performance computing. 🚀
-He is a Udemy instructor with over 5000 students worldwide. 🌍
-He is currently pursuing his PhD in systems engineering at the Lab for Measurement Technology (LMT), Saarland University, Saarbrücken, Germany 🇩🇪, in collaboration with Bosch Sensortec GmbH, Kusterdingen, Germany, as a Marie Skłodowska-Curie fellow 🇪🇺. His PhD project, <a href="https://serenade-project.eu/" target="_blank" rel="noopener noreferrer"><strong>SERENADE</strong></a>, focuses on next-generation gas sensing using impedance spectroscopy.
-His research interests include sensor technology, deep learning, MEMSs, embedded systems, and human motion analysis. 
-                    </p>
+  <!-- Publications -->
+  <section id="publications" class="container max-w-6xl py-8">
+    <h2 class="text-2xl font-semibold mb-4">Publications</h2>
 
-                </div>
-            </div>
-
-            <!-- Navigation Links -->
-            <nav class="mt-4">
-                <nav class="mt-4">
-                    <ul class="nav justify-content-center gap-3">
-                        <li class="nav-item">
-                            <a class="btn btn-primary" href="#education">
-                                <i class="fas fa-graduation-cap"></i> Education
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-success" href="#experience">
-                                <i class="fas fa-briefcase"></i> Experience
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-info" href="#publications">
-                                <i class="fas fa-book"></i> Publications
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-warning" href="#projects">
-                                <i class="fas fa-tasks"></i> Projects
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-secondary" href="#skills">
-                                <i class="fas fa-tools"></i> Skills
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
-            </nav>
-        </div>
-    </header>
-
-
-    <main class="container my-5">
-        <section id="education" class="mb-5">
-<h2 class="text-primary text-center mb-4">Education</h2>
-            <ul class="list-group">
-                <li class="list-group-item d-flex align-items-center">
-                    <img src="./images/universitat-saarland.png" alt="Universität des Saarlandes Logo"
-                        style="width: 50px; height: 50px; margin-right: 10px;">
-                    <div>
-                        <strong>PhD in Systems Engineering</strong>, <span style="display: block;">Universität des
-                            Saarlandes - Presently enrolled, Saarbrücken, Germany </span>
-                    </div>
-                </li>
-                <li class="list-group-item d-flex align-items-center">
-                    <img src="./images/nust-seecs.png" alt="NUST SEECS Logo"
-                        style="width: 50px; height: 50px; margin-right: 10px;">
-                    <div>
-                        <strong>MS in Computer Science</strong>, <span style="display: block;">School of Electrical
-                            Engineering and Computer Science (SEECS), National University of Sciences and Technology
-                            (NUST), Islamabad, Pakistan</span>
-                    </div>
-                </li>
-                <li class="list-group-item d-flex align-items-center">
-                    <img src="./images/nuces-fast.png" alt="NUCES FAST Logo"
-                        style="width: 50px; height: 50px; margin-right: 10px;">
-                    <div>
-                        <strong>BS in Electrical Engineering</strong>,<span style="display: block;">National University
-                            of Computer and Emerging Sciences (NUCES), Islamabad, Pakistan</span>
-                    </div>
-                    </div>
-                </li>
-            </ul>
-        </section>
-
-        <section id="experience" class="mb-5">
-<h2 class="text-primary text-center mb-4">Experience</h2>
-            <ul class="list-group">
-                <!-- Lab of Measurement Technology (LMT) -->
-                <li class="list-group-item">
-                    <h4><strong>Lab of Measurement Technology (LMT), Saarland University</strong></h4>
-                    <p><em>November 2024 – Present</em></p>
-                    <h5> EU Researcher (Doktorand)</h5>
-                    <p>
-                        Conducting PhD research on a <strong>novel excitation scheme for metal-oxide semiconductors
-                            (MOS)</strong> to improve food freshness detection using gas sensors.
-                    </p>
-                </li>
-
-                <!-- Bosch Sensortec -->
-                <li class="list-group-item">
-                    <h4><strong>Bosch Sensortec GmbH</strong></h4>
-                    <p><em>May 2024 – October 2024</em></p>
-                    <h5> EU Researcher (Doktorand)</h5>
-                    <p>
-                        Pursued an Industrial PhD at Bosch Sensortec, focusing on the <strong>usage of gas sensors for
-                            food freshness detection</strong>.
-                    </p>
-                </li>
-
-                <!-- Emumba Private Limited -->
-                <li class="list-group-item">
-                    <h4><strong>Emumba Private Limited</strong></h4>
-                    <p><em>December 2018 – April 2024</em></p>
-                    <p><strong>ML Engineer (Generative AI)</strong> — <em>Dec 2023 to April 2024</em></p>
-                    <ul>
-                        <li>Developed tailored chatbots utilizing <strong>Large Language Models (LLM)</strong>.</li>
-                        <li>Conducted research on ML-related applications by studying existing literature and
-                            implementing existing models.</li>
-                    </ul>
-                    <p><strong>QA Engineer</strong> — <em>Jan 2023 to Nov 2023</em></p>
-                    <ul>
-                        <li>Automated quality assurance of GUI for software tools using Python.</li>
-                        <li>Trained new engineers in Python, Linux, Git, and other software engineering tools.</li>
-                        <li>Recruited resources for the QA team, including talent search, conducting interviews, and
-                            managing tests.</li>
-                    </ul>
-                    <p><strong>Design Engineer (Embedded Systems)</strong> — <em>Dec 2018 to Dec 2022</em></p>
-                    <ul>
-                        <li>Firmware development for microcontrollers and single-board computers in C/C++.</li>
-                        <li>Prototyping IoT products.</li>
-                        <li>Compiling custom Linux images.</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-
-
-
-
-        <section id="publications" class="mb-5">
-<h2 class="text-primary text-center mb-4">Publications</h2>
-            <h3 id="journal-heading">Journal Publications</h3>
-            <table class="table table-bordered">
-                <thead class="table-primary">
-                    <tr>
-                        <th>Title</th>
-                        <th>Authors</th>
-                        <th>Venue</th>
-                        <th>Link</th>
-                    </tr>
-                </thead>
-
-                <tbody id="journal-body">
-                    <tr style="border-bottom: 1px solid #ddd;">
-
-                    <td style="padding: 10px;">Generisch-Net: A Generic Deep Model for Analyzing Human Motion with Wearable Sensors in the Internet of Health Things</td>
-            <td style="padding: 10px;">Kiran Hamza, Qaiser Riaz, Hamza Ali Imran, Mehdi Hussain, Björn Krüger</td>
-            <td style="padding: 10px;">MDPI Sensors, 2024</td>
-            <td style="padding: 10px;">
-                <a href="https://www.mdpi.com/1424-8220/24/19/6167" target="_blank" class="btn btn-primary btn-sm">
-                    <i class="fas fa-link"></i> Online
-                </a>
-                <a href="https://github.com/engrhamzaaliimran/engrhamzaaliimran.github.io/blob/main/pdf/Generisch-Net.pdf"_blank" class="btn btn-secondary btn-sm">
-                    <i class="fas fa-file-pdf"></i> PDF
-                </a>
-            </td>
-        </tr>
-                    </tr>
-                               <td style="padding: 10px;">Smart-Wearable Sensors and CNN-BiGRU Model: A Powerful Combination for Human Activity Recognition</td>
-            <td style="padding: 10px;">Hamza Ali Imran, Qaiser Riaz, Mehdi Hussain, Hasan Tahir, Razi Arshad</td>
-            <td style="padding: 10px;">IEEE Sensors Journal, 2023</td>
-            <td style="padding: 10px;">
-                <a href="https://ieeexplore.ieee.org/document/10348511" target="_blank" class="btn btn-primary btn-sm">
-                    <i class="fas fa-link"></i> Online
-                </a>
-                <a href="https://github.com/engrhamzaaliimran/engrhamzaaliimran.github.io/blob/main/pdf/Smart-Wearable_Sensors_and_CNN-BiGRU_Model_A_Powerful_Combination_for_Human_Activity_Recognition.pdf" target="_blank" class="btn btn-secondary btn-sm">
-                    <i class="fas fa-file-pdf"></i> PDF
-                </a>
-            </td>
-        </tr>
- <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 10px;">Machines Perceive Emotions: Identifying Affective States from Human Gait Using On-Body Smart Devices</td>
-            <td style="padding: 10px;">Hamza Ali Imran, Qaiser Riaz, Muhammad Zeeshan, Mehdi Hussain, Razi Arshad</td>
-            <td style="padding: 10px;">MDPI Applied Sciences, 2023</td>
-            <td style="padding: 10px;">
-                <a href="https://www.mdpi.com/2076-3417/13/8/4728" target="_blank" class="btn btn-primary btn-sm">
-                    <i class="fas fa-link"></i> Online
-                </a>
-                <a href="https://github.com/engrhamzaaliimran/engrhamzaaliimran.github.io/blob/main/pdf/applsci-13-04728-v2.pdf" target="_blank" class="btn btn-secondary btn-sm">
-                    <i class="fas fa-file-pdf"></i> PDF
-                </a>
-            </td>
-        </tr>
-                    <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 10px;">Khail-Net: A Shallow Convolutional Neural Network for Recognizing Sports Activities Using Wearable Inertial Sensors</td>
-            <td style="padding: 10px;">Hamza Ali Imran</td>
-            <td style="padding: 10px;">IEEE Sensors Letters, 2022</td>
-            <td style="padding: 10px;">
-                <a href="https://ieeexplore.ieee.org/document/9852659" target="_blank" class="btn btn-primary btn-sm">
-                    <i class="fas fa-link"></i> Online
-                </a>
-                <a href="https://github.com/engrhamzaaliimran/engrhamzaaliimran.github.io/blob/main/pdf/khail-Net.pdf" target="_blank" class="btn btn-secondary btn-sm">
-                    <i class="fas fa-file-pdf"></i> PDF
-                </a>
-            </td>
-                    <tr style="border-bottom: 1px solid #ddd;">
-                        <td style="padding: 10px;">UltaNet: An Antithesis Neural Network for Recognizing Human Activity
-                            Using Inertial Sensors Signals</td>
-                        <td style="padding: 10px;">Hamza Ali Imran</td>
-                        <td style="padding: 10px;">IEEE Sensors Letters, 2022</td>
-                        <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/document/9669026"
-                                target="_blank">Link</a></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #ddd;">
-                        <td style="padding: 10px;">Performance Comparison of MPICH and MPI4py on Raspberry Pi-3B Beowulf
-                            Cluster</td>
-                        <td style="padding: 10px;">Saad Wazir, Ataul Aziz Ikram, Hamza Ali Imran, Hanif Ullah, Ahmed
-                            Jamal
-                            Ikram, Maryam Ehsan</td>
-                        <td style="padding: 10px;">Journal of Advanced Research in Dynamical and Control Systems, 2019
-                        </td>
-                        <td style="padding: 10px;"><a href="https://jardcs.org/abstract.php?id=999"
-                                target="_blank">Link</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            </table>
-        </section>
-        <script>
-            // Select all rows in the table body
-            const journalRows = document.querySelectorAll('#journal-body tr');
-
-            // Loop through each row to bold "Hamza Ali Imran" in the authors' list
-            journalRows.forEach(row => {
-                const authorCell = row.cells[1]; // Get the Authors column (2nd cell)
-                if (authorCell) {
-                    authorCell.innerHTML = authorCell.innerHTML.replace(/Hamza Ali Imran/g, '<strong>Hamza Ali Imran</strong>');
-                }
-            });
-        </script>
-
-
-        <script>
-            // Count the number of rows in the table body
-            const journalBody = document.querySelector('tbody');
-            const journalCount = journalBody.querySelectorAll('tr').length;
-
-            // Update the heading with the journal count
-            const journalHeading = document.getElementById('journal-heading');
-            journalHeading.textContent = `Journal (${journalCount})`;
-        </script>
-
-        <h3 id="journal-heading">Conference (12)</h3>
-        <table class="table table-bordered">
-            <thead class="table-primary">
-                <tr>
-                    <th>Title</th>
-                    <th>Authors</th>
-                    <th>Venue</th>
-                    <th>Link</th>
-                </tr>
+    <div class="space-y-6">
+      <div class="card p-6">
+        <h3 class="font-semibold mb-3">Journal</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead>
+              <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500">
+                <th class="py-2 pr-4">Title</th>
+                <th class="py-2 pr-4">Authors</th>
+                <th class="py-2 pr-4">Venue / Year</th>
+                <th class="py-2">Links</th>
+              </tr>
             </thead>
-
-<!-- <tbody id="journal-body">
-    <tr style="border-bottom: 1px solid #ddd;">
-        <td style="padding: 10px;">
-            Spak‑Net: A Lightweight Convolutional Neural Network for Activity Recognition with Wearable Inertial Sensors
-        </td>
-        <td style="padding: 10px;">
-            Shaida Muhammad, <strong>Hamza Ali Imran</strong>, Wasim Zaman, Kiran Hamza
-        </td>
-        <td style="padding: 10px;">
-            International Conference on Communication Technologies (ComTech), 2025
-        </td>
-        <td style="padding: 10px;">
-            <a href="https://ieeexplore.ieee.org/document/11034469" target="_blank">Link</a><br>
-            <a href="https://github.com/engrhamzaaliimran/engrhamzaaliimran.github.io/blob/main/pdf/Spak_Net__KhailNet_3_0_.pdf" target="_blank" class="btn btn-secondary btn-sm">
-                <i class="fas fa-file-pdf"></i> PDF
-            </a>
-        </td>
-    </tr>
-</tbody> -->
-
-
-            <tbody id="journal-body">
-    <tr style="border-bottom: 1px solid #ddd;">
-        <td style="padding: 10px;">
-           Optimizing AC Excitation Frequency for Linear Complex Impedance Response in Metal Oxide Semiconductor Gas Sensing
-        </td>
-        <td style="padding: 10px;">
-           <strong>Hamza Ali Imran</strong>, Oliver Brieger, Christian Bur, Andreas Schütze
-        </td>
-        <td style="padding: 10px;">
-            Will be presented at Eurosensors 2025
-        </td>
-
-</tbody>
-
-
-            
-            <tbody id="journal-body">
-    <tr style="border-bottom: 1px solid #ddd;">
-        <td style="padding: 10px;">
-            Spak‑Net: A Lightweight Convolutional Neural Network for Activity Recognition with Wearable Inertial Sensors
-        </td>
-        <td style="padding: 10px;">
-            Shaida Muhammad,<strong>Hamza Ali Imran</strong>, Wasim Zaman, Kiran Hamza
-        </td>
-        <td style="padding: 10px;">
-            International Conference on Communication Technologies (ComTech), 2025
-        </td>
-        <td style="padding: 10px;">
-            <a href="https://ieeexplore.ieee.org/document/11034469" target="_blank" class="btn btn-primary btn-sm">
-                <i class="fas fa-link"></i> Online
-            </a>
-            <a href="https://github.com/engrhamzaaliimran/engrhamzaaliimran.github.io/blob/main/pdf/Spak_Net__KhailNet_3_0_.pdf" target="_blank" class="btn btn-secondary btn-sm">
-                <i class="fas fa-file-pdf"></i> PDF
-            </a>
-        </td>
-    </tr>
-</tbody>
-
-            
-            <tbody id="journal-body">
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">Metal Oxide Semiconductor Gas Sensor Systems for Food Freshness
-                        Detection: A Review of Recent Studies</td>
-                    <td style="padding: 10px;"><strong>Hamza Ali Imran</strong>, Bora Ersöz, Richard Fix, Christian Bur,
-                        Andreas Schütze</td>
-                    <td style="padding: 10px;">17th Dresdner Sensor-Symposium, 2024</td>
-                    <td style="padding: 10px;"><a href="https://www.ama-science.org/proceedings/details/5812"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">Mukhtasir-Khail-Net: An Ultra-Efficient Convolutional Neural Network for
-                        Sports Activity Recognition with Wearable Inertial Sensors</td>
-                    <td style="padding: 10px;"><strong>Hamza Ali Imran</strong>, Shaida Muhammad, Saad Wazir, Ataul Aziz
-                        Ikram, Obaidullah Arshad</td>
-                    <td style="padding: 10px;">IEEE 4th ICoDT2, 2024</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/10740217"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">Enhanced Human Activity Recognition Using Inertial Sensor Data from Smart
-                        Wearables: A Neural Network Approach with Residual Connections</td>
-                    <td style="padding: 10px;">Shaida Muhammad, Kiran Hamza, <strong>Hamza Ali Imran</strong>, Saad
-                        Wazir</td>
-                    <td style="padding: 10px;">IEEE ICECT, 2024</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/10581358"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">EdgeHARNet: An Edge-Friendly Shallow Convolutional Neural Network for
-                        Recognizing Human Activities Using Embedded Inertial Sensors of Smart-Wearables</td>
-                    <td style="padding: 10px;"><strong>Hamza Ali Imran</strong>, Ataul Aziz Ikram, Saad Wazir, Kiran
-                        Hamza</td>
-                    <td style="padding: 10px;">IEEE C-CODE, 2023</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/10139860"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">HARResNext: An Efficient ResNext-inspired Network for Human Activity
-                        Recognition with Inertial Sensors</td>
-                    <td style="padding: 10px;"><strong>Hamza Ali Imran</strong>, Kiran Hamza, Zubair Mehmood</td>
-                    <td style="padding: 10px;">IEEE 2nd ICoDT2, 2022</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/9787447"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">IoT based Smart Fan Dimmer with suppressed Humming Sound and Nonlinear
-                        Effect of Inverter</td>
-                    <td style="padding: 10px;">Ataul Aziz Ikram, <strong>Hamza Ali Imran</strong>, Ahmed Jamal Ikram,
-                        Kiran Hamza, Khawaja Usman Riaz Sehgal</td>
-                    <td style="padding: 10px;">IEEE 15th ICOSST, 2021</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/9683877"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">HHARNet: Taking inspiration from Inception and Dense Networks for Human
-                        Activity Recognition using Inertial Sensors</td>
-                    <td style="padding: 10px;"><strong>Hamza Ali Imran</strong>, Usama Latif</td>
-                    <td style="padding: 10px;">IEEE 17th HONET, 2020</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/9322655"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">HARDenseNet: A 1D densenet inspired convolutional neural network for
-                        human activity recognition with inertial sensors</td>
-                    <td style="padding: 10px;">Kiran Mehmood, <strong>Hamza Ali Imran</strong>, Usama Latif</td>
-                    <td style="padding: 10px;">IEEE 23rd INMIC, 2020</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/9318067"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">Multi-cloud: a comprehensive review</td>
-                    <td style="padding: 10px;"><strong>Hamza Ali Imran</strong>, Usama Latif, Ataul Aziz Ikram, Maryam
-                        Ehsan, Ahmed Jamal Ikram, Waleed Ahmad Khan, Saad Wazir</td>
-                    <td style="padding: 10px;">IEEE 23rd INMIC, 2020</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/9318176"
-                            target="_blank">Link</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">HPC as a Service: A naïve model</td>
-                    <td style="padding: 10px;"><strong>Hamza Ali Imran</strong>, Usama Latif, Saad Wazir, Ahmed Jamal
-                        Ikram, Ataul Aziz Ikram, Hanif Ullah, Maryam Ehsan</td>
-                    <td style="padding: 10px;">IEEE 8th ICICT, 2019</td>
-                    <td style="padding: 10px;"><a href="https://ieeexplore.ieee.org/abstract/document/9001912"
-                            target="_blank">Link</a></td>
-                </tr>
+            <tbody id="journal-body" class="align-top">
+              <tr class="border-b border-slate-100 dark:border-slate-800">
+                <td class="py-3 pr-4">Generisch‑Net: A Generic Deep Model for Analyzing Human Motion with Wearable Sensors in the Internet of Health Things</td>
+                <td class="py-3 pr-4">Kiran Hamza, <strong>Hamza Ali Imran</strong>, Mehdi Hussain, Björn Krüger</td>
+                <td class="py-3 pr-4">MDPI Sensors, 2024</td>
+                <td class="py-3 flex flex-wrap gap-2">
+                  <a class="btn btn-soft" target="_blank" rel="noopener" href="https://www.mdpi.com/1424-8220/24/19/6167">Online</a>
+                  <a class="btn btn-soft" target="_blank" rel="noopener" href="https://github.com/engrhamzaaliimran/engrhamzaaliimran.github.io/blob/main/pdf/Generisch-Net.pdf">PDF</a>
+                </td>
+              </tr>
+              <tr class="border-b border-slate-100 dark:border-slate-800">
+                <td class="py-3 pr-4">Smart‑Wearable Sensors and CNN‑BiGRU Model: A Powerful Combination for Human Activity Recognition</td>
+                <td class="py-3 pr-4"><strong>Hamza Ali Imran</strong>, Qaiser Riaz, Mehdi Hussain, Hasan Tahir, Razi Arshad</td>
+                <td class="py-3 pr-4">IEEE Sensors Journal, 2023</td>
+                <td class="py-3 flex flex-wrap gap-2">
+                  <a class="btn btn-soft" target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10348511">Online</a>
+                  <a class="btn btn-soft" target="_blank" rel="noopener" href="https://github.com/engrhamzaaliimran/engrhamzaaliimran.github.io/blob/main/pdf/Smart-Wearable_Sensors_and_CNN-BiGRU_Model_A_Powerful_Combination_for_Human_Activity_Recognition.pdf">PDF</a>
+                </td>
+              </tr>
+              <tr class="border-b border-slate-100 dark:border-slate-800">
+                <td class="py-3 pr-4">Machines Perceive Emotions: Identifying Affective States from Human Gait Using On‑Body Smart Devices</td>
+                <td class="py-3 pr-4"><strong>Hamza Ali Imran</strong>, Qaiser Riaz, Muhammad Zeeshan, Mehdi Hussain, Razi Arshad</td>
+                <td class="py-3 pr-4">MDPI Applied Sciences, 2023</td>
+                <td class="py-3 flex flex-wrap gap-2">
+                  <a class="btn btn-soft" target="_blank" rel="noopener" href="https://www.mdpi.com/2076-3417/13/8/4728">Online</a>
+                  <a class="btn btn-soft" target="_blank" rel="noopener" href="https://github.com/engrhamzaaliimran/engrhamzaaliimran.github.io/blob/main/pdf/applsci-13-04728-v2.pdf">PDF</a>
+                </td>
+              </tr>
+              <tr class="border-b border-slate-100 dark:border-slate-800">
+                <td class="py-3 pr-4">Khail‑Net: A Shallow Convolutional Neural Network for Recognizing Sports Activities Using Wearable Inertial Sensors</td>
+                <td class="py-3 pr-4"><strong>Hamza Ali Imran</strong></td>
+                <td class="py-3 pr-4">IEEE Sensors Letters, 2022</td>
+                <td class="py-3 flex flex-wrap gap-2">
+                  <a class="btn btn-soft" target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9852659">Online</a>
+                  <a class="btn btn-soft" target="_blank" rel="noopener" href="https://github.com/engrhamzaaliimran/engrhamzaaliimran.github.io/blob/main/pdf/khail-Net.pdf">PDF</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4">UltaNet: An Antithesis Neural Network for Recognizing Human Activity Using Inertial Sensors Signals</td>
+                <td class="py-3 pr-4"><strong>Hamza Ali Imran</strong></td>
+                <td class="py-3 pr-4">IEEE Sensors Letters, 2022</td>
+                <td class="py-3 flex flex-wrap gap-2"><a class="btn btn-soft" target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9669026">Online</a></td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4">Performance Comparison of MPICH and MPI4py on Raspberry Pi‑3B Beowulf Cluster</td>
+                <td class="py-3 pr-4">Saad Wazir, Ataul Aziz Ikram, <strong>Hamza Ali Imran</strong>, Hanif Ullah, Ahmed Jamal Ikram, Maryam Ehsan</td>
+                <td class="py-3 pr-4">JARDCS, 2019</td>
+                <td class="py-3 flex flex-wrap gap-2"><a class="btn btn-soft" target="_blank" rel="noopener" href="https://jardcs.org/abstract.php?id=999">Online</a></td>
+              </tr>
             </tbody>
-        </table>
-
-
-        <script>
-            // Count the number of conference entries
-            const conferenceBody = document.getElementById('conference-body');
-            const conferenceCount = conferenceBody.querySelectorAll('tr').length;
-
-            // Update the conference heading with the count
-            const conferenceHeading = document.getElementById('conference-heading');
-            conferenceHeading.textContent = `Conference Publications (${conferenceCount})`;
-        </script>
-
-        <!-- <section id="projects" class="mb-5">
-            <h2 class="text-primary">Projects</h2>
-            <ul class="list-group">
-                <li class="list-group-item"><strong>RAG Application using LangChain and Bedrock</strong> - 2024</li>
-                <li class="list-group-item"><strong>OpenAI LLM GPT 3.5-turbo Based Pizza Delivery Chatbot</strong> -
-                    2024</li>
-            </ul>
-        </section> -->
-
-      <section id="Selective Projects" class="mb-5">
-    <h2 class="text-primary text-center mb-4">Projects</h2>
-    <div class="row">
-        <!-- Project 1 -->
-        <div class="col-md-6 mb-4">
-            <div class="card shadow-sm border-0 h-100">
-                <div class="card-body">
-                    <h4 class="card-title fw-bold mb-3">RAG Application</h4>
-                    <p class="card-text text-muted">
-                        Developed a <strong>Retrieval-Augmented Generation (RAG)</strong> application for question-answering tasks, leveraging LangChain and Bedrock for seamless integration.
-                    </p>
-                    <a href="https://github.com/engrhamzaaliimran/AWSBedRock_RAG" target="_blank" class="btn btn-dark btn-sm">
-                        View on GitHub
-                    </a>
-                </div>
-            </div>
+          </table>
         </div>
+      </div>
 
-        <!-- Project 2 -->
-        <div class="col-md-6 mb-4">
-            <div class="card shadow-sm border-0 h-100">
-                <div class="card-body">
-                    <h4 class="card-title fw-bold mb-3">Pizza Delivery Chatbot</h4>
-                    <p class="card-text text-muted">
-                        Built a chatbot using OpenAI's GPT-3.5-turbo for pizza delivery, handling item selection, order confirmation, and address verification.
-                    </p>
-                    <a href="https://github.com/engrhamzaaliimran/PizzaDeliverChatBot/tree/main" target="_blank" class="btn btn-dark btn-sm">
-                        View on GitHub
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="col-md-6 mb-4">
-            <div class="card shadow-sm border-0 h-100">
-                <div class="card-body">
-                    <h4 class="card-title fw-bold mb-3">BLE Mesh Monitoring</h4>
-                    <p class="card-text text-muted">
-                        Supervised the development of a BLE mesh network for climate monitoring, utilizing ESP32 nodes to track humidity and temperature, with Android app integration.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project 4 -->
-        <div class="col-md-6 mb-4">
-            <div class="card shadow-sm border-0 h-100">
-                <div class="card-body">
-                    <h4 class="card-title fw-bold mb-3">iBeacon Library</h4>
-                    <p class="card-text text-muted">
-                        Developed an ESP-IDF-based iBeacon wrapper to simplify BLE communication for ESP32 devices.
-                    </p>
-                    <a href="https://github.com/engrhamzaaliimran/ESP32_BLE_iBeacon/tree/main" target="_blank" class="btn btn-dark btn-sm">
-                        View on GitHub
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project 5 --> 
-        <div class="col-md-6 mb-4">
-            <div class="card shadow-sm border-0 h-100">
-                <div class="card-body">
-                    <h4 class="card-title fw-bold mb-3">ESP32 BLE Serial Profile</h4>
-                    <p class="card-text text-muted">
-                        Implemented a GATT-based BLE serial profile for ESP32 to enable UART communication with connected devices.
-                    </p>
-                    <a href="https://github.com/engrhamzaaliimran/ESP32_BLE_SerialProfile_Component" target="_blank" class="btn btn-dark btn-sm">
-                        View on GitHub
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project 6 -->
-        <div class="col-md-6 mb-4">
-            <div class="card shadow-sm border-0 h-100">
-                <div class="card-body">
-                    <h4 class="card-title fw-bold mb-3">Disaster Classification</h4>
-                    <p class="card-text text-muted">
-                        Designed an end-to-end solution for disaster classification using deep convolutional neural networks.
-                    </p>
-                    <a href="https://github.com/engrhamzaaliimran/DisasterNet" target="_blank" class="btn btn-dark btn-sm">
-                        View on GitHub
-                    </a>
-                </div>
-            </div>
-        </div>
+      <div class="card p-6">
+        <h3 class="font-semibold mb-3">Conference (selection)</h3>
+        <ul class="space-y-4 text-sm">
+          <li>
+            <div class="font-medium">Optimizing AC Excitation Frequency for Linear Complex Impedance Response in MOS Gas Sensing</div>
+            <div class="text-slate-500">Hamza Ali Imran, Oliver Brieger, Christian Bur, Andreas Schütze — <em>Eurosensors 2025</em> (to appear)</div>
+          </li>
+          <li>
+            <div class="font-medium">Spak‑Net: A Lightweight CNN for Activity Recognition with Inertial Sensors</div>
+            <div class="text-slate-500">Shaida Muhammad, <span class="font-semibold">Hamza Ali Imran</span>, Wasim Zaman, Kiran Hamza — <em>ComTech 2025</em> · <a class="link" target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/11034469">Online</a> · <a class="link" target="_blank" rel="noopener" href="https://github.com/engrhamzaaliimran/engrhamzaaliimran.github.io/blob/main/pdf/Spak_Net__KhailNet_3_0_.pdf">PDF</a></div>
+          </li>
+          <li>
+            <div class="font-medium">Metal Oxide Semiconductor Gas Sensor Systems for Food Freshness Detection: A Review of Recent Studies</div>
+            <div class="text-slate-500"><span class="font-semibold">Hamza Ali Imran</span>, Bora Ersöz, Richard Fix, Christian Bur, Andreas Schütze — <em>17th Dresdner Sensor‑Symposium, 2024</em> · <a class="link" target="_blank" rel="noopener" href="https://www.ama-science.org/proceedings/details/5812">Online</a></div>
+          </li>
+          <li>
+            <div class="font-medium">Mukhtasir‑Khail‑Net: Ultra‑Efficient CNN for Sports Activity Recognition</div>
+            <div class="text-slate-500"><span class="font-semibold">Hamza Ali Imran</span>, Shaida Muhammad, Saad Wazir, Ataul Aziz Ikram, Obaidullah Arshad — <em>IEEE ICoDT2, 2024</em> · <a class="link" target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/10740217">Online</a></div>
+          </li>
+          <li>
+            <div class="font-medium">EdgeHARNet: Edge‑Friendly CNN for Wearable HAR</div>
+            <div class="text-slate-500"><span class="font-semibold">Hamza Ali Imran</span>, Ataul Aziz Ikram, Saad Wazir, Kiran Hamza — <em>IEEE C‑CODE, 2023</em> · <a class="link" target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/10139860">Online</a></div>
+          </li>
+          <li>
+            <div class="font-medium">HARResNext: ResNeXt‑inspired Network for HAR</div>
+            <div class="text-slate-500"><span class="font-semibold">Hamza Ali Imran</span>, Kiran Hamza, Zubair Mehmood — <em>IEEE ICoDT2, 2022</em> · <a class="link" target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/9787447">Online</a></div>
+          </li>
+          <li>
+            <div class="font-medium">IoT‑based Smart Fan Dimmer</div>
+            <div class="text-slate-500">Ataul Aziz Ikram, <span class="font-semibold">Hamza Ali Imran</span>, Ahmed Jamal Ikram, Kiran Hamza, Khawaja Usman Riaz Sehgal — <em>IEEE ICOSST, 2021</em> · <a class="link" target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/9683877">Online</a></div>
+          </li>
+          <li>
+            <div class="font-medium">HHARNet: Inception + Dense for HAR</div>
+            <div class="text-slate-500"><span class="font-semibold">Hamza Ali Imran</span>, Usama Latif — <em>IEEE HONET, 2020</em> · <a class="link" target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/9322655">Online</a></div>
+          </li>
+          <li>
+            <div class="font-medium">HARDenseNet: 1D DenseNet for HAR</div>
+            <div class="text-slate-500">Kiran Mehmood, <span class="font-semibold">Hamza Ali Imran</span>, Usama Latif — <em>IEEE INMIC, 2020</em> · <a class="link" target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/9318067">Online</a></div>
+          </li>
+          <li>
+            <div class="font-medium">Multi‑cloud: A Comprehensive Review</div>
+            <div class="text-slate-500"><span class="font-semibold">Hamza Ali Imran</span>, Usama Latif, Ataul Aziz Ikram, Maryam Ehsan, Ahmed Jamal Ikram, Waleed Ahmad Khan, Saad Wazir — <em>IEEE INMIC, 2020</em> · <a class="link" target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/9318176">Online</a></div>
+          </li>
+          <li>
+            <div class="font-medium">HPC as a Service: A naïve model</div>
+            <div class="text-slate-500"><span class="font-semibold">Hamza Ali Imran</span>, Usama Latif, Saad Wazir, Ahmed Jamal Ikram, Ataul Aziz Ikram, Hanif Ullah, Maryam Ehsan — <em>IEEE ICICT, 2019</em> · <a class="link" target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/9001912">Online</a></div>
+          </li>
+        </ul>
+      </div>
     </div>
-</section>
+  </section>
 
-  <section id="skills" class="mb-5">
-            <h2 class="text-primary text-center mb-4">Skills</h2>
-            <div class="row text-center mt-4">
-                <!-- Data Science and AI -->
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <i class="fas fa-database fa-3x text-primary mb-3"></i>
-                            <h4 class="card-title">Data Science & AI</h4>
-                            <ul class="list-unstyled">
-                                <li>Keras</li>
-                                <li>Scikit-learn</li>
-                                <li>NumPy & Pandas</li>
-                                <li>Seaborn & Matplotlib</li>
-                                <li>LangChain</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- Programming Languages -->
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <i class="fas fa-code fa-3x text-success mb-3"></i>
-                            <h4 class="card-title">Programming Languages</h4>
-                            <ul class="list-unstyled">
-                                <li>Python</li>
-                                <li>C++</li>
-                                <li>C</li>
-                                <li>Bash Scripting</li>
-                                <li>LaTeX</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- Embedded Systems -->
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <i class="fas fa-microchip fa-3x text-warning mb-3"></i>
-                            <h4 class="card-title">Embedded Systems</h4>
-                            <ul class="list-unstyled">
-                                <li>Arduino</li>
-                                <li>FreeRTOS</li>
-                                <li>ESP32</li>
-                                <li>Firmware Development</li>
-                                <li>IoT Prototyping</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="row text-center mt-4">
-                <!-- Linux and Tools -->
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <i class="fab fa-linux fa-3x text-dark mb-3"></i>
-                            <h4 class="card-title">Linux & Tools</h4>
-                            <ul class="list-unstyled">
-                                <li>Linux Shell</li>
-                                <li>Git & Version Control</li>
-                                <li>Docker Basics</li>
-                                <li>VS Code</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- Generative AI -->
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <i class="fas fa-robot fa-3x text-danger mb-3"></i>
-                            <h4 class="card-title">Generative AI</h4>
-                            <ul class="list-unstyled">
-                                <li>LLMs (e.g., OpenAI)</li>
-                                <li>Fine-tuning Models</li>
-                                <li>LangChain Integration</li>
-                                <li>Bedrock Deployment</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- Languages -->
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <i class="fas fa-language fa-3x text-info mb-3"></i>
-                            <h4 class="card-title">Languages</h4>
-                            <ul class="list-unstyled">
-                                <li>English</li>
-                                <li>Urdu</li>
-                                <li>Punjabi</li>
-                                <li>Hindi</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-<footer class="custom-primary text-white text-center py-4">
-    <div class="container">
-        <p class="mb-2" style="font-size: 1.2rem;">Thank you for visiting</p>
-        <h5 class="fw-bold mb-3">Hamza Ali Imran's Official Website</h5>
-        <div class="d-flex justify-content-center gap-4 mb-3">
-            <a href="mailto:engrhamzaaliimran@gmail.com" class="text-white" title="Email" target="_blank">
-                <i class="fas fa-envelope fa-lg"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/engr-hamza-ali-imran-a0735a125/" class="text-white" title="LinkedIn" target="_blank">
-                <i class="fab fa-linkedin fa-lg"></i>
-            </a>
-            <a href="https://github.com/engrhamzaaliimran" class="text-white" title="GitHub" target="_blank">
-                <i class="fab fa-github fa-lg"></i>
-            </a>
-            <a href="https://www.researchgate.net/profile/Hamza-Imran-3" class="text-white" title="ResearchGate" target="_blank">
-                <i class="fab fa-researchgate fa-lg"></i>
-            </a>
-            <a href="https://scholar.google.com/citations?user=wqW4TusAAAAJ&hl=en" class="text-white" title="Google Scholar" target="_blank">
-                <i class="fas fa-graduation-cap fa-lg"></i>
-            </a>
+  <!-- Experience -->
+  <section id="experience" class="container max-w-6xl py-8">
+    <h2 class="text-2xl font-semibold mb-4">Experience</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="card p-6">
+        <div class="flex items-center justify-between">
+          <h3 class="font-semibold">Lab for Measurement Technology (LMT), Saarland University</h3>
+          <span class="text-sm text-slate-500">Nov 2024 – Present</span>
         </div>
+        <p class="mt-2 text-sm">EU Researcher (Doktorand) — PhD on novel excitation schemes for MOS gas sensors to improve food freshness detection using impedance spectroscopy.</p>
+      </div>
+      <div class="card p-6">
+        <div class="flex items-center justify-between">
+          <h3 class="font-semibold">Bosch Sensortec GmbH</h3>
+          <span class="text-sm text-slate-500">May 2024 – Oct 2024</span>
+        </div>
+        <p class="mt-2 text-sm">EU Researcher (Industrial PhD) — Application of gas sensors for food freshness detection; industry collaboration and experimental design.</p>
+      </div>
+      <div class="card p-6">
+        <div class="flex items-center justify-between">
+          <h3 class="font-semibold">Emumba Pvt. Ltd.</h3>
+          <span class="text-sm text-slate-500">Dec 2018 – Apr 2024</span>
+        </div>
+        <ul class="mt-2 text-sm list-disc list-inside space-y-1">
+          <li>ML Engineer (Gen‑AI): Built LLM chatbots; literature review & prototyping.</li>
+          <li>QA Engineer: UI automation in Python; onboarding & mentoring; recruitment support.</li>
+          <li>Design Engineer (Embedded): MCU firmware (C/C++), IoT prototyping, Linux images.</li>
+        </ul>
+      </div>
     </div>
-</footer>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="container max-w-6xl py-8">
+    <h2 class="text-2xl font-semibold mb-4">Projects</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <article class="card p-6"><h3 class="font-semibold">RAG Application</h3><p class="text-sm mt-1">Retrieval‑Augmented Generation for QA using LangChain + Bedrock.</p><a class="link" target="_blank" rel="noopener" href="https://github.com/engrhamzaaliimran/AWSBedRock_RAG">GitHub</a></article>
+      <article class="card p-6"><h3 class="font-semibold">Pizza Delivery Chatbot</h3><p class="text-sm mt-1">GPT‑3.5 based order assistant for menu selection and address verification.</p><a class="link" target="_blank" rel="noopener" href="https://github.com/engrhamzaaliimran/PizzaDeliverChatBot/tree/main">GitHub</a></article>
+      <article class="card p-6"><h3 class="font-semibold">BLE Mesh Monitoring</h3><p class="text-sm mt-1">ESP32 mesh for climate monitoring with Android integration.</p></article>
+      <article class="card p-6"><h3 class="font-semibold">ESP‑IDF iBeacon Wrapper</h3><p class="text-sm mt-1">Simplified BLE communication for ESP32 devices.</p><a class="link" target="_blank" rel="noopener" href="https://github.com/engrhamzaaliimran/ESP32_BLE_iBeacon/tree/main">GitHub</a></article>
+      <article class="card p-6"><h3 class="font-semibold">ESP32 BLE Serial Profile</h3><p class="text-sm mt-1">GATT‑based BLE serial for UART‑like link.</p><a class="link" target="_blank" rel="noopener" href="https://github.com/engrhamzaaliimran/ESP32_BLE_SerialProfile_Component">GitHub</a></article>
+      <article class="card p-6"><h3 class="font-semibold">Disaster Classification</h3><p class="text-sm mt-1">End‑to‑end pipeline using deep CNNs.</p><a class="link" target="_blank" rel="noopener" href="https://github.com/engrhamzaaliimran/DisasterNet">GitHub</a></article>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="container max-w-6xl py-8">
+    <h2 class="text-2xl font-semibold mb-4">Skills</h2>
+    <div class="grid md:grid-cols-3 gap-6 text-sm">
+      <div class="card p-6">
+        <h3 class="font-semibold">Data Science & AI</h3>
+        <ul class="mt-2 space-y-1 list-disc list-inside">
+          <li>PyTorch, Keras, scikit‑learn</li>
+          <li>Pandas, NumPy, Matplotlib</li>
+          <li>UMAP, LDA, PCA</li>
+        </ul>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-semibold">Embedded & IoT</h3>
+        <ul class="mt-2 space-y-1 list-disc list-inside">
+          <li>ESP32, FreeRTOS, Arduino</li>
+          <li>Firmware (C/C++)</li>
+          <li>Prototyping & testing</li>
+        </ul>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-semibold">Tools</h3>
+        <ul class="mt-2 space-y-1 list-disc list-inside">
+          <li>Linux, Git, Docker</li>
+          <li>LaTeX, VS Code</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards & Grants -->
+  <section id="awards" class="container max-w-6xl py-8">
+    <h2 class="text-2xl font-semibold mb-4">Awards & Grants</h2>
+    <div class="card p-6">
+      <ul class="space-y-4 text-sm">
+        <li>
+          <div class="font-medium">NUST – Financial Award for Publications</div>
+          <div class="text-slate-500">For the paper “Generisch‑Net: A Generic Deep Model for Analyzing Human Motion with Wearable Sensors in the Internet of Health Things”. <span class="pill">Dec 2024</span></div>
+        </li>
+        <li>
+          <div class="font-medium">NUST – Financial Award for Publications</div>
+          <div class="text-slate-500">For the article “Machines Perceive Emotions: Identifying Affective States from Human Gait Using On‑Body Smart Devices”. <span class="pill">Sep 2023</span></div>
+        </li>
+        <li>
+          <div class="font-medium">NGIRI – IGNITE (Pakistan)</div>
+          <div class="text-slate-500">Final year project “Supercomputer made‑up of Raspberry Pi Beowulf Cluster” funded with 70,000 PKR. <span class="pill">2018</span></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="container max-w-6xl py-10">
+    <div class="card p-6 md:p-8">
+      <h2 class="text-2xl font-semibold mb-2">Contact</h2>
+      <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">Best way to reach me is email. I’m open to collaborations, post‑doc opportunities, and industry roles aligned with gas sensing and ML.</p>
+      <div class="flex flex-wrap gap-3">
+        <a class="btn btn-primary" href="mailto:engrhamzaaliimran@gmail.com" target="_blank" rel="noopener">Email</a>
+        <a class="btn btn-soft" href="https://scholar.google.com/citations?user=wqW4TusAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a class="btn btn-soft" href="https://www.researchgate.net/profile/Hamza-Imran-3" target="_blank" rel="noopener">ResearchGate</a>
+        <a class="btn btn-soft" href="https://www.linkedin.com/in/engr-hamza-ali-imran-a0735a125/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-soft" href="https://github.com/engrhamzaaliimran" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-200 dark:border-slate-800 py-8">
+    <div class="container max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+      <p>© <span id="year"></span> Hamza Ali Imran. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a class="link" href="#home">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+<script>
+  // Ensure in-page links like "Get in touch" scroll reliably
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id && id.length > 1) {
+        const el = document.querySelector(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>
 
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
