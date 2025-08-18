@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>News & Events – Hamza Ali Imran</title>
+  <meta name="description" content="Upcoming talks, conferences, and previous visits of Hamza Ali Imran." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class',
+      theme: { extend: {
+        container: { center: true, padding: '1rem' },
+        fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'] },
+      }}
+    };
+  </script>
+  <style>
+    .card{border-radius:1rem;border:1px solid #e2e8f0;background:#fff;box-shadow:0 10px 20px rgba(2,6,23,.05)}
+    .dark .card{border-color:#334155;background:#0f172a}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;border-radius:.75rem;font-weight:500;border:1px solid transparent;transition:all .15s;text-decoration:none}
+    .btn-soft{background:#f1f5f9;color:#0f172a}
+    .btn-soft:hover{background:#e2e8f0}
+    .dark .btn-soft{background:#334155;color:#e2e8f0}
+    .dark .btn-soft:hover{background:#475569}
+    .btn-primary{background:#2563eb;color:#fff}
+    .btn-primary:hover{background:#1d4ed8}
+    .pill{display:inline-block;padding:.25rem .75rem;border-radius:9999px;font-size:.875rem;background:#f1f5f9}
+    .dark .pill{background:#334155}
+    .link{color:#1d4ed8;text-decoration:underline;text-underline-offset:4px}
+    .dark .link{color:#93c5fd}
+  </style>
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const useDark = saved ? (saved === 'dark') : prefersDark;
+        if (useDark) document.documentElement.classList.add('dark');
+      } catch (_) {}
+      window.toggleTheme = function () {
+        const isDark = document.documentElement.classList.toggle('dark');
+        try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (_) {}
+      };
+    })();
+  </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-800">
+    <div class="container max-w-6xl flex items-center justify-between py-3">
+      <a href="index.html#home" class="font-semibold text-lg">Hamza Ali Imran</a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="index.html#about" class="hover:opacity-80">About</a>
+        <a href="index.html#publications" class="hover:opacity-80">Publications</a>
+        <a href="index.html#experience" class="hover:opacity-80">Experience</a>
+        <a href="index.html#projects" class="hover:opacity-80">Projects</a>
+        <a href="index.html#skills" class="hover:opacity-80">Skills</a>
+        <a href="index.html#awards" class="hover:opacity-80">Awards</a>
+        <a href="events.html" class="hover:opacity-80 font-semibold underline underline-offset-4">News &amp; Events</a>
+        <a href="index.html#contact" class="hover:opacity-80">Contact</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button class="btn btn-soft" aria-label="Toggle dark mode" onclick="toggleTheme()">🌙/☀️</button>
+        <a href="index.html#contact" class="btn btn-primary">Get in touch</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Heading -->
+  <section class="container max-w-6xl py-10">
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">News &amp; Events</h1>
+    <p class="text-slate-600 dark:text-slate-300">Major upcoming appearances and a selection of previous visits.</p>
+  </section>
+
+  <!-- Upcoming -->
+  <section class="container max-w-6xl py-6">
+    <div class="card p-6 md:p-8">
+      <h2 class="text-2xl font-semibold mb-4">Upcoming Talks &amp; Conferences</h2>
+      <ul class="space-y-5">
+        <li>
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-lg font-medium">Eurosensors 2025 — Poster Presentation</div>
+              <div class="text-slate-500">Wrocław, Poland</div>
+            </div>
+            <time class="pill">Sep 2025</time>
+          </div>
+        </li>
+        <li>
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-lg font-medium">SERENADE 3rd Training School</div>
+              <div class="text-slate-500">Padua, Italy</div>
+            </div>
+            <time class="pill">2025 (TBD)</time>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Previous -->
+  <section class="container max-w-6xl py-6">
+    <div class="card p-6 md:p-8">
+      <h2 class="text-2xl font-semibold mb-4">Previous Conferences &amp; Visits</h2>
+      <ul class="space-y-5">
+
+            <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-lg font-medium">SERENADE 2nd Training School</div>
+              <div class="text-slate-500">Zaragoza, Spain</div>
+            </div>
+            <time class="pill">May 2025</time>
+          </div>
+                  <li>
+
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-lg font-medium">ISOCS Short Course</div>
+              <div class="text-slate-500">Bormio, Italy</div>
+            </div>
+            <time class="pill">Feb 2025</time>
+          </div>
+                  <li>
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-lg font-medium">17. Dresdner Sensor-Symposium — Poster Presentation</div>
+              <div class="text-slate-500">Dresden, Germany</div>
+            </div>
+            <time class="pill">Nov 2024</time>
+          </div>
+        </li>
+        <li>
+                    <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-lg font-medium">SERENADE 1st Training School</div>
+              <div class="text-slate-500">Saarbrücken, Germany</div>
+            </div>
+            <time class="pill">Sep 2024</time>
+          </div>
+
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-200 dark:border-slate-800 py-8 mt-8">
+    <div class="container max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+      <a class="link" href="index.html#home">← Back to Home</a>
+      <button class="btn btn-soft" onclick="toggleTheme()">Toggle theme</button>
+    </div>
+  </footer>
+</body>
+</html>
