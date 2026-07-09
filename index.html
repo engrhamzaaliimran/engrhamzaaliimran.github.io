@@ -196,6 +196,79 @@
     </div>
   </section>
 
+   <section id="datasets" class="container max-w-6xl py-8">
+  <h2 class="section-title">Datasets &amp; Code</h2>
+
+  <div class="card p-6 md:p-8">
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-5">
+      <div class="max-w-4xl">
+        <div class="flex flex-wrap items-center gap-3 mb-3">
+          <h3 class="font-semibold text-lg">
+            TFT-IS: Public Datasets &amp; Reproducible Analysis
+          </h3>
+          <span class="pill">Public Repository</span>
+        </div>
+
+        <p class="text-sm text-slate-600 dark:text-slate-300">
+          This repository provides open datasets and reproducible analysis workflows from my PhD research on
+          <strong>temperature- and frequency-tuned impedance spectroscopy (TFT-IS)</strong> for
+          metal-oxide-semiconductor (MOS) gas sensors. TFT-IS captures the temperature-dependent
+          frequency response of a sensor and represents each measurement using compact,
+          model-derived impedance features.
+        </p>
+
+        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">
+          The release now includes dense HDF5 impedance measurements for <strong>ethanol–acetone gas mixtures</strong>
+          and curated <strong>single-gas measurements</strong> for acetone, ethanol, hydrogen, and zero-air reference
+          conditions. Measurements span the available humidity conditions and sensor operating temperatures of
+          150, 250, and 350&nbsp;°C.
+        </p>
+
+        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">
+          Two ready-to-run Google Colab notebooks reproduce the complete workflows: EMG-based feature extraction
+          and PCA analysis for the gas-mixture dataset, and first-35-sweep EMG feature extraction with pairwise PCA
+          for the single-gas dataset.
+        </p>
+
+        <p class="mt-4 text-sm">
+          <strong>Keywords:</strong>
+          <span class="text-slate-600 dark:text-slate-300">
+            Gas mixtures · Single-gas measurements · MOS sensors · Electrical impedance spectroscopy ·
+            EMG feature extraction · Reproducible research
+          </span>
+        </p>
+      </div>
+
+      <div class="shrink-0 flex flex-col gap-2">
+        <a
+          class="btn btn-primary"
+          href="https://github.com/engrhamzaaliimran/tftis"
+          target="_blank"
+          rel="noopener"
+        >
+          View Dataset &amp; Code on GitHub
+        </a>
+        <a
+          class="btn btn-soft"
+          href="https://colab.research.google.com/github/engrhamzaaliimran/tftis/blob/main/TFTIS_GasMixtures_Results_Reproduce.ipynb"
+          target="_blank"
+          rel="noopener"
+        >
+          Reproduce Gas-Mixture Results
+        </a>
+        <a
+          class="btn btn-soft"
+          href="https://colab.research.google.com/github/engrhamzaaliimran/tftis/blob/main/TFTIS_SingleGas_Results_Reproduce.ipynb"
+          target="_blank"
+          rel="noopener"
+        >
+          Reproduce Single-Gas Results
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
   <section id="publications" class="container max-w-6xl py-8">
     <h2 class="section-title">Publications</h2>
     <div class="space-y-6">
@@ -403,78 +476,7 @@
     </div>
   </section>
 
- <section id="datasets" class="container max-w-6xl py-8">
-  <h2 class="section-title">Datasets &amp; Code</h2>
 
-  <div class="card p-6 md:p-8">
-    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-5">
-      <div class="max-w-4xl">
-        <div class="flex flex-wrap items-center gap-3 mb-3">
-          <h3 class="font-semibold text-lg">
-            TFT-IS: Public Datasets &amp; Reproducible Analysis
-          </h3>
-          <span class="pill">Public Repository</span>
-        </div>
-
-        <p class="text-sm text-slate-600 dark:text-slate-300">
-          This repository provides open datasets and reproducible analysis workflows from my PhD research on
-          <strong>temperature- and frequency-tuned impedance spectroscopy (TFT-IS)</strong> for
-          metal-oxide-semiconductor (MOS) gas sensors. TFT-IS captures the temperature-dependent
-          frequency response of a sensor and represents each measurement using compact,
-          model-derived impedance features.
-        </p>
-
-        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">
-          The release now includes dense HDF5 impedance measurements for <strong>ethanol–acetone gas mixtures</strong>
-          and curated <strong>single-gas measurements</strong> for acetone, ethanol, hydrogen, and zero-air reference
-          conditions. Measurements span the available humidity conditions and sensor operating temperatures of
-          150, 250, and 350&nbsp;°C.
-        </p>
-
-        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">
-          Two ready-to-run Google Colab notebooks reproduce the complete workflows: EMG-based feature extraction
-          and PCA analysis for the gas-mixture dataset, and first-35-sweep EMG feature extraction with pairwise PCA
-          for the single-gas dataset.
-        </p>
-
-        <p class="mt-4 text-sm">
-          <strong>Keywords:</strong>
-          <span class="text-slate-600 dark:text-slate-300">
-            Gas mixtures · Single-gas measurements · MOS sensors · Electrical impedance spectroscopy ·
-            EMG feature extraction · Reproducible research
-          </span>
-        </p>
-      </div>
-
-      <div class="shrink-0 flex flex-col gap-2">
-        <a
-          class="btn btn-primary"
-          href="https://github.com/engrhamzaaliimran/tftis"
-          target="_blank"
-          rel="noopener"
-        >
-          View Dataset &amp; Code on GitHub
-        </a>
-        <a
-          class="btn btn-soft"
-          href="https://colab.research.google.com/github/engrhamzaaliimran/tftis/blob/main/TFTIS_GasMixtures_Results_Reproduce.ipynb"
-          target="_blank"
-          rel="noopener"
-        >
-          Reproduce Gas-Mixture Results
-        </a>
-        <a
-          class="btn btn-soft"
-          href="https://colab.research.google.com/github/engrhamzaaliimran/tftis/blob/main/TFTIS_SingleGas_Results_Reproduce.ipynb"
-          target="_blank"
-          rel="noopener"
-        >
-          Reproduce Single-Gas Results
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
 
   <section id="projects" class="container max-w-6xl py-8">
     <h2 class="section-title">Selected Projects</h2>
