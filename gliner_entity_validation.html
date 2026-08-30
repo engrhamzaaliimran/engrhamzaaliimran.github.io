@@ -6,12 +6,17 @@
 <title>GLiNER Entity Validation</title>
 <style>
   :root {
-    --bg: #f6f7f9;
+    --bg: #f7f9fc;
     --panel: #ffffff;
-    --text: #18212f;
-    --muted: #667085;
-    --border: #d9dee7;
-    --accent: #315efb;
+    --text: #15202b;
+    --muted: #5f6b78;
+    --border: #dfe6ee;
+    --navy: #102a43;
+    --accent: #0f766e;
+    --accent2: #2563eb;
+    --soft: #eef6f5;
+    --shadow: 0 12px 35px rgba(16,42,67,.08);
+    --radius: 18px;
   }
 
   * { box-sizing: border-box; }
@@ -116,6 +121,28 @@
     width: 42px;
     text-align: right;
     font-variant-numeric: tabular-nums;
+  }
+
+
+  .threshold-presets {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 9px;
+  }
+  .threshold-presets button {
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--navy);
+    border-radius: 8px;
+    padding: 6px 4px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .threshold-presets button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   .type-row {
@@ -247,19 +274,217 @@
     line-height: 1.45;
   }
 
+
+  html { scroll-behavior: smooth; }
+
+  .wrap {
+    width: min(1160px, calc(100% - 36px));
+    margin: auto;
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(247,249,252,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .navin {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .brand {
+    font-weight: 800;
+    letter-spacing: -.02em;
+    color: var(--navy);
+    text-decoration: none;
+  }
+
+  .links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .links a {
+    font-size: .92rem;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .links a:hover { color: var(--accent); }
+
+  .hero {
+    padding: 58px 0 36px;
+    background: linear-gradient(180deg,#ffffff 0%,#f7f9fc 100%);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--soft);
+    padding: 7px 11px;
+    border-radius: 999px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -.05em;
+    color: var(--navy);
+    margin: 17px 0 14px;
+  }
+
+  .hero .lead {
+    max-width: 850px;
+    color: var(--muted);
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    margin: 0 0 22px;
+    line-height: 1.65;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 11px;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 750;
+    box-shadow: 0 3px 10px rgba(16,42,67,.04);
+  }
+
+  .btn.primary {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #fff;
+  }
+
+  .btn.demo {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  .viewer-note {
+    max-width: 1400px;
+    margin: 18px auto 0;
+    padding: 0 28px;
+  }
+
+  .viewer-note-inner {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 13px 16px;
+    color: var(--muted);
+    box-shadow: 0 3px 10px rgba(16,42,67,.03);
+    font-size: 13px;
+  }
+
+  .viewer-note strong { color: var(--navy); }
+
+  .footer {
+    border-top: 1px solid var(--border);
+    margin-top: 36px;
+    padding: 24px 0;
+    color: var(--muted);
+    font-size: .88rem;
+    background: #fff;
+  }
+
+  .footerin {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .stat, .panel, .chunk-card {
+    box-shadow: 0 5px 18px rgba(16,42,67,.035);
+  }
+
+  .stat {
+    border-radius: 14px;
+  }
+
+  .panel, .chunk-card {
+    border-radius: 14px;
+  }
+
   @media (max-width: 850px) {
     .page { padding: 14px; }
+    .navin { height: auto; padding: 12px 0; align-items: flex-start; }
+    .links { gap: 10px; }
+    .hero { padding: 38px 0 28px; }
     .stats { grid-template-columns: repeat(2, 1fr); }
     .layout { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
-<div class="page">
-  <h1>GLiNER Entity Validation</h1>
-  <div class="subtitle">
-    Inspect entity boundaries, entity types, confidence and document coverage directly in source text.
+<nav class="nav">
+  <div class="wrap navin">
+    <a class="brand" href="/"></a>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="traditional-rag.html">Traditional RAG</a>
+      <a href="graphrag.html">GraphRAG</a>
+      <a href="gliner_entity_validation.html" style="color:var(--accent);font-weight:800">Entity Validation</a>
+      <a href="https://github.com/engrhamzaaliimran/fakecompanyabc-rag">GitHub ↗</a>
+    </div>
   </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> GraphRAG · 08.2.1 interactive validation</span>
+    <h1>GLiNER Entity Validation</h1>
+    <p class="lead">Inspect entity boundaries, entity types, source-document coverage and GLiNER confidence directly in the original chunk text. The confidence control lets the same candidate set be examined at different operating thresholds before relation extraction begins.</p>
+    <div class="actions">
+      <a class="btn demo" href="#viewer">Open validation controls ↓</a>
+      <a class="btn" href="graphrag.html">Back to GraphRAG study</a>
+      <a class="btn" href="traditional-rag.html">Traditional RAG</a>
+    </div>
+  </div>
+</header>
+
+<div class="viewer-note">
+  <div class="viewer-note-inner">
+    <strong>Extraction floor: 0.20.</strong> The saved candidate set contains detections from 0.20 upward. Move the threshold control to compare what remains at 0.30, 0.40, 0.50 and higher without rerunning GLiNER.
+  </div>
+</div>
+
+<div class="page" id="viewer">
 
   <div class="stats">
     <div class="stat">
@@ -331,9 +556,15 @@
 
         <label for="threshold">Minimum confidence</label>
         <div class="threshold-row">
-          <input id="threshold" type="range" min="0" max="1" step="0.01"
-                 value="0.00">
-          <span id="thresholdValue">0.00</span>
+          <input id="threshold" type="range" min="0.20" max="0.99" step="0.01"
+                 value="0.20">
+          <span id="thresholdValue">0.20</span>
+        </div>
+        <div class="threshold-presets" aria-label="Confidence threshold presets">
+          <button type="button" data-threshold="0.20">0.20</button>
+          <button type="button" data-threshold="0.30">0.30</button>
+          <button type="button" data-threshold="0.40">0.40</button>
+          <button type="button" data-threshold="0.50">0.50</button>
         </div>
       </div>
 
@@ -1136,6 +1367,13 @@ A <mark class="entity" data-type="COUNTRY" data-score="0.848194" title="COUNTRY 
   </div>
 </div>
 
+<footer class="footer">
+  <div class="wrap footerin">
+    <span>Interactive validation artifact for the FakeCompanyABC GraphRAG study.</span>
+    <span>Hamza Ali Imran · Research portfolio</span>
+  </div>
+</footer>
+
 <script>
 (function () {
   const sourceFilter = document.getElementById("sourceFilter");
@@ -1203,6 +1441,13 @@ A <mark class="entity" data-type="COUNTRY" data-score="0.848194" title="COUNTRY 
   sourceFilter.addEventListener("change", update);
   typeFilter.addEventListener("change", update);
   threshold.addEventListener("input", update);
+
+  document.querySelectorAll("[data-threshold]").forEach(button => {
+    button.addEventListener("click", () => {
+      threshold.value = button.dataset.threshold;
+      update();
+    });
+  });
 
   update();
 })();
