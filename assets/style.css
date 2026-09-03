@@ -406,6 +406,19 @@ h1 em { color: var(--primary); font-style: normal; }
 .education-grid strong { display: block; font-size: .86rem; }
 .education-grid span { display: block; margin-top: 4px; color: var(--muted); font-size: .74rem; }
 
+.practice-project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.practice-project-card { display: flex; flex-direction: column; min-width: 0; padding: 36px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); box-shadow: var(--shadow-sm); }
+.practice-project-topline { display: flex; justify-content: space-between; gap: 18px; align-items: center; }
+.practice-project-card h3 { margin: 16px 0 13px; font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1.18; letter-spacing: -.035em; }
+.practice-project-card > p { margin-bottom: 25px; color: var(--text-soft); }
+.project-status { flex: 0 0 auto; padding: 6px 10px; border-radius: 999px; background: var(--primary-soft); color: var(--primary); font-size: .7rem; font-weight: 850; letter-spacing: .05em; text-transform: uppercase; }
+.project-status-progress { background: var(--accent-soft); color: var(--accent); }
+.practice-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 4px; }
+.practice-metrics span { padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-soft); color: var(--muted); font-size: .73rem; line-height: 1.35; }
+.practice-metrics strong { display: block; margin-bottom: 3px; color: var(--text); font-size: 1.1rem; letter-spacing: -.025em; }
+.practice-project-card .tag-row { margin-top: 20px; }
+.practice-links { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; margin-top: auto; padding-top: 8px; }
+
 .section-dark { background: var(--dark); color: #edf4ff; }
 .section-dark .kicker { color: #8fb5ff; }
 .open-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 90px; align-items: start; }
@@ -467,6 +480,7 @@ h1 em { color: var(--primary); font-style: normal; }
   .eis-visual { min-height: 420px; }
   .experience-layout, .open-grid, .about-layout { gap: 50px; }
   .education-grid { grid-template-columns: 1fr; }
+  .practice-project-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 780px) {
@@ -493,6 +507,7 @@ h1 em { color: var(--primary); font-style: normal; }
   .role-line span { display: block; margin-top: 5px; text-align: left; }
   .timeline-subroles { grid-template-columns: 1fr; }
   .open-grid { gap: 42px; }
+  .practice-project-card { padding: 28px; }
   .contact-panel { gap: 35px; padding: 36px; }
   .footer-inner { flex-wrap: wrap; padding: 24px 0; }
 }
@@ -521,6 +536,8 @@ h1 em { color: var(--primary); font-style: normal; }
   .timeline::before { left: 7px; }
   .timeline-marker { left: -1px; }
   .open-card { grid-template-columns: 35px minmax(0, 1fr) 20px; padding: 18px; }
+  .practice-project-topline { align-items: flex-start; }
+  .practice-metrics { grid-template-columns: 1fr; }
   .contact-panel { padding: 28px 22px; }
   .contact-actions .button { width: 100%; overflow-wrap: anywhere; }
   .footer-inner { display: grid; }
