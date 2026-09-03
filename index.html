@@ -43,6 +43,7 @@
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
         <a href="#experience">Experience</a>
+        <a href="#practice-projects">Projects</a>
         <a href="#open-work">Open work</a>
         <a href="events.html">Events</a>
         <a href="#about">About</a>
@@ -64,6 +65,7 @@
       <a href="#research">Research</a>
       <a href="#publications">Publications</a>
       <a href="#experience">Experience</a>
+      <a href="#practice-projects">Projects</a>
       <a href="#open-work">Open work</a>
       <a href="events.html">Events</a>
       <a href="#about">About</a>
@@ -445,6 +447,58 @@
             <div class="timeline-content education-grid">
               <div><strong>MS, Computer Science</strong><span> National University of Sciences and Technology - School of Electrical Engineering and Computer Science · Islamabad, Pakistan</span></div>
               <div><strong>BS, Electrical Engineering</strong><span>National University of Computer and Emerging Sciences · Islamabad, Pakistan</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="practice-projects">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <span class="kicker">Practice projects</span>
+            <h2>Applied AI systems built to test design choices end to end.</h2>
+          </div>
+          <p>Independent projects using fictional data to practise system design, evaluation, and technical communication without exposing proprietary information.</p>
+        </div>
+
+        <div class="practice-project-grid">
+          <article class="practice-project-card reveal">
+            <div class="practice-project-topline">
+              <span class="project-number">01 · Completed baseline</span>
+              <span class="project-status">Traditional RAG</span>
+            </div>
+            <h3>FakeCompanyABC: evaluated retrieval before generation</h3>
+            <p>A fully local RAG pipeline over fictional HR policies, developed through chunking experiments, dense retrieval, policy routing, reranking, grounded generation, and evaluator comparison.</p>
+            <div class="practice-metrics" aria-label="Traditional RAG highlights">
+              <span><strong>100</strong> benchmark questions</span>
+              <span><strong>1.000</strong> Hit@3</span>
+              <span><strong>~67 ms</strong> selected CPU retrieval</span>
+            </div>
+            <div class="tag-row"><span>Nomic embeddings</span><span>ChromaDB</span><span>TF-IDF routing</span><span>Qwen</span></div>
+            <div class="practice-links">
+              <a class="button button-primary" href="traditional-rag.html">View project details <span aria-hidden="true">→</span></a>
+              <a class="text-link" href="https://github.com/engrhamzaaliimran/fakecompanyabc-rag" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
+            </div>
+          </article>
+
+          <article class="practice-project-card reveal">
+            <div class="practice-project-topline">
+              <span class="project-number">02 · Work in progress</span>
+              <span class="project-status project-status-progress">GraphRAG</span>
+            </div>
+            <h3>FakeCompanyABC: constructing a validated policy graph</h3>
+            <p>An extension of the same corpus toward GraphRAG, currently focused on entity-schema discovery, GLiNER extraction, and human validation before relation extraction and Neo4j evaluation.</p>
+            <div class="practice-metrics" aria-label="GraphRAG highlights">
+              <span><strong>25</strong> entity types</span>
+              <span><strong>361</strong> stored detections</span>
+              <span><strong>198</strong> unique entity/type pairs</span>
+            </div>
+            <div class="tag-row"><span>GLiNER</span><span>Entity validation</span><span>Neo4j</span><span>Graph retrieval</span></div>
+            <div class="practice-links">
+              <a class="button button-primary" href="graphrag.html">View project details <span aria-hidden="true">→</span></a>
+              <a class="text-link" href="gliner_entity_validation.html">Open entity viewer <span>↗</span></a>
             </div>
           </article>
         </div>
