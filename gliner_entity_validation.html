@@ -1,9 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GLiNER Entity Validation</title>
+<meta name="description" content="An interactive practice-project viewer for inspecting GLiNER entity spans, types, source coverage, and confidence thresholds in the fictional FakeCompanyABC HR corpus.">
+<meta name="theme-color" content="#f7f8fb">
+<title>FakeCompanyABC — Entity Validation | Hamza Ali Imran</title>
 <style>
   :root {
     --bg: #f7f9fc;
@@ -450,22 +452,64 @@
     .layout { grid-template-columns: 1fr; }
   }
 </style>
+<link rel="stylesheet" href="assets/rag-project.css">
+<link rel="stylesheet" href="assets/entity-validation.css">
+<script>
+  (function () {
+    try {
+      const saved = localStorage.getItem('portfolio-theme');
+      const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = saved || preferred;
+    } catch (_) {}
+  })();
+</script>
 </head>
-<body>
-<nav class="nav">
-  <div class="wrap navin">
-    <a class="brand" href="/"></a>
+<body class="entity-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html" aria-label="Hamza Ali Imran, home">
+      <span class="brand-mark" aria-hidden="true">HA</span>
+      <span><strong>Hamza Ali Imran</strong><small>Intelligent sensing systems</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="index.html#research">Research</a>
+      <a href="index.html#publications">Publications</a>
+      <a href="index.html#experience">Experience</a>
+      <a class="nav-current" href="index.html#practice-projects">Projects</a>
+      <a href="events.html">Events</a>
+      <a href="index.html#about">About</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="theme-toggle" type="button" aria-label="Toggle colour theme" title="Toggle colour theme">
+        <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41"></path></svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <button class="menu-button" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+    <a href="index.html#research">Research</a>
+    <a href="index.html#publications">Publications</a>
+    <a href="index.html#experience">Experience</a>
+    <a href="index.html#practice-projects">Projects</a>
+    <a href="events.html">Events</a>
+    <a href="index.html#about">About</a>
+  </nav>
+</header>
+<nav class="project-nav" aria-label="FakeCompanyABC project navigation">
+  <div class="wrap project-nav-inner">
+    <span class="project-title">FakeCompanyABC</span>
     <div class="links">
-      <a href="/">Home</a>
       <a href="traditional-rag.html">Traditional RAG</a>
       <a href="graphrag.html">GraphRAG</a>
-      <a href="gliner_entity_validation.html" style="color:var(--accent);font-weight:800">Entity Validation</a>
-      <a href="https://github.com/engrhamzaaliimran/fakecompanyabc-rag">GitHub ↗</a>
+      <a href="gliner_entity_validation.html" aria-current="page">Entity validation</a>
+      <a href="https://github.com/engrhamzaaliimran/fakecompanyabc-rag" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
     </div>
   </div>
 </nav>
 
-<header class="hero">
+<header class="hero" id="main">
   <div class="wrap">
     <span class="eyebrow"><span class="dot"></span> GraphRAG · 08.2.1 interactive validation</span>
     <h1>GLiNER Entity Validation</h1>
@@ -1370,7 +1414,7 @@ A <mark class="entity" data-type="COUNTRY" data-score="0.848194" title="COUNTRY 
 <footer class="footer">
   <div class="wrap footerin">
     <span>Interactive validation artifact for the FakeCompanyABC GraphRAG study.</span>
-    <span>Hamza Ali Imran · Research portfolio</span>
+    <span>Hamza Ali Imran · Practice project</span>
   </div>
 </footer>
 
@@ -1452,5 +1496,6 @@ A <mark class="entity" data-type="COUNTRY" data-score="0.848194" title="COUNTRY 
   update();
 })();
 </script>
+<script src="assets/script.js"></script>
 </body>
 </html>
