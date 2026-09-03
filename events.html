@@ -7,26 +7,38 @@
   <meta name="description" content="Selected conferences, training schools, research visits, and technical events attended by Hamza Ali Imran.">
   <meta name="author" content="Hamza Ali Imran">
   <meta name="theme-color" content="#f7f8fb">
+
   <link rel="canonical" href="https://engrhamzaaliimran.github.io/events.html">
   <link rel="stylesheet" href="assets/style.css">
+
   <script>
     (function () {
       try {
         const saved = localStorage.getItem('portfolio-theme');
-        const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
+
         document.documentElement.dataset.theme = saved || preferred;
       } catch (_) {}
     })();
   </script>
 </head>
+
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header" id="top">
     <div class="shell header-inner">
+
       <a class="brand" href="index.html" aria-label="Hamza Ali Imran, home">
         <span class="brand-mark" aria-hidden="true">HA</span>
-        <span><strong>Hamza Ali Imran</strong><small>Intelligent sensing systems</small></span>
+        <span>
+          <strong>Hamza Ali Imran</strong>
+          <small>Intelligent sensing systems</small>
+        </span>
       </a>
+
       <nav class="desktop-nav" aria-label="Primary navigation">
         <a href="index.html#research">Research</a>
         <a href="index.html#publications">Publications</a>
@@ -35,15 +47,49 @@
         <a class="nav-current" href="events.html" aria-current="page">Events</a>
         <a href="index.html#about">About</a>
       </nav>
+
       <div class="header-actions">
-        <button class="icon-button" id="theme-toggle" type="button" aria-label="Toggle colour theme" title="Toggle colour theme">
-          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41"></path></svg>
-          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+
+        <button
+          class="icon-button"
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle colour theme"
+          title="Toggle colour theme"
+        >
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41"></path>
+          </svg>
+
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
         </button>
-        <a class="button button-primary header-contact" href="mailto:engrhamzaaliimran@gmail.com">Contact</a>
-        <button class="menu-button" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation"><span></span><span></span><span></span></button>
+
+        <a
+          class="button button-primary header-contact"
+          href="mailto:engrhamzaaliimran@gmail.com"
+        >
+          Contact
+        </a>
+
+        <button
+          class="menu-button"
+          id="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Open navigation"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
       </div>
     </div>
+
     <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
       <a href="index.html#research">Research</a>
       <a href="index.html#publications">Publications</a>
@@ -56,74 +102,304 @@
   </header>
 
   <main id="main">
+
     <section class="events-hero section">
       <div class="shell events-hero-grid">
+
         <div class="reveal">
-          <div class="eyebrow"><span></span> Conferences · Training schools · Research visits</div>
-          <h1>Research is also built through <em>communities, discussion, and exchange.</em></h1>
-          <p class="hero-lead">Selected conferences, doctoral-network training schools, technical courses, poster presentations, and earlier engineering events.</p>
+          <div class="eyebrow">
+            <span></span>
+            Conferences · Training schools · Research visits
+          </div>
+
+          <h1>
+            Research is also built through
+            <em>communities, discussion, and exchange.</em>
+          </h1>
+
+          <p class="hero-lead">
+            Selected conferences, doctoral-network training schools,
+            technical courses, poster presentations, and earlier
+            engineering events.
+          </p>
         </div>
+
         <aside class="events-summary reveal">
           <strong>2018—2025</strong>
-          <span>Selected academic and engineering events across Germany, Italy, Poland, Spain, and Pakistan.</span>
+          <span>
+            Selected academic and engineering events across Germany,
+            Italy, Poland, Spain, and Pakistan.
+          </span>
         </aside>
+
       </div>
     </section>
 
     <section class="section section-tint">
       <div class="shell">
+
         <div class="section-heading reveal">
-          <div><span class="kicker">Recent highlights</span><h2>Conferences and doctoral-network activities.</h2></div>
-          <p>Recent activities focus on gas sensing, electrical impedance spectroscopy, food-freshness monitoring, and interdisciplinary doctoral training.</p>
+          <div>
+            <span class="kicker">Recent highlights</span>
+            <h2>Conferences and doctoral-network activities.</h2>
+          </div>
+
+          <p>
+            Recent activities focus on gas sensing, electrical impedance
+            spectroscopy, food-freshness monitoring, and interdisciplinary
+            doctoral training.
+          </p>
         </div>
+
         <div class="event-feature-grid">
+
+          <!-- Eurosensors 37 -->
           <article class="event-feature-card reveal">
-            <img src="assets/events/eurosensors37.jpeg" alt="Hamza Ali Imran presenting a gas-sensing poster at Eurosensors 37">
-            <div class="event-card-body"><span class="event-date">September 2025</span><h3>Eurosensors 37</h3><p>Poster presentation on AC excitation-frequency optimisation for MOS gas sensing.</p><span class="event-location">Wrocław, Poland</span></div>
+            <img
+              src="assets/events/eurosensors37.jpeg"
+              alt="Hamza Ali Imran presenting a gas-sensing poster at Eurosensors 37"
+            >
+
+            <div class="event-card-body">
+              <span class="event-date">September 2025</span>
+
+              <h3>Eurosensors 37</h3>
+
+              <p>
+                Poster presentation on AC excitation-frequency optimisation
+                for MOS gas sensing.
+              </p>
+
+              <span class="event-location">Wrocław, Poland</span>
+            </div>
           </article>
+
+          <!-- 3rd SERENADE Training School -->
           <article class="event-feature-card reveal">
-            <img src="assets/events/thirdSchoolSerende.png" alt="Hamza Ali Imran during the third SERENADE training school in Italy">
-            <div class="event-card-body"><span class="event-date">September 2025</span><h3>The 3rd SERENADE Training School in Padua (22–26 September 2025) combined scientific presentations, industrial visits, and networking activities. It highlighted interdisciplinary research across sensing, AI, food packaging, and industrial applications while strengthening collaboration within the SERENADE network.</p><span class="event-location">Padua, Italy</span></div>
+            <img
+              src="assets/events/thirdSchoolSerende.png"
+              alt="Hamza Ali Imran during the 3rd SERENADE Training School in Padua"
+            >
+
+            <div class="event-card-body">
+              <span class="event-date">September 2025</span>
+
+              <h3>3rd SERENADE Training School</h3>
+
+              <p>
+                The 3rd SERENADE Training School in Padua (22–26 September
+                2025) combined scientific presentations, industrial visits,
+                and networking activities. It highlighted interdisciplinary
+                research across sensing, AI, food packaging, and industrial
+                applications while strengthening collaboration within the
+                SERENADE network.
+              </p>
+
+              <span class="event-location">Padua, Italy</span>
+            </div>
           </article>
+
+          <!-- 2nd SERENADE Training School -->
           <article class="event-feature-card reveal">
-            <img src="assets/events/serenade2.jpeg" alt="Hamza Ali Imran during the second SERENADE training school in Zaragoza">
-            <div class="event-card-body"><span class="event-date">May 2025</span><h3>The 2nd SERENADE Training School in Zaragoza (26–30 May 2025) combined theoretical and hands-on training in food science, microbiology, gas sensors, materials, and volatile-compound analysis. The program also included a visit to BSH Home Appliances, team-building activities, and networking among doctoral candidates and researchers.</p><span class="event-location">Zaragoza, Spain</span></div>
+            <img
+              src="assets/events/serenade2.jpeg"
+              alt="Hamza Ali Imran during the 2nd SERENADE Training School in Zaragoza"
+            >
+
+            <div class="event-card-body">
+              <span class="event-date">May 2025</span>
+
+              <h3>2nd SERENADE Training School</h3>
+
+              <p>
+                The 2nd SERENADE Training School in Zaragoza (26–30 May 2025)
+                combined theoretical and hands-on training in food science,
+                microbiology, gas sensors, materials, and volatile-compound
+                analysis. The programme also included a visit to BSH Home
+                Appliances, team-building activities, and networking among
+                doctoral candidates and researchers.
+              </p>
+
+              <span class="event-location">Zaragoza, Spain</span>
+            </div>
           </article>
+
+          <!-- ISOCS -->
           <article class="event-feature-card reveal">
-            <img src="assets/events/isocs.jpeg" alt="Hamza Ali Imran presenting electrical impedance spectroscopy work at the ISOCS short course">
-            <div class="event-card-body"><span class="event-date">February 2025</span><h3>ISOCS Short Course</h3><p>Presentation and technical discussion on the potential of EIS with MOS sensors.</p><span class="event-location">Bormio, Italy</span></div>
+            <img
+              src="assets/events/isocs.jpeg"
+              alt="Hamza Ali Imran presenting electrical impedance spectroscopy work at the ISOCS short course"
+            >
+
+            <div class="event-card-body">
+              <span class="event-date">February 2025</span>
+
+              <h3>ISOCS Short Course</h3>
+
+              <p>
+                Presentation and technical discussion on the potential of EIS
+                with MOS sensors.
+              </p>
+
+              <span class="event-location">Bormio, Italy</span>
+            </div>
           </article>
+
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="shell">
+
         <div class="section-heading reveal">
-          <div><span class="kicker">Event archive</span><h2>Earlier presentations, visits, and engineering activities.</h2></div>
-          <p>A selected archive spanning doctoral research, conference participation, funded student engineering, and robotics competitions.</p>
+          <div>
+            <span class="kicker">Event archive</span>
+            <h2>Earlier presentations, visits, and engineering activities.</h2>
+          </div>
+
+          <p>
+            A selected archive spanning doctoral research, conference
+            participation, funded student engineering, and robotics
+            competitions.
+          </p>
         </div>
+
         <div class="event-archive">
-          <article class="event-row reveal"><img src="assets/events/dresden.jpeg" alt="Poster presentation at the 17th Dresdner Sensor-Symposium"><div><span>November 2024</span><h3>17th Dresdner Sensor-Symposium — Poster Presentation</h3><p>Dresden, Germany</p></div></article>
-          <article class="event-row reveal"><img src="assets/events/serenade1.jpeg" alt="SERENADE first training school in Saarbrücken"><div><span>September 2024</span><h3>SERENADE 1st Training School</h3><p>Saarbrücken, Germany</p></div></article>
-          <article class="event-row reveal"><img src="assets/events/icodt2.jpg" alt="IEEE International Conference on Digital Futures and Transformative Technologies"><div><span>May 2022</span><h3>IEEE 2nd International Conference on Digital Futures and Transformative Technologies</h3><p>Rawalpindi, Pakistan</p></div></article>
-          <article class="event-row reveal"><img src="assets/events/ICICT.jpg" alt="IEEE International Conference on Information and Communication Technologies"><div><span>November 2019</span><h3>IEEE 8th International Conference on Information and Communication Technologies</h3><p>Karachi, Pakistan</p></div></article>
-          <article class="event-row reveal"><img src="assets/events/ignit.jpg" alt="IGNITE National Grassroots Research Initiative exhibition"><div><span>June 2019</span><h3>IGNITE National Grassroots Research Initiative</h3><p>Islamabad, Pakistan</p></div></article>
-          <article class="event-row reveal"><img src="assets/events/HSRC.jpg" alt="Headstart Robotics Competition participants"><div><span>March 2018</span><h3>Headstart Robotics Competition</h3><p>Islamabad, Pakistan</p></div></article>
-          <article class="event-row reveal"><img src="assets/events/gikineo.jpg" alt="Robots at the GIKI National Electronics Olympiad"><div><span>February 2018</span><h3>GIKI National Electronics Olympiad</h3><p>Topi, Pakistan</p></div></article>
+
+          <article class="event-row reveal">
+            <img
+              src="assets/events/dresden.jpeg"
+              alt="Poster presentation at the 17th Dresdner Sensor-Symposium"
+            >
+            <div>
+              <span>November 2024</span>
+              <h3>17th Dresdner Sensor-Symposium — Poster Presentation</h3>
+              <p>Dresden, Germany</p>
+            </div>
+          </article>
+
+          <article class="event-row reveal">
+            <img
+              src="assets/events/serenade1.jpeg"
+              alt="SERENADE 1st Training School in Saarbrücken"
+            >
+            <div>
+              <span>September 2024</span>
+              <h3>SERENADE 1st Training School</h3>
+              <p>Saarbrücken, Germany</p>
+            </div>
+          </article>
+
+          <article class="event-row reveal">
+            <img
+              src="assets/events/icodt2.jpg"
+              alt="IEEE International Conference on Digital Futures and Transformative Technologies"
+            >
+            <div>
+              <span>May 2022</span>
+              <h3>
+                IEEE 2nd International Conference on Digital Futures and
+                Transformative Technologies
+              </h3>
+              <p>Rawalpindi, Pakistan</p>
+            </div>
+          </article>
+
+          <article class="event-row reveal">
+            <img
+              src="assets/events/ICICT.jpg"
+              alt="IEEE International Conference on Information and Communication Technologies"
+            >
+            <div>
+              <span>November 2019</span>
+              <h3>
+                IEEE 8th International Conference on Information and
+                Communication Technologies
+              </h3>
+              <p>Karachi, Pakistan</p>
+            </div>
+          </article>
+
+          <article class="event-row reveal">
+            <img
+              src="assets/events/ignit.jpg"
+              alt="IGNITE National Grassroots Research Initiative exhibition"
+            >
+            <div>
+              <span>June 2019</span>
+              <h3>IGNITE National Grassroots Research Initiative</h3>
+              <p>Islamabad, Pakistan</p>
+            </div>
+          </article>
+
+          <article class="event-row reveal">
+            <img
+              src="assets/events/HSRC.jpg"
+              alt="Headstart Robotics Competition participants"
+            >
+            <div>
+              <span>March 2018</span>
+              <h3>Headstart Robotics Competition</h3>
+              <p>Islamabad, Pakistan</p>
+            </div>
+          </article>
+
+          <article class="event-row reveal">
+            <img
+              src="assets/events/gikineo.jpg"
+              alt="Robots at the GIKI National Electronics Olympiad"
+            >
+            <div>
+              <span>February 2018</span>
+              <h3>GIKI National Electronics Olympiad</h3>
+              <p>Topi, Pakistan</p>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
     <section class="contact-section">
       <div class="shell contact-panel reveal">
-        <div><span class="kicker">Back to the research</span><h2>Explore the projects and publications behind these activities.</h2></div>
-        <div class="contact-actions"><a class="button button-primary" href="index.html#research">View selected research</a><a class="button button-secondary" href="index.html#publications">Selected publications</a></div>
+
+        <div>
+          <span class="kicker">Back to the research</span>
+          <h2>
+            Explore the projects and publications behind these activities.
+          </h2>
+        </div>
+
+        <div class="contact-actions">
+          <a
+            class="button button-primary"
+            href="index.html#research"
+          >
+            View selected research
+          </a>
+
+          <a
+            class="button button-secondary"
+            href="index.html#publications"
+          >
+            Selected publications
+          </a>
+        </div>
+
       </div>
     </section>
+
   </main>
 
-  <footer class="site-footer"><div class="shell footer-inner"><span>© <span id="year"></span> Hamza Ali Imran</span><span>Research portfolio · Built for GitHub Pages</span><a href="index.html">Home ↑</a></div></footer>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <span>© <span id="year"></span> Hamza Ali Imran</span>
+      <span>Research portfolio · Built for GitHub Pages</span>
+      <a href="index.html">Home ↑</a>
+    </div>
+  </footer>
+
   <script src="assets/script.js"></script>
 </body>
 </html>
