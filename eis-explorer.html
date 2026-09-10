@@ -1,0 +1,54 @@
+<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EIS Research Explorer — Hamza Ali Imran</title><meta name="description" content="Explore measured MOS gas-sensor impedance spectra, EMG fits and PCA for single gases and ethanol–acetone mixtures."><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/explore.css"><link rel="stylesheet" href="assets/eis.css"><script src="assets/plotly.min.js" defer></script><script src="assets/eis-comparison.js" defer></script><script src="assets/eis.js" defer></script><script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('portfolio-theme');
+        const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = saved || preferred;
+      } catch (_) {}
+    })();
+  </script></head><body class="eis-page"><a class="skip-link" href="#main">Skip to content</a><header class="site-header" id="top">
+<div class="shell header-inner">
+<a aria-label="Hamza Ali Imran, home" class="brand" href="index.html#top">
+<span aria-hidden="true" class="brand-mark">HA</span>
+<span>
+<strong>Hamza Ali Imran</strong>
+<small>Intelligent sensing systems</small>
+</span>
+</a>
+<nav aria-label="Primary navigation" class="desktop-nav">
+<a href="index.html#research">Research</a>
+<a href="index.html#publications">Publications</a>
+<a href="index.html#experience">Experience</a>
+<a href="index.html#practice-projects">Projects</a>
+<a href="index.html#open-work">Open work</a>
+<a href="events.html">Events</a>
+<a href="index.html#about">About</a>
+</nav>
+<div class="header-actions"><button aria-label="Search all work" class="work-search-icon enhanced-only" data-open-search="" hidden="" title="Search all work (Ctrl or Command + K)" type="button"><svg aria-hidden="true" fill="none" height="21" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="21"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 5 5"></path></svg></button>
+<button aria-label="Toggle colour theme" class="icon-button" id="theme-toggle" title="Toggle colour theme" type="button">
+<svg aria-hidden="true" class="sun-icon" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41"></path></svg>
+<svg aria-hidden="true" class="moon-icon" viewbox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+<a class="button button-primary header-contact" href="mailto:engrhamzaaliimran@gmail.com">Contact</a>
+<button aria-controls="mobile-nav" aria-expanded="false" aria-label="Open navigation" class="menu-button" id="menu-toggle" type="button">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+<nav aria-label="Mobile navigation" class="mobile-nav" hidden="" id="mobile-nav">
+<a href="index.html#research">Research</a>
+<a href="index.html#publications">Publications</a>
+<a href="index.html#experience">Experience</a>
+<a href="index.html#practice-projects">Projects</a>
+<a href="index.html#open-work">Open work</a>
+<a href="events.html">Events</a>
+<a href="index.html#about">About</a>
+<a href="index.html#contact">Contact</a>
+</nav>
+</header><main id="main" class="eis-main"><div class="page-title"><div><span class="eyebrow">TFT-IS · OPEN MEASUREMENTS</span><h1>From spectra to sensor intelligence.</h1><p>Explore the measurements. Inspect the model. Follow a point back to its signal.</p></div><span class="data-badge">Measured data · MLV-P2</span></div><p id="status" role="status">Loading measured data…</p><div class="workspace" id="workspace" hidden><aside class="controls"><h2>Choose an experiment</h2><div class="segmented" aria-label="Dataset"><button id="mixtures" class="selected" type="button">Mixtures</button><button id="single" type="button">Single gas</button></div><div id="mixture-picker"><p class="label">Acetone concentration →</p><div id="mixture-grid" class="mixture-grid"></div><p class="hint">Rows: ethanol · Columns: acetone · ppm</p></div><div id="single-picker" hidden><label>Gas<select id="gas"></select></label><label>Relative humidity<select id="rh"></select></label><label>Concentration<select id="concentration"></select></label></div><label>Temperature<select id="temperature"><option value="150">150 °C</option><option value="250">250 °C</option><option value="350" selected>350 °C</option></select></label><label>Comparison<select id="compare"><option value="">No comparison</option></select></label><p class="hint" id="comparison-hint">Overlay another condition, or compare all concentrations.</p><div class="sweep-heading"><label for="sweep">Measurement sweep</label><output id="sweep-label"></output></div><input type="range" id="sweep" min="0" max="34" value="0"><div class="play-controls"><button id="play" type="button">▶ Play sweeps</button><button id="reset" type="button">Reset</button></div><p class="hint">Playback advances measurement order, not elapsed time.</p><a id="source" class="source-link" target="_blank" rel="noopener">View source measurement ↗</a></aside><div class="results"><section class="panel"><div class="panel-head"><div><span class="eyebrow">01 / MEASURE</span><h2 id="condition-title">Measured spectrum</h2></div><select id="view" aria-label="Spectrum view"><option value="imag">−Im(Z) vs frequency</option><option value="real">Re(Z) vs frequency</option><option value="nyquist">Nyquist</option><option value="mag">Magnitude</option><option value="phase">Phase</option></select></div><div class="chart" id="spectrum"></div><div class="under-chart"><label><input id="fit-toggle" type="checkbox" checked> Show EMG fit</label><label><input id="all-temperatures" type="checkbox"> Overlay three temperatures</label><span>Zoom, hover, or drag to inspect</span></div></section><section class="panel fit-panel"><div class="panel-head"><div><span class="eyebrow">02 / MODEL</span><h2>Four parameters, one spectrum.</h2></div><span id="fit-status" class="badge"></span></div><div class="parameters" id="parameters"></div><p class="hint">Parameters below describe the selected condition and temperature. The model uses x = log₁₀(f/Hz). μ is a location parameter, not necessarily the curve’s peak.</p></section></div></div><section class="panel pca-panel" id="pca-panel" hidden><div class="panel-head"><div><span class="eyebrow">03 / LEARN</span><h2>Every point has a measurement behind it.</h2><p>Click a point to load its spectra, EMG parameters, and sweep above.</p></div><div class="pca-controls"><label>Horizontal<select id="pc-x"></select></label><label>Vertical<select id="pc-y"></select></label><label>Colour by<select id="color-by"></select></label></div></div><div class="pca-display-controls"><label id="pairwise-wrap"><input type="checkbox" id="pairwise" checked> All six PC pairs</label><label id="ellipse-wrap"><input type="checkbox" id="ellipses" checked> Ethanol covariance ellipses</label></div><div id="pca-legend" class="pca-legend" aria-label="PCA marker legend"></div><div id="pca" class="pca-chart"></div><div id="pca-pairs" class="pca-pair-grid" hidden><div id="pca-pair-0" class="pca-pair"></div><div id="pca-pair-1" class="pca-pair"></div><div id="pca-pair-2" class="pca-pair"></div><div id="pca-pair-3" class="pca-pair"></div><div id="pca-pair-4" class="pca-pair"></div><div id="pca-pair-5" class="pca-pair"></div></div><p id="pca-note" class="hint"></p></section><section class="method-note"><h2>What you are exploring</h2><div class="method-columns"><div><h3>Real spectra</h3><p>Source HDF5 measurements from the open TFT-IS repository. Select only measured conditions; no interpolated mixtures are presented as observations.</p></div><div><h3>Original fitting workflow</h3><p>EMG fitting uses the supplied Python function, bounds, initialization, and SciPy settings. Three temperatures contribute four parameters each to a 12-dimensional feature vector.</p></div><div><h3>Transparent interpretation</h3><p>PCA is an unsupervised projection, not a classifier or an accuracy score. Coordinates remain fixed when you select or highlight a condition.</p></div></div><details><summary>Data processing and reproducibility</summary><p id="processing"></p><p>Displayed −Im(Z) = −|Z| sin(phase), following the notebook’s plotting convention. Real impedance = |Z| cos(phase). Phase is stored in radians and displayed in degrees. Fitting uses the complete source frequency arrays; curves displayed here are sampled to at most 201 original frequency points for responsive interaction.</p><p>At each condition, sweep indices are aligned across temperatures as in the notebooks; this does not imply simultaneous acquisition. Unsuccessful or nonfinite fits are excluded from PCA. Files that cannot form a complete temperature set remain available for spectrum inspection.</p><a href="https://github.com/engrhamzaaliimran/tftis" target="_blank" rel="noopener">Source data and original notebooks ↗</a></details></section></main><footer class="site-footer">
+<div class="shell footer-inner">
+<span>© <span id="year"></span> Hamza Ali Imran</span>
+<span>Research portfolio · Built for GitHub Pages</span>
+<a href="index.html#top">Back to top ↑</a>
+</div>
+</footer><script src="assets/script.js"></script><script type="module" src="assets/explore.js"></script></body></html>
