@@ -1767,6 +1767,55 @@
 
 </style>
 
+
+  <style>
+    /* Deployment notice: show a reliable local-testing route above the page hero. */
+    .edge-deployment-notice {
+      padding: 1.1rem 0 0;
+    }
+    .edge-deployment-notice__inner {
+      padding: clamp(1rem, 2.5vw, 1.45rem);
+      border: 1px solid rgba(184, 126, 35, .4);
+      border-left: 4px solid #b88235;
+      border-radius: 16px;
+      background: rgba(184, 126, 35, .075);
+      color: inherit;
+    }
+    .edge-deployment-notice h2 {
+      margin: 0 0 .5rem;
+      font-size: clamp(1rem, 2vw, 1.22rem);
+      line-height: 1.35;
+    }
+    .edge-deployment-notice p {
+      margin: .45rem 0;
+      font-size: .92rem;
+      line-height: 1.55;
+    }
+    .edge-deployment-notice pre {
+      margin: .65rem 0;
+      padding: .75rem 1rem;
+      overflow-x: auto;
+      border: 1px solid rgba(112,125,145,.2);
+      border-radius: 10px;
+      background: rgba(112,125,145,.085);
+      font-size: .9rem;
+      line-height: 1.5;
+    }
+    .edge-deployment-notice code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      overflow-wrap: anywhere;
+    }
+    .edge-deployment-notice a {
+      text-decoration: underline;
+      text-underline-offset: .15em;
+    }
+    [data-theme="dark"] .edge-deployment-notice__inner {
+      background: rgba(184, 126, 35, .11);
+      border-color: rgba(218, 166, 88, .48);
+      border-left-color: #daa658;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -1815,6 +1864,18 @@
   </header>
 
   <main id="main">
+    <aside class="edge-deployment-notice" aria-labelledby="edge-deployment-title">
+      <div class="shell">
+        <div class="edge-deployment-notice__inner">
+          <h2 id="edge-deployment-title">Known issue: GitHub Pages chatbot demo</h2>
+          <p>The chatbot's model-based answers are currently unreliable on the hosted GitHub Pages version. The same project works when served locally; the hosting-related issue is still under investigation.</p>
+          <p><strong>Want to try the working local version?</strong> <a href="https://github.com/engrhamzaaliimran/engrhamzaaliimran.github.io">Clone or download the website repository</a>, open a terminal in the repository's root directory, and run:</p>
+          <pre><code>python3 -m http.server 8000</code></pre>
+          <p>Then open <a href="http://localhost:8000/edge-rag-chatbot.html"><code>http://localhost:8000/edge-rag-chatbot.html</code></a> in your browser and initialize the demo. The Qwen model downloads on first use, so an internet connection is required.</p>
+        </div>
+      </div>
+    </aside>
+
     <section class="eval-hero section">
       <div class="shell eval-hero-grid">
         <div class="reveal">
