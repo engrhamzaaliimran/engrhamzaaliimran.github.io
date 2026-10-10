@@ -10,7 +10,7 @@ dialog.innerHTML='<div class="search-dialog-top"><div class="search-dialog-headi
 document.body.append(dialog);
 const query=$('.search-input',dialog),results=$('.search-results',dialog),status=$('.search-status',dialog),kindBar=$('.search-kinds',dialog);
 let records=null,kind='',loading=null,searchOpener=null;
-for(const label of ['All','Publication','Research','Project','Traditional RAG','GraphRAG','Experience','Event','Entity viewer']){
+for(const label of ['All','Publication','Research','Project','Course','Traditional RAG','GraphRAG','Experience','Event','Entity viewer']){
  const b=el('button',label);b.type='button';b.setAttribute('aria-pressed',String(label==='All'));b.addEventListener('click',()=>{kind=label==='All'?'':label;$$('button',kindBar).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderSearch();});kindBar.append(b);
 }
 function renderSearch(){

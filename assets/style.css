@@ -668,3 +668,68 @@ h1 em { color: var(--primary); font-style: normal; }
   .method-step { padding: 16px; }
   .modality-intro { grid-template-columns: 1fr; gap: 8px; }
 }
+
+
+/* Teaching and Udemy courses */
+.teaching-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 28px;
+  padding: 26px 30px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
+}
+.teaching-stat { padding: 4px 24px; text-align: center; }
+.teaching-stat + .teaching-stat { border-left: 1px solid var(--line); }
+.teaching-stat strong { display: block; color: var(--primary); font-size: clamp(1.8rem, 3vw, 2.45rem); line-height: 1.18; letter-spacing: -.05em; }
+.teaching-stat-unit { font-size: .53em; letter-spacing: 0; }
+.teaching-stat > span { display: block; margin-top: 6px; color: var(--text-soft); font-size: .83rem; }
+.teaching-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.teaching-card {
+  display: flex; flex-direction: column; min-width: 0; padding: 28px;
+  border: 1px solid var(--line); border-radius: var(--radius-lg);
+  background: var(--surface); box-shadow: var(--shadow-sm);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.teaching-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.teaching-card-topline { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+.teaching-platform { color: var(--muted); font-size: .74rem; font-weight: 700; }
+.teaching-visual {
+  display: flex; flex-direction: column; justify-content: space-between; gap: 16px;
+  min-height: 162px; padding: 23px 25px; border-radius: 16px; overflow: hidden;
+  background: linear-gradient(120deg, var(--primary-soft), var(--surface-soft));
+  border: 1px solid var(--line);
+}
+.teaching-visual-keras { background: linear-gradient(120deg, color-mix(in srgb, var(--primary) 15%, var(--surface)), var(--surface-soft)); }
+.teaching-visual-linux { background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 16%, var(--surface)), var(--surface-soft)); }
+.teaching-visual-eyebrow, .teaching-visual-caption { color: var(--text-soft); font-size: .72rem; font-weight: 750; letter-spacing: .03em; }
+.teaching-visual-code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: clamp(1.1rem, 2.3vw, 1.6rem); font-weight: 750; color: var(--primary); overflow-wrap: anywhere; }
+.teaching-card h3 { font-size: clamp(1.35rem, 2.5vw, 1.65rem); line-height: 1.2; letter-spacing: -.025em; margin: 22px 0 12px; }
+.teaching-card > p { margin: 0; color: var(--text-soft); font-size: .92rem; line-height: 1.65; }
+.teaching-card .tag-row { margin: 20px 0; }
+.teaching-course-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: auto; }
+.teaching-course-metrics > span { display: grid; gap: 3px; }
+.teaching-course-metrics strong { font-size: 1rem; color: var(--text); }
+.teaching-course-metrics small { color: var(--muted); font-size: .71rem; }
+.teaching-link { align-self: flex-start; margin-top: 22px; }
+.teaching-note { margin: 20px 0 0; color: var(--muted); font-size: .77rem; line-height: 1.65; }
+.teaching-note a { color: var(--primary); font-weight: 750; }
+@media (min-width: 1041px) and (max-width: 1260px) {
+  .desktop-nav { gap: 14px; }
+  .header-inner { gap: 15px; }
+  .desktop-nav a { font-size: .82rem; }
+}
+@media (max-width: 780px) {
+  .teaching-grid { grid-template-columns: 1fr; }
+  .teaching-summary { padding: 20px 12px; }
+  .teaching-stat { padding: 4px 9px; }
+}
+@media (max-width: 480px) {
+  .teaching-summary { grid-template-columns: 1fr; gap: 13px; }
+  .teaching-stat + .teaching-stat { border-left: 0; border-top: 1px solid var(--line); padding-top: 14px; }
+  .teaching-card { padding: 20px; }
+  .teaching-course-metrics { gap: 6px; }
+  .teaching-course-metrics strong { font-size: .86rem; }
+}
+
