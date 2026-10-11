@@ -94,7 +94,7 @@ html { scroll-padding-top: 145px; }
 <div class="links">
 <a aria-current="page" href="homemind.html">Project overview</a>
 <a href="#roadmap">Roadmap</a>
-<a href="#stage01">Stage 01</a>
+<a href="#stage02">Stage 02</a><a href="#stage01">Stage 01</a>
 <a href="https://github.com/engrhamzaaliimran/HomeMind/blob/main/experiments/stage_01_prompt_engineering.md" target="_blank" rel="noopener noreferrer">Experiments ↗</a>
 <a href="https://github.com/engrhamzaaliimran/HomeMind" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
 </div>
@@ -105,27 +105,41 @@ html { scroll-padding-top: 145px; }
 <span class="hm-eyebrow">Independent AI engineering project · In progress</span>
 <h1>HomeMind <span style="color:var(--primary)">/</span> an agentic smart-home assistant</h1>
 <p class="hm-lead">Building a local, small-model assistant that translates natural-language requests into safe, verifiable simulated smart-home actions. The project develops from baseline LLM inference and prompt engineering to tool use, stateful orchestration, and controlled fine-tuning.</p>
-<div class="hm-actions"><a class="button button-primary" href="#stage01">Explore current progress →</a><a class="button button-secondary" href="https://github.com/engrhamzaaliimran/HomeMind" target="_blank" rel="noopener noreferrer">Source on GitHub ↗</a></div>
+<div class="hm-actions"><a class="button button-primary" href="#stage02">Explore current progress →</a><a class="button button-secondary" href="https://github.com/engrhamzaaliimran/HomeMind" target="_blank" rel="noopener noreferrer">Source on GitHub ↗</a></div>
 <div class="hm-tiles">
 <div class="hm-tile"><strong>Qwen3-1.7B</strong><span>Local baseline · Ollama + LangChain</span></div>
-<div class="hm-tile"><strong>Stage 01</strong><span>Prompting and conversation context investigated</span></div>
-<div class="hm-tile"><strong>3 / 3</strong><span>Observed capability checks passed in latest exploratory run</span></div>
+<div class="hm-tile"><strong>Stage 02</strong><span>Working tool-enabled prototype · evaluation pending</span></div>
+<div class="hm-tile"><strong>4 tools</strong><span>State reads · thermostats · lighting · door locks</span></div>
 </div></div></section>
 <div class="shell hm-content">
 <section class="hm-section" id="overview"><h2>Project target and current capabilities</h2>
 <div class="hm-columns">
 <div class="hm-card"><h3>The target</h3><p>A simulated smart-home environment in which an LLM interprets commands, selects appropriate tools, executes multi-step routines, verifies outcomes, and reports actions based on actual device state—not invented completion messages.</p>
 <ul class="hm-points"><li>Natural-language device control and follow-up commands</li><li>Tool calling with structured arguments</li><li>Stateful workflows, confirmations and recovery</li><li>Model evaluation and LoRA adaptation</li></ul></div>
-<div class="hm-card"><h3>What's working today</h3><p>Local Qwen3-1.7B inference, message-history management and iterative system prompts. The baseline can recall a revised temperature request and interpret multi-action language. The latest prompting experiment correctly reports missing device-control capabilities on three probes.</p>
-<ul class="hm-points"><li>No physical or simulated device control yet</li><li>No LangGraph workflow or persistent action ledger yet</li><li>No fine-tuning or generalization benchmark yet</li></ul></div>
+<div class="hm-card"><h3>What's working today</h3><p>Local Qwen3-1.7B inference, message-history management and iterative system prompts. The baseline can recall a revised temperature request and interpret multi-action language. Stage 01 established a capability-first prompt (3/3 observed probes). Stage 02 now uses LangChain create_agent() with four real Python tools and persistent JSON state. Manual tests confirmed genuine tool calls, successful state updates, and correct rejection of an unknown light.</p>
+<ul class="hm-points"><li>Simulated device control is implemented; no physical devices connected</li><li>Conversation history is still in memory and does not survive restarts</li><li>100-scenario evaluation, advanced workflows and fine-tuning remain pending</li></ul></div>
 </div></section>
 <section class="hm-section" id="roadmap"><h2>Development roadmap</h2>
 <div class="hm-timeline">
 <div class="hm-phase active"><span class="hm-id">01 / BASELINE</span><h3>Prompt engineering &amp; memory</h3><p>Qwen3 baseline, conversation history, capability-awareness tests and failure analysis.</p><span class="hm-status done">Exploratory stage complete</span></div>
-<div class="hm-phase"><span class="hm-id">02 / TOOLS</span><h3>Tool calling &amp; device simulation</h3><p>Structured functions, simulated thermostat/lights/locks and result-based status reporting.</p><span class="hm-status">Planned</span></div>
+<div class="hm-phase active"><span class="hm-id">02 / TOOLS</span><h3>Tool calling &amp; device simulation</h3><p>Four Python tools, persistent JSON state and one-shot prompting implemented. Conversation persistence and benchmark still pending.</p><span class="hm-status done">Prototype working · evaluation pending</span></div>
 <div class="hm-phase"><span class="hm-id">03 / AGENTS</span><h3>LangGraph workflows</h3><p>Multi-step routines, execution state, confirmations, failures and retries.</p><span class="hm-status">Planned</span></div>
-<div class="hm-phase"><span class="hm-id">04 / MODEL</span><h3>Evaluation &amp; LoRA</h3><p>Defined test set, lightweight adaptation and comparison to the untuned baseline.</p><span class="hm-status">Planned</span></div>
+<div class="hm-phase"><span class="hm-id">04 / MODEL</span><h3>Fine-tuning &amp; comparison</h3><p>LoRA adaptation and controlled comparison with the already evaluated untuned baseline.</p><span class="hm-status">Planned</span></div>
 </div></section>
+<section class="hm-section" id="stage02">
+<span class="hm-eyebrow">Current implementation · 11 October 2026</span>
+<h2>Stage 02 — Structured tools and verified simulated actions</h2>
+<p style="margin-bottom:16px">HomeMind now runs Qwen3-1.7B through LangChain <code>create_agent()</code>, exposing four Python tools. Actions update <code>data/home_state.json</code>; the tool result is returned to Qwen before it reports an outcome.</p>
+<div class="hm-tablewrap"><table><thead><tr><th>Implemented</th><th>Evidence from manual tests</th><th>Status</th></tr></thead><tbody>
+<tr><td>Home-state read</td><td><code>get_home_state</code> returned actual simulated state</td><td class="hm-good">Working</td></tr>
+<tr><td>Thermostat control</td><td>Living-room target set to 20°C; <code>success: true</code></td><td class="hm-good">Working</td></tr>
+<tr><td>Light control</td><td>Bedroom light activated; unknown shower light returned <code>success: false</code></td><td class="hm-good">Working</td></tr>
+<tr><td>Door lock tool</td><td>Python tool committed; no end-to-end Qwen lock-call result documented yet</td><td class="hm-mix">Further testing</td></tr>
+<tr><td>One-shot prompting</td><td>Improved observed tool calls, ordinary Q&amp;A and recent-temperature recall compared with earlier troublesome runs</td><td class="hm-mix">Promising, exploratory</td></tr>
+</tbody></table></div>
+<div class="hm-disclaimer" style="margin-top:18px"><strong>Limits:</strong> Previous prompt versions sometimes refused available operations or printed tool names instead of calling them. These are informal runs, not a controlled reliability score. The current conversation history lasts only for the running Python session.</div>
+<p style="margin-top:17px">See the <a class="hm-link" href="https://github.com/engrhamzaaliimran/HomeMind/blob/main/experiments/stage_02_tool_calling.md" target="_blank" rel="noopener noreferrer">Stage 02 implementation notes ↗</a> and the <a class="hm-link" href="https://github.com/engrhamzaaliimran/HomeMind/blob/main/src/02_tool_agent_qwen.py" target="_blank" rel="noopener noreferrer">working agent source ↗</a>.</p>
+</section>
 <section class="hm-section" id="stage01">
 <span class="hm-eyebrow">Completed investigation · 11 October 2026</span>
 <h2>Stage 01 — From false execution claims to capability-first prompting</h2>
@@ -166,7 +180,7 @@ Response: [explanation]</pre></details>
 <div class="hm-disclaimer" style="margin-top:18px"><strong>Experimental scope:</strong> 3/3 refers to one manually observed session, not a statistically validated accuracy rate. The debug run independently confirmed the previous prompt and empty tool lists were delivered. Earlier assistant responses may have reinforced unsupported claims, but causation was not isolated. General role-description wording remained ambiguous. Real execution must be enforced by application code in later stages.</div>
 <p style="margin-top:17px">For individual prompts, verbatim observations and caveats, see the <a class="hm-link" href="https://github.com/engrhamzaaliimran/HomeMind/blob/main/experiments/stage_01_prompt_engineering.md" target="_blank" rel="noopener noreferrer">full Stage 01 experimental log ↗</a>.</p>
 </section>
-<section class="hm-section"><h2>What comes next</h2><div class="hm-card"><p><strong>Stage 02:</strong> Move the capability lookup and action ledger into Python, introduce typed tools for simulated lights, locks and heating, and verify that the model only reports confirmed outcomes. We will preserve Stage 01 as the baseline for comparison.</p></div></section>
+<section class="hm-section"><h2>What comes next</h2><div class="hm-card"><p><strong>Before Stage 03:</strong> Add persistent conversation memory, then run 100 isolated test scenarios against the current committed one-shot prompt. Save tool calls, results and state changes for deterministic checks and GPT-6 response judging. Advanced workflow orchestration and LoRA are later stages.</p></div></section>
 <a class="hm-back" href="index.html#practice-projects">← Back to all projects</a>
 </div></main>
 <footer class="site-footer"><div class="shell footer-inner"><span>© Hamza Ali Imran · HomeMind research progress</span><a href="https://github.com/engrhamzaaliimran/HomeMind" target="_blank" rel="noopener noreferrer">View repository ↗</a></div></footer>
