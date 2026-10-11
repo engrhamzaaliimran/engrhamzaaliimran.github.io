@@ -691,29 +691,26 @@
   <a class="button button-primary genai-announcement-cta" href="#practice-projects">Explore my GenAI projects <span aria-hidden="true">↗</span></a>
 </aside>
 
-<script src="assets/script.js"></script>
-<script src="assets/explore.js" type="module"></script>
 <script>
-  // Homepage GenAI announcement: no external dependencies, one display per tab session.
+  // Show the GenAI announcement immediately after its markup is available.
+  // Keep the once-per-tab-session behaviour to avoid distracting repeat popups.
   (function () {
     const card = document.getElementById('genai-announcement');
     if (!card) return;
-    const sessionKey = 'portfolio-genai-announcement-seen-v1';
+    const sessionKey = 'portfolio-genai-announcement-seen-v2';
     try {
       if (sessionStorage.getItem(sessionKey) === '1') return;
     } catch (_) {
-      // Storage may be disabled. The announcement can still be dismissed.
+      // Continue normally if browser storage is unavailable.
     }
     const rememberSeen = () => {
       try { sessionStorage.setItem(sessionKey, '1'); } catch (_) {}
     };
-    const timer = window.setTimeout(() => {
-      card.hidden = false;
-      rememberSeen();
-      window.requestAnimationFrame(() => card.classList.add('is-visible'));
-    }, 1600);
+    card.hidden = false;
+    card.classList.add('is-visible');
+    rememberSeen();
+
     const close = () => {
-      window.clearTimeout(timer);
       rememberSeen();
       card.classList.remove('is-visible');
       window.setTimeout(() => { card.hidden = true; }, 350);
@@ -721,5 +718,7 @@
     card.querySelector('[data-genai-close]').addEventListener('click', close);
     card.querySelectorAll('a').forEach(link => link.addEventListener('click', close));
   })();
-</script></body>
+</script>
+<script src="assets/script.js"></script>
+<script src="assets/explore.js" type="module"></script></body>
 </html>
