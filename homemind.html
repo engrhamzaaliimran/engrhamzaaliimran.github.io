@@ -137,6 +137,15 @@ html { scroll-padding-top: 145px; }
 <tr><td>Door lock tool</td><td>Python tool committed; no end-to-end Qwen lock-call result documented yet</td><td class="hm-mix">Further testing</td></tr>
 <tr><td>One-shot prompting</td><td>Improved observed tool calls, ordinary Q&amp;A and recent-temperature recall compared with earlier troublesome runs</td><td class="hm-mix">Promising, exploratory</td></tr>
 </tbody></table></div>
+<h3 style="margin-top:26px">Why we added one-shot prompting</h3>
+<p>The first tool-enabled prompt did not produce consistent behavior. Qwen3-1.7B sometimes invoked tools correctly, but other runs refused home-state questions or general knowledge, copied an answer placeholder, or <strong>printed a tool name/JSON as text without executing it</strong>. We therefore tested a more explicit prompt with a <strong>single example</strong> mapping “Turn on the bedroom light” to <code>set_light</code> with structured arguments, plus an instruction to make a real tool call instead of printing JSON.</p>
+<div class="hm-tablewrap"><table><thead><tr><th>Experimental observation</th><th>Outcome</th></tr></thead><tbody>
+<tr><td>Earlier prompt: “what is temperature of bedroom”</td><td class="hm-bad">Printed <code>get_home_state</code> as text; no tool result</td></tr>
+<tr><td>Earlier prompt: “change it to 21”</td><td class="hm-bad">Printed function-call-like JSON; no verified execution</td></tr>
+<tr><td>Revised one-shot prompt: read home and change living-room setpoint</td><td class="hm-good">Real <code>get_home_state</code> and <code>set_temperature</code> calls, with tool results</td></tr>
+<tr><td>Revised prompt: general knowledge, contextual recall, unsupported device</td><td class="hm-good">Answered, recalled recent setpoint, and refused unsupported action in one session</td></tr>
+</tbody></table></div>
+<p style="margin-top:14px">The example was <em>experiment-driven</em>, not an arbitrary prompt addition. However, the prompt also changed in other ways, so these manual sessions <strong>do not isolate the one-shot example as the cause</strong>. A repeatable 100-scenario benchmark is still pending.</p>
 <div class="hm-disclaimer" style="margin-top:18px"><strong>Limits:</strong> Previous prompt versions sometimes refused available operations or printed tool names instead of calling them. These are informal runs, not a controlled reliability score. The last five user turns are held in RAM. Context selection, reliable follow-up recall, and persistence after restarts have not yet been validated.</div>
 <p style="margin-top:17px">See the <a class="hm-link" href="https://github.com/engrhamzaaliimran/HomeMind/blob/main/experiments/stage_02_tool_calling.md" target="_blank" rel="noopener noreferrer">Stage 02 implementation notes ↗</a> and the <a class="hm-link" href="https://github.com/engrhamzaaliimran/HomeMind/blob/main/src/02_tool_agent_qwen.py" target="_blank" rel="noopener noreferrer">working agent source ↗</a>.</p>
 </section>
