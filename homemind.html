@@ -63,13 +63,52 @@
 @media(max-width:900px){.hm-timeline{grid-template-columns:repeat(2,minmax(0,1fr))}.hm-columns{grid-template-columns:1fr}}
 @media(max-width:640px){.hm-hero{padding:46px 0 34px}.hm-tiles{grid-template-columns:1fr}.hm-timeline,.hm-examples{grid-template-columns:1fr}.hm-sequence{grid-template-columns:repeat(2,minmax(0,1fr))}.hm-tile strong{font-size:1.4rem}}
 </style>
+<link href="assets/explore.css" rel="stylesheet"/>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><div class="shell header-inner">
-<a class="brand" href="index.html#practice-projects"><span class="brand-mark" aria-hidden="true">HA</span><span><strong>Hamza Ali Imran</strong><small>Applied AI projects</small></span></a>
-<nav class="desktop-nav" aria-label="Page navigation"><a href="index.html#practice-projects">All projects</a><a href="#roadmap">Roadmap</a><a href="#stage01">Stage 01</a><a href="https://github.com/engrhamzaaliimran/HomeMind" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
-</div></header>
+<header class="site-header" id="top">
+<div class="shell header-inner">
+<a aria-label="Hamza Ali Imran, home" class="brand" href="index.html">
+<span aria-hidden="true" class="brand-mark">HA</span>
+<span>
+<strong>Hamza Ali Imran</strong>
+<small>Intelligent sensing systems</small>
+</span>
+</a>
+<nav aria-label="Primary navigation" class="desktop-nav">
+<a href="index.html#research">Research</a>
+<a href="index.html#publications">Publications</a>
+<a href="index.html#experience">Experience</a>
+<a aria-current="page" class="nav-current" href="index.html#practice-projects">Projects</a>
+<a href="index.html#teaching">Teaching</a>
+<a href="index.html#open-work">Open work</a>
+<a href="events.html">Events</a>
+<a href="index.html#about">About</a>
+</nav>
+<div class="header-actions"><button aria-label="Search all work" class="work-search-icon enhanced-only" data-open-search="" hidden="" title="Search all work (Ctrl or Command + K)" type="button"><svg aria-hidden="true" fill="none" height="21" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="21"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 5 5"></path></svg></button>
+<button aria-label="Toggle colour theme" class="icon-button" id="theme-toggle" title="Toggle colour theme" type="button">
+<svg aria-hidden="true" class="sun-icon" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41"></path></svg>
+<svg aria-hidden="true" class="moon-icon" viewbox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+<a class="button button-primary header-contact" href="mailto:engrhamzaaliimran@gmail.com">Contact</a>
+<button aria-controls="mobile-nav" aria-expanded="false" aria-label="Open navigation" class="menu-button" id="menu-toggle" type="button">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+<nav aria-label="Mobile navigation" class="mobile-nav" hidden="" id="mobile-nav">
+<a href="index.html#research">Research</a>
+<a href="index.html#publications">Publications</a>
+<a href="index.html#experience">Experience</a>
+<a aria-current="page" href="index.html#practice-projects">Projects</a>
+<a href="index.html#teaching">Teaching</a>
+<a href="index.html#open-work">Open work</a>
+<a href="events.html">Events</a>
+<a href="index.html#about">About</a>
+<a href="index.html#contact">Contact</a>
+</nav>
+</header>
 <main id="main" class="hm">
 <section class="hm-hero"><div class="shell">
 <span class="hm-eyebrow">Independent AI engineering project · In progress</span>
@@ -140,4 +179,6 @@ Response: [explanation]</pre></details>
 <a class="hm-back" href="index.html#practice-projects">← Back to all projects</a>
 </div></main>
 <footer class="site-footer"><div class="shell footer-inner"><span>© Hamza Ali Imran · HomeMind research progress</span><a href="https://github.com/engrhamzaaliimran/HomeMind" target="_blank" rel="noopener noreferrer">View repository ↗</a></div></footer>
+<script src="assets/script.js"></script>
+<script src="assets/explore.js" type="module"></script>
 </body></html>
