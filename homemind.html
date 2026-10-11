@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="HomeMind: a local Qwen3 smart-home assistant research project tracking prompt engineering, tool calling, agentic workflows, and fine-tuning through reproducible experiments.">
+<meta name="theme-color" content="#f7f8fb">
+<title>HomeMind — Agentic Smart-Home AI | Project Progress</title>
+<link rel="stylesheet" href="assets/style.css">
+<script>(function(){try{const saved=localStorage.getItem('portfolio-theme');const preferred=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=saved||preferred}catch(_){}})();</script>
+<style>
+.hm{--green:#15836e;--green-soft:color-mix(in srgb,#15836e 11%,var(--surface));--amber:#ae741f;--error:#c24f52;color:var(--text)}
+.hm .shell{max-width:1080px}
+.hm-hero{padding:82px 0 54px;border-bottom:1px solid var(--line);background:radial-gradient(circle at 88% 10%,color-mix(in srgb,var(--primary) 12%,transparent),transparent 30rem)}
+.hm-eyebrow{font-size:.76rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--primary)}
+.hm h1{font-size:clamp(2.45rem,5vw,4.5rem);letter-spacing:-.055em;line-height:1.05;margin:18px 0;max-width:880px}
+.hm h2{font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.035em;margin:0 0 15px}
+.hm h3{font-size:1.06rem;letter-spacing:-.012em;margin:0 0 6px}
+.hm p{margin:0;color:var(--text-soft)}
+.hm-lead{font-size:1.1rem;max-width:790px;line-height:1.7}
+.hm-actions{display:flex;gap:12px;flex-wrap:wrap;margin:25px 0 0}
+.hm-content{padding:40px 0 86px}
+.hm-section{margin:0 0 48px}
+.hm-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:26px}
+.hm-tile,.hm-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:23px;box-shadow:var(--shadow-sm)}
+.hm-tile strong{font-size:1.75rem;line-height:1.2;letter-spacing:-.045em;display:block}
+.hm-tile span{color:var(--text-soft);font-size:.84rem;display:block;margin-top:7px}
+.hm-columns{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}
+.hm-card p{line-height:1.7}
+.hm-points{margin:12px 0 0;padding-left:20px;color:var(--text-soft);line-height:1.7}
+.hm-points li{margin:6px 0}
+.hm-timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.hm-phase{border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:20px;min-height:215px}
+.hm-phase.active{border-color:color-mix(in srgb,var(--green) 50%,var(--line));background:var(--green-soft)}
+.hm-phase .hm-id{display:block;color:var(--primary);font-size:.75rem;font-weight:800;letter-spacing:.1em;margin-bottom:10px}
+.hm-phase.active .hm-id{color:var(--green)}
+.hm-phase p{font-size:.85rem;line-height:1.6}
+.hm-status{font-size:.76rem;font-weight:800;border:1px solid var(--line);border-radius:99px;padding:4px 10px;display:inline-block;margin-top:14px}
+.hm-status.done{color:var(--green);border-color:color-mix(in srgb,var(--green) 40%,var(--line))}
+.hm-tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:15px}
+.hm table{width:100%;border-collapse:collapse;min-width:610px;font-size:.88rem}
+.hm th,.hm td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.hm th{background:var(--surface-soft);color:var(--text-soft);font-size:.73rem;text-transform:uppercase;letter-spacing:.05em}
+.hm tr:last-child td{border-bottom:0}
+.hm td:first-child{font-weight:750;white-space:nowrap}
+.hm-good{color:var(--green);font-weight:750}.hm-bad{color:var(--error);font-weight:750}.hm-mix{color:var(--amber);font-weight:750}
+.hm-sequence{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:17px}
+.hm-step{background:var(--surface-soft);border:1px solid var(--line);border-radius:13px;padding:16px}
+.hm-step small{display:block;font-weight:800;color:var(--primary);letter-spacing:.08em;margin-bottom:7px}
+.hm-step b{display:block;font-size:.9rem}
+.hm-step p{font-size:.78rem;margin-top:5px}
+.hm-examples{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
+.hm-example{padding:18px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.hm-example em{font-style:normal;font-size:.75rem;font-weight:800;letter-spacing:.05em;color:var(--muted)}
+.hm-example.fail{border-left:4px solid var(--error)}
+.hm-example.pass{border-left:4px solid var(--green)}
+.hm-example blockquote{margin:10px 0 0;color:var(--text);font-size:.94rem;line-height:1.6}
+.hm-disclaimer{font-size:.85rem;line-height:1.7;border-left:3px solid var(--primary);padding:10px 15px;background:var(--surface-soft);border-radius:0 10px 10px 0}
+.hm details{margin-top:20px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+.hm summary{cursor:pointer;font-weight:750}
+.hm pre{background:var(--surface-soft);border-radius:10px;padding:16px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.81rem;line-height:1.6;margin:14px 0 0;color:var(--text)}
+.hm-back{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:750;color:var(--text-soft);margin-top:30px}
+.hm-link{color:var(--primary);font-weight:750;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:900px){.hm-timeline{grid-template-columns:repeat(2,minmax(0,1fr))}.hm-columns{grid-template-columns:1fr}}
+@media(max-width:640px){.hm-hero{padding:46px 0 34px}.hm-tiles{grid-template-columns:1fr}.hm-timeline,.hm-examples{grid-template-columns:1fr}.hm-sequence{grid-template-columns:repeat(2,minmax(0,1fr))}.hm-tile strong{font-size:1.4rem}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="shell header-inner">
+<a class="brand" href="index.html#practice-projects"><span class="brand-mark" aria-hidden="true">HA</span><span><strong>Hamza Ali Imran</strong><small>Applied AI projects</small></span></a>
+<nav class="desktop-nav" aria-label="Page navigation"><a href="index.html#practice-projects">All projects</a><a href="#roadmap">Roadmap</a><a href="#stage01">Stage 01</a><a href="https://github.com/engrhamzaaliimran/HomeMind" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
+</div></header>
+<main id="main" class="hm">
+<section class="hm-hero"><div class="shell">
+<span class="hm-eyebrow">Independent AI engineering project · In progress</span>
+<h1>HomeMind <span style="color:var(--primary)">/</span> an agentic smart-home assistant</h1>
+<p class="hm-lead">Building a local, small-model assistant that translates natural-language requests into safe, verifiable simulated smart-home actions. The project develops from baseline LLM inference and prompt engineering to tool use, stateful orchestration, and controlled fine-tuning.</p>
+<div class="hm-actions"><a class="button button-primary" href="#stage01">Explore current progress →</a><a class="button button-secondary" href="https://github.com/engrhamzaaliimran/HomeMind" target="_blank" rel="noopener noreferrer">Source on GitHub ↗</a></div>
+<div class="hm-tiles">
+<div class="hm-tile"><strong>Qwen3-1.7B</strong><span>Local baseline · Ollama + LangChain</span></div>
+<div class="hm-tile"><strong>Stage 01</strong><span>Prompting and conversation context investigated</span></div>
+<div class="hm-tile"><strong>3 / 3</strong><span>Observed capability checks passed in latest exploratory run</span></div>
+</div></div></section>
+<div class="shell hm-content">
+<section class="hm-section" id="overview"><h2>Project target and current capabilities</h2>
+<div class="hm-columns">
+<div class="hm-card"><h3>The target</h3><p>A simulated smart-home environment in which an LLM interprets commands, selects appropriate tools, executes multi-step routines, verifies outcomes, and reports actions based on actual device state—not invented completion messages.</p>
+<ul class="hm-points"><li>Natural-language device control and follow-up commands</li><li>Tool calling with structured arguments</li><li>Stateful workflows, confirmations and recovery</li><li>Model evaluation and LoRA adaptation</li></ul></div>
+<div class="hm-card"><h3>What's working today</h3><p>Local Qwen3-1.7B inference, message-history management and iterative system prompts. The baseline can recall a revised temperature request and interpret multi-action language. The latest prompting experiment correctly reports missing device-control capabilities on three probes.</p>
+<ul class="hm-points"><li>No physical or simulated device control yet</li><li>No LangGraph workflow or persistent action ledger yet</li><li>No fine-tuning or generalization benchmark yet</li></ul></div>
+</div></section>
+<section class="hm-section" id="roadmap"><h2>Development roadmap</h2>
+<div class="hm-timeline">
+<div class="hm-phase active"><span class="hm-id">01 / BASELINE</span><h3>Prompt engineering &amp; memory</h3><p>Qwen3 baseline, conversation history, capability-awareness tests and failure analysis.</p><span class="hm-status done">Exploratory stage complete</span></div>
+<div class="hm-phase"><span class="hm-id">02 / TOOLS</span><h3>Tool calling &amp; device simulation</h3><p>Structured functions, simulated thermostat/lights/locks and result-based status reporting.</p><span class="hm-status">Planned</span></div>
+<div class="hm-phase"><span class="hm-id">03 / AGENTS</span><h3>LangGraph workflows</h3><p>Multi-step routines, execution state, confirmations, failures and retries.</p><span class="hm-status">Planned</span></div>
+<div class="hm-phase"><span class="hm-id">04 / MODEL</span><h3>Evaluation &amp; LoRA</h3><p>Defined test set, lightweight adaptation and comparison to the untuned baseline.</p><span class="hm-status">Planned</span></div>
+</div></section>
+<section class="hm-section" id="stage01">
+<span class="hm-eyebrow">Completed investigation · 11 October 2026</span>
+<h2>Stage 01 — From false execution claims to capability-first prompting</h2>
+<p style="margin-bottom:16px">The initial model understood requests but would say it had set the thermostat despite having no tools. General prohibitions and an explicit empty tool list did not reliably prevent this. A mandatory capability-check sequence improved the observed responses.</p>
+<div class="hm-tablewrap"><table><thead><tr><th>Experiment</th><th>Change</th><th>Key finding</th><th>Outcome</th></tr></thead><tbody>
+<tr><td>01 · Baseline</td><td>Natural-language prompting + history</td><td>Recalled 25 → 21°C; unsupported action claims persisted.</td><td class="hm-mix">Mixed</td></tr>
+<tr><td>02 · Rules</td><td>Require confirmed tool success</td><td>Still stated the thermostat was adjusted.</td><td class="hm-bad">Failed honesty</td></tr>
+<tr><td>03 · Capabilities</td><td>Explicit tools [] and results []</td><td>Still claimed control; debug log confirmed prompt delivery.</td><td class="hm-bad">Failed honesty</td></tr>
+<tr><td>04 · Context</td><td>Fresh question vs. prior device dialogue</td><td>Correct denial in isolation; false access claim after dialogue.</td><td class="hm-mix">Context-sensitive</td></tr>
+<tr><td>05 · Procedure</td><td>Intent → capability → evidence → response</td><td>Correctly declined three consecutive action-related requests.</td><td class="hm-good">3 / 3 observed</td></tr>
+</tbody></table></div>
+<h3 style="margin-top:26px">The prompt-engineering change</h3>
+<div class="hm-sequence">
+<div class="hm-step"><small>01 / INTENT</small><b>Interpret request</b><p>Identify desired action and follow-up context.</p></div>
+<div class="hm-step"><small>02 / CAPABILITY</small><b>Match available tool</b><p>No matching tool → unavailable.</p></div>
+<div class="hm-step"><small>03 / EVIDENCE</small><b>Verify execution</b><p>A tool result, not a prior message, proves success.</p></div>
+<div class="hm-step"><small>04 / RESPONSE</small><b>Report status</b><p>State what can and cannot actually be done.</p></div>
+</div>
+<div class="hm-examples">
+<div class="hm-example fail"><em>BEFORE / UNSUPPORTED CLAIM</em><blockquote>“I have set your bedroom thermostat to 21°C.”</blockquote></div>
+<div class="hm-example pass"><em>AFTER / CAPABILITY-FIRST</em><blockquote>“Capability: UNAVAILABLE. I cannot directly set the thermostat…”</blockquote></div>
+</div>
+<details><summary>See the capability-first prompt procedure</summary><pre>SYSTEM CAPABILITIES:
+Available tools: []
+Verified execution results: []
+
+MANDATORY DECISION PROCEDURE:
+1. INTENT — Interpret the user's request, including context.
+2. CAPABILITY CHECK — Find a matching available tool.
+   If absent, mark UNAVAILABLE; do not promise execution.
+3. EXECUTION VERIFICATION — Completion requires a matching,
+   successful tool result; conversation is not evidence.
+4. RESPONSE — Report capability and actual status.
+
+Format:
+Capability: AVAILABLE or UNAVAILABLE
+Response: [explanation]</pre></details>
+<div class="hm-disclaimer" style="margin-top:18px"><strong>Experimental scope:</strong> 3/3 refers to one manually observed session, not a statistically validated accuracy rate. The debug run independently confirmed the previous prompt and empty tool lists were delivered. Earlier assistant responses may have reinforced unsupported claims, but causation was not isolated. General role-description wording remained ambiguous. Real execution must be enforced by application code in later stages.</div>
+<p style="margin-top:17px">For individual prompts, verbatim observations and caveats, see the <a class="hm-link" href="https://github.com/engrhamzaaliimran/HomeMind/blob/main/experiments/stage_01_prompt_engineering.md" target="_blank" rel="noopener noreferrer">full Stage 01 experimental log ↗</a>.</p>
+</section>
+<section class="hm-section"><h2>What comes next</h2><div class="hm-card"><p><strong>Stage 02:</strong> Move the capability lookup and action ledger into Python, introduce typed tools for simulated lights, locks and heating, and verify that the model only reports confirmed outcomes. We will preserve Stage 01 as the baseline for comparison.</p></div></section>
+<a class="hm-back" href="index.html#practice-projects">← Back to all projects</a>
+</div></main>
+<footer class="site-footer"><div class="shell footer-inner"><span>© Hamza Ali Imran · HomeMind research progress</span><a href="https://github.com/engrhamzaaliimran/HomeMind" target="_blank" rel="noopener noreferrer">View repository ↗</a></div></footer>
+</body></html>
