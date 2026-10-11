@@ -75,7 +75,7 @@
 <section class="hero section">
 <div class="shell hero-grid">
 <div class="hero-copy reveal">
-<div class="eyebrow"><span></span> MSCA doctoral researcher · Sensor intelligence · Signal modelling · Applied ML</div>
+<div class="eyebrow"><span></span> MSCA doctoral researcher · Generative AI · Sensor intelligence · Signal modelling · Applied ML</div>
 <h1>I turn sensor signals into <em>robust, deployable intelligence.</em></h1>
 <p class="hero-lead">My work spans wearable inertial sensors and impedance-based chemical sensors, connected by one methodology: design informative measurements, learn compact representations, validate under real conditions, and reduce the cost of deployment.</p>
 <a class="genai-hero-note" href="#practice-projects" aria-label="Explore my Generative AI projects">
@@ -692,26 +692,14 @@
 </aside>
 
 <script>
-  // Show the GenAI announcement immediately after its markup is available.
-  // Keep the once-per-tab-session behaviour to avoid distracting repeat popups.
+  // Show on every homepage visit, including refreshes; dismissal lasts only until navigation.
   (function () {
     const card = document.getElementById('genai-announcement');
     if (!card) return;
-    const sessionKey = 'portfolio-genai-announcement-seen-v2';
-    try {
-      if (sessionStorage.getItem(sessionKey) === '1') return;
-    } catch (_) {
-      // Continue normally if browser storage is unavailable.
-    }
-    const rememberSeen = () => {
-      try { sessionStorage.setItem(sessionKey, '1'); } catch (_) {}
-    };
     card.hidden = false;
     card.classList.add('is-visible');
-    rememberSeen();
 
     const close = () => {
-      rememberSeen();
       card.classList.remove('is-visible');
       window.setTimeout(() => { card.hidden = true; }, 350);
     };
