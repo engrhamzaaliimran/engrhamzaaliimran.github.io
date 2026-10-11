@@ -16,7 +16,7 @@
 <meta content="https://engrhamzaaliimran.github.io/assets/hamza-ali-imran.png" property="og:image"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <link as="image" href="assets/hamza-ali-imran.png" rel="preload"/>
-<link href="assets/style.css?v=teaching-redesign-20261010" rel="stylesheet"/>
+<link href="assets/style.css?v=genai-announcement-20261011" rel="stylesheet"/>
 <script>
     (function () {
       try {
@@ -78,6 +78,11 @@
 <div class="eyebrow"><span></span> MSCA doctoral researcher · Sensor intelligence · Signal modelling · Applied ML</div>
 <h1>I turn sensor signals into <em>robust, deployable intelligence.</em></h1>
 <p class="hero-lead">My work spans wearable inertial sensors and impedance-based chemical sensors, connected by one methodology: design informative measurements, learn compact representations, validate under real conditions, and reduce the cost of deployment.</p>
+<a class="genai-hero-note" href="#practice-projects" aria-label="Explore my Generative AI projects">
+  <span class="genai-hero-note-symbol" aria-hidden="true">✦</span>
+  <span><strong>Also building in GenAI</strong> · LLM agents, RAG &amp; GraphRAG</span>
+  <span aria-hidden="true">↗</span>
+</a>
 <div class="hero-actions"><a class="button button-secondary" href="eis-explorer.html" title="Interactively explore TFT-IS measurements, EMG spectral fits, and PCA results">Explore TFT-IS: Measured Spectra, EMG Fits &amp; PCA ↗</a>
 <a class="button button-primary" href="#research">
               Explore selected research
@@ -670,6 +675,51 @@
 <a href="#top">Back to top ↑</a>
 </div>
 </footer>
+<!-- Homepage-only GenAI announcement (non-modal, dismissible, once per session). -->
+<aside class="genai-announcement" id="genai-announcement" aria-labelledby="genai-announcement-title" hidden>
+  <button class="genai-announcement-close" data-genai-close type="button" aria-label="Dismiss Generative AI announcement">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+  </button>
+  <span class="genai-announcement-eyebrow"><span aria-hidden="true">✦</span> BEYOND SENSOR AI</span>
+  <h2 id="genai-announcement-title">Hi! I'm building in Generative AI, too.</h2>
+  <p>Alongside my sensor AI research, I’m developing hands-on <strong>LLM agents, RAG and GraphRAG</strong> systems. Curious what I’m working on?</p>
+  <div class="genai-announcement-projects" aria-label="Featured Generative AI projects">
+    <a href="homemind.html"><span class="genai-project-icon" aria-hidden="true">⌘</span><span><strong>HomeMind</strong><small>Local LLM agent &amp; tool calling</small></span><span aria-hidden="true">↗</span></a>
+    <a href="graphrag.html"><span class="genai-project-icon" aria-hidden="true">◇</span><span><strong>GraphRAG</strong><small>Entity and relationship discovery</small></span><span aria-hidden="true">↗</span></a>
+    <a href="traditional-rag.html"><span class="genai-project-icon" aria-hidden="true">▤</span><span><strong>Evaluated RAG</strong><small>Local retrieval &amp; grounded generation</small></span><span aria-hidden="true">↗</span></a>
+  </div>
+  <a class="button button-primary genai-announcement-cta" href="#practice-projects">Explore my GenAI projects <span aria-hidden="true">↗</span></a>
+</aside>
+
 <script src="assets/script.js"></script>
-<script src="assets/explore.js" type="module"></script></body>
+<script src="assets/explore.js" type="module"></script>
+<script>
+  // Homepage GenAI announcement: no external dependencies, one display per tab session.
+  (function () {
+    const card = document.getElementById('genai-announcement');
+    if (!card) return;
+    const sessionKey = 'portfolio-genai-announcement-seen-v1';
+    try {
+      if (sessionStorage.getItem(sessionKey) === '1') return;
+    } catch (_) {
+      // Storage may be disabled. The announcement can still be dismissed.
+    }
+    const rememberSeen = () => {
+      try { sessionStorage.setItem(sessionKey, '1'); } catch (_) {}
+    };
+    const timer = window.setTimeout(() => {
+      card.hidden = false;
+      rememberSeen();
+      window.requestAnimationFrame(() => card.classList.add('is-visible'));
+    }, 1600);
+    const close = () => {
+      window.clearTimeout(timer);
+      rememberSeen();
+      card.classList.remove('is-visible');
+      window.setTimeout(() => { card.hidden = true; }, 350);
+    };
+    card.querySelector('[data-genai-close]').addEventListener('click', close);
+    card.querySelectorAll('a').forEach(link => link.addEventListener('click', close));
+  })();
+</script></body>
 </html>
