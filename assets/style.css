@@ -1072,3 +1072,9 @@ html[data-theme="dark"] .teaching-section {
 @media (prefers-reduced-motion: reduce) {
   .genai-announcement, .genai-hero-note { transition: none; }
 }
+
+/* Keep the longer AI-focused homepage headline balanced without changing other headings. */
+.hero-copy h1 { font-size: clamp(2.25rem, 3.9vw, 3.8rem); line-height: 1.1; }
+@media (max-width: 600px) {
+  .hero-copy h1 { font-size: clamp(1.95rem, 8vw, 2.8rem); }
+}
