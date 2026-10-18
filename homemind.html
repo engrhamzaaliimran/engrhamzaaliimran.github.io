@@ -51,7 +51,7 @@ h1{font-size:clamp(2.5rem,5vw,4.45rem);line-height:1.06;letter-spacing:-.055em;m
 
 .todo.done{color:var(--green)}
 
-/* Accessible, click-to-expand Stage 02.1 pipeline. Independent of the benchmark JS. */
+/* Stage 02.1 pipeline: render the original Mermaid graph on demand. */
 .hm-pipeline{margin-top:20px;border:1px solid var(--line);background:var(--surface);border-radius:19px;overflow:hidden;box-shadow:var(--shadow-sm)}
 .hm-pipeline>summary{list-style:none;display:flex;gap:14px;align-items:center;padding:21px 24px;font-weight:780;color:var(--text);cursor:pointer;user-select:none;transition:background .18s}
 .hm-pipeline>summary::-webkit-details-marker{display:none}.hm-pipeline>summary:hover,.hm-pipeline[open]>summary{background:var(--surface-soft)}
@@ -60,21 +60,13 @@ h1{font-size:clamp(2.5rem,5vw,4.45rem);line-height:1.06;letter-spacing:-.055em;m
 .hm-pipeline-heading{flex:1;font-size:.97rem}.hm-pipeline-heading small{display:block;color:var(--text-soft);font-size:.78rem;font-weight:500;margin-top:2px}
 .hm-pipeline-chevron{color:var(--primary);font-size:1.05rem;transition:transform .2s}.hm-pipeline[open] .hm-pipeline-chevron{transform:rotate(180deg)}
 .hm-pipeline-body{border-top:1px solid var(--line);padding:20px 22px 23px}
-.hm-pipeline-scroll{overflow-x:auto;border-radius:13px;background:var(--surface-soft);border:1px solid var(--line)}
-.pipe-svg{display:block;width:100%;min-width:770px;height:auto;overflow:visible;padding:15px}
-.pipe-svg .pipe-terminal{fill:color-mix(in srgb,var(--green) 13%,var(--surface));stroke:var(--green);stroke-width:2}
-.pipe-svg .pipe-input{fill:var(--surface);stroke:var(--primary);stroke-width:2}
-.pipe-svg .pipe-model{fill:color-mix(in srgb,var(--primary) 10%,var(--surface));stroke:var(--primary);stroke-width:2}
-.pipe-svg .pipe-action{fill:var(--surface);stroke:var(--line);stroke-width:2}
-.pipe-svg .pipe-decision{fill:color-mix(in srgb,var(--amber) 13%,var(--surface));stroke:var(--amber);stroke-width:2}
-.pipe-svg .pipe-storage{fill:color-mix(in srgb,var(--primary) 8%,var(--surface));stroke:var(--primary);stroke-width:2}
-.pipe-svg .pipe-edge{fill:none;stroke:var(--muted);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
-.pipe-svg .pipe-label{fill:var(--text);font:650 18px/1.4 Inter,system-ui,sans-serif}
-.pipe-svg .pipe-sub,.pipe-svg .pipe-note{fill:var(--text-soft);font:500 15px Inter,system-ui,sans-serif}
-.pipe-svg .pipe-edge-label{fill:var(--primary);font:800 15px Inter,system-ui,sans-serif}
+.hm-pipeline-scroll{overflow:auto;border-radius:13px;background:var(--surface-soft);border:1px solid var(--line);padding:17px 10px}
+.hm-mermaid-render{min-width:940px;text-align:center}
+.hm-mermaid-render svg{display:block;margin:0 auto;max-width:none!important;width:100%!important;height:auto!important}
+.hm-pipeline-loading{color:var(--text-soft);padding:28px 18px;font-size:.86rem;text-align:center}
 .hm-pipeline-note{font-size:.82rem;line-height:1.75;color:var(--text-soft);margin-top:15px}
 .hm-pipeline-note strong{color:var(--text)}
-@media(max-width:650px){.hm-pipeline>summary{padding:15px 17px}.hm-pipeline-body{padding:12px}.pipe-svg{min-width:760px}.hm-pipeline-heading{font-size:.87rem}}
+@media(max-width:650px){.hm-pipeline>summary{padding:15px 17px}.hm-pipeline-body{padding:12px}.hm-mermaid-render{min-width:900px}.hm-pipeline-heading{font-size:.87rem}}
 @media(prefers-reduced-motion:reduce){.hm-pipeline-chevron,.hm-pipeline>summary{transition:none}}
 </style>
 </head>
@@ -106,61 +98,70 @@ h1{font-size:clamp(2.5rem,5vw,4.45rem);line-height:1.06;letter-spacing:-.055em;m
 <div class="card"><h3 style="font-size:1.19rem;margin-bottom:14px">What the objective checks found</h3><div class="performance-grid"><div class="perf-cell"><strong class="blue">100 / 100</strong><span>Scenarios completed without top-level runner errors</span></div><div class="perf-cell"><strong>33 / 35</strong><span>Expected write sequences verified after ID normalization (94.3%)</span></div><div class="perf-cell"><strong>96 / 100</strong><span>Cases without unrequested device changes</span></div></div><div class="summary-takeaway"><b>Why these numbers differ:</b> An agent can finish without crashing and still act incorrectly. The 33/35 execution figure credits Python-corrected identifiers; it is <b>not</b> an overall accuracy score. The 73/7/20 judgments also consider final-response accuracy and safe behavior.</div></div>
 </div>
 <details class="hm-pipeline" id="execution-pipeline">
-<summary><span class="hm-pipeline-icon" aria-hidden="true">◇</span><span class="hm-pipeline-heading">View HomeMind Stage 02.1 execution pipeline<small>Click to expand the agent, Python checks and tool-execution flowchart</small></span><span class="hm-pipeline-chevron" aria-hidden="true">⌄</span></summary>
-<div class="hm-pipeline-body"><div class="hm-pipeline-scroll" tabindex="0" role="region" aria-label="Scrollable HomeMind pipeline flowchart"><svg class="pipe-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 1250" role="img" aria-labelledby="hm-pipeline-title hm-pipeline-desc">
-<title id="hm-pipeline-title">HomeMind Stage 02.1 agent execution pipeline</title>
-<desc id="hm-pipeline-desc">A user message and five-turn RAM context go to Qwen3-1.7B. If the model emits no tool call, it produces an answer. If it emits a structured call, Python resolves the device ID and checks its property, rejects unknown identifiers or normalizes trusted aliases, then invokes the original Python tool under a process-local lock. Tools access the simulated JSON state and return success or failure to Qwen. The model generates the response and recent conversation history is updated in RAM. Capability and intent checking remain prompt-driven.</desc>
-<defs><marker id="hm-pipeline-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L9 4 L0 8 z" fill="var(--muted)"/></marker></defs>
-<ellipse class="pipe-terminal" cx="570" cy="35" rx="91" ry="26"/><text class="pipe-label" x="570" y="40" text-anchor="middle"><tspan x="570" dy="0">START</tspan></text>
-<path class="pipe-edge" d="M570 61 V82" marker-end="url(#hm-pipeline-arrow)"/>
-<polygon class="pipe-input" points="426,85 742,85 714,147 398,147"/><text class="pipe-label" x="570" y="122" text-anchor="middle"><tspan x="570" dy="0">User command</tspan></text>
-<path class="pipe-edge" d="M570 147 V177" marker-end="url(#hm-pipeline-arrow)"/>
-<rect class="pipe-action" x="400" y="177" width="340" height="69" rx="15"/><text class="pipe-label" x="570" y="207.5" text-anchor="middle"><tspan x="570" dy="0">Recent conversation context</tspan><tspan x="570" dy="19">Last 5 user turns in RAM</tspan></text>
-<path class="pipe-edge" d="M570 246 V275" marker-end="url(#hm-pipeline-arrow)"/>
-<rect class="pipe-model" x="400" y="275" width="340" height="79" rx="15"/><text class="pipe-label" x="570" y="310.5" text-anchor="middle"><tspan x="570" dy="0">Qwen3-1.7B via Ollama</tspan><tspan x="570" dy="19">Intent + tool selection</tspan></text>
-<text class="pipe-sub" x="880" y="302" text-anchor="middle"><tspan x="880" dy="0">Capability checking is</tspan><tspan x="880" dy="19">prompt-driven, not enforced</tspan></text>
-<path class="pipe-edge" d="M570 354 V375" marker-end="url(#hm-pipeline-arrow)"/>
-<polygon class="pipe-decision" points="570,377 752,435 570,493 388,435"/><text class="pipe-label" x="570" y="431" text-anchor="middle"><tspan x="570" dy="0">Structured</tspan><tspan x="570" dy="19">tool call emitted?</tspan></text>
-<text class="pipe-edge-label" x="337" y="420">NO</text>
-<text class="pipe-edge-label" x="585" y="519">YES</text>
-<path class="pipe-edge" d="M388 435 H170 V991 H398" marker-end="url(#hm-pipeline-arrow)"/>
-<path class="pipe-edge" d="M570 493 V533" marker-end="url(#hm-pipeline-arrow)"/>
-<rect class="pipe-action" x="400" y="533" width="340" height="68" rx="15"/><text class="pipe-label" x="570" y="563" text-anchor="middle"><tspan x="570" dy="0">Python device-ID resolver</tspan><tspan x="570" dy="19">Validate tool-target property</tspan></text>
-<text class="pipe-note" x="795" y="560">State read: get_home_state</text>
-<text class="pipe-note" x="795" y="582">does not need a device ID</text>
-<path class="pipe-edge" d="M570 601 V614" marker-end="url(#hm-pipeline-arrow)"/>
-<polygon class="pipe-decision" points="570,615 764,684 570,753 376,684"/><text class="pipe-label" x="570" y="680" text-anchor="middle"><tspan x="570" dy="0">Supported ID</tspan><tspan x="570" dy="19">or read-only call?</tspan></text>
-<text class="pipe-edge-label" x="307" y="668">NO</text>
-<text class="pipe-edge-label" x="582" y="772">YES</text>
-<path class="pipe-edge" d="M376 684 H177 V789" marker-end="url(#hm-pipeline-arrow)"/>
-<polygon class="pipe-input" points="91,792 339,792 319,852 71,852"/><text class="pipe-label" x="205" y="818" text-anchor="middle"><tspan x="205" dy="0">INVALID_DEVICE_ID</tspan><tspan x="205" dy="19">No action executed</tspan></text>
-<path class="pipe-edge" d="M205 852 V958 H397" marker-end="url(#hm-pipeline-arrow)"/>
-<path class="pipe-edge" d="M570 753 V783" marker-end="url(#hm-pipeline-arrow)"/>
-<rect class="pipe-action" x="400" y="783" width="340" height="63" rx="15"/><text class="pipe-label" x="570" y="810.5" text-anchor="middle"><tspan x="570" dy="0">Canonicalize trusted alias</tspan><tspan x="570" dy="19">Keep exact IDs unchanged</tspan></text>
-<path class="pipe-edge" d="M570 846 V868" marker-end="url(#hm-pipeline-arrow)"/>
-<rect class="pipe-action" x="400" y="868" width="340" height="86" rx="15"/><text class="pipe-label" x="570" y="907" text-anchor="middle"><tspan x="570" dy="0">Protected Python tool execution</tspan><tspan x="570" dy="19">RLock: read / modify / write</tspan></text>
-<g>
-<path class="pipe-storage" d="M855 873 C855 852 1087 852 1087 873 L1087 946 C1087 969 855 969 855 946 Z"/>
-<ellipse class="pipe-storage" cx="971" cy="873" rx="116" ry="21"/>
-<text class="pipe-label" x="971" y="905" text-anchor="middle"><tspan x="971" dy="0">home_state.json</tspan><tspan x="971" dy="19">Persistent device state</tspan></text>
-</g>
-<path class="pipe-edge" d="M740 899 H841" marker-end="url(#hm-pipeline-arrow)"/>
-<text class="pipe-note" x="792" y="887" text-anchor="middle">read / write</text>
-<path class="pipe-edge" d="M570 954 V978" marker-end="url(#hm-pipeline-arrow)"/>
-<rect class="pipe-model" x="397" y="979" width="346" height="74" rx="15"/><text class="pipe-label" x="570" y="1012" text-anchor="middle"><tspan x="570" dy="0">Qwen receives tool result</tspan><tspan x="570" dy="19">success=true or error → response</tspan></text>
-<path class="pipe-edge" d="M570 1053 V1080" marker-end="url(#hm-pipeline-arrow)"/>
-<rect class="pipe-action" x="397" y="1080" width="346" height="67" rx="15"/><text class="pipe-label" x="570" y="1109.5" text-anchor="middle"><tspan x="570" dy="0">Update recent messages in RAM</tspan><tspan x="570" dy="19">Keep last 5 complete turns</tspan></text>
-<path class="pipe-edge" d="M570 1147 V1179" marker-end="url(#hm-pipeline-arrow)"/>
-<ellipse class="pipe-terminal" cx="570" cy="1208" rx="91" ry="27"/><text class="pipe-label" x="570" y="1214" text-anchor="middle"><tspan x="570" dy="0">END</tspan></text>
-<text class="pipe-note" x="97" y="470">No tool:</text>
-<text class="pipe-note" x="97" y="490">Qwen answers</text>
-<text class="pipe-note" x="97" y="510">without execution</text>
-<text class="pipe-note" x="80" y="894">Rejected ID:</text>
-<text class="pipe-note" x="80" y="912">result to Qwen</text>
-<text class="pipe-note" x="80" y="930">for response</text>
-</svg></div>
-<p class="hm-pipeline-note"><strong>Reading the diagram:</strong> ovals = start/end; parallelograms = input/output; rectangles = processing; diamonds = decisions; cylinder = persistent simulated state. <strong>Important:</strong> capability and ambiguity handling are still guided by the model prompt, not enforced by Python. The lock only protects access within this process. The source is available in <a class="section-link" href="https://github.com/engrhamzaaliimran/HomeMind/blob/main/src/02_tool_agent_qwen_with_normalization_check.py" target="_blank" rel="noopener noreferrer">Stage 02.1 code ↗</a>.</p></div>
-</details>
+<summary><span class="hm-pipeline-icon" aria-hidden="true">◇</span><span class="hm-pipeline-heading">View HomeMind Stage 02.1 execution pipeline<small>Click to open the original Mermaid flowchart</small></span><span class="hm-pipeline-chevron" aria-hidden="true">⌄</span></summary>
+<div class="hm-pipeline-body">
+<div class="hm-pipeline-scroll" tabindex="0" role="region" aria-label="Scrollable HomeMind Mermaid pipeline flowchart">
+<div class="hm-mermaid-render" id="hm-mermaid-render" aria-label="HomeMind Stage 02.1 flowchart">
+<p class="hm-pipeline-loading" role="status">Loading flowchart…</p>
+</div></div>
+<p class="hm-pipeline-note"><strong>Diagram key:</strong> oval = start/end; parallelogram = input/output; rectangle = processing; diamond = decision; cylinder = simulated JSON state. <strong>Current limitation:</strong> capability and ambiguity checks remain prompt-driven, not independently enforced by Python. Scroll sideways on a smaller screen to view the full diagram.</p>
+</div></details>
+<script id="hm-mermaid-source" type="text/plain">
+flowchart TD
+    A([START]) --> B[/User enters a command/]
+    B --> C["Load recent conversation context<br/>Last 5 turns in RAM"]
+    C --> D["Qwen3-1.7B<br/>Intent understanding + tool selection"]
+
+    D --> E{"What type of request?"}
+
+    E -->|General knowledge| F[/Generate normal answer/]
+    E -->|Home-state query| G["get_home_state()"]
+    E -->|Device action| H{"Did Qwen generate<br/>a structured tool call?"}
+    E -->|Unsupported or unclear| I[/Qwen should refuse or clarify/]
+
+    H -->|No| J[/Generate response without execution/]
+    H -->|Yes| K["Python argument validation"]
+
+    K --> L{"Valid device ID?"}
+    L -->|Yes| P["Execute original Python tool"]
+    L -->|No| M{"Known alias or<br/>deterministic normalization?"}
+
+    M -->|Yes| N["Convert to canonical ID<br/>e.g. living room → living_room"]
+    N --> P
+    M -->|No| O["Return INVALID_DEVICE_ID<br/>No action executed"]
+
+    P --> Q["Protected JSON access<br/>threading.RLock"]
+    Q --> R[("home_state.json<br/>Simulated device state")]
+    R --> S{"Tool returned<br/>success = true?"}
+
+    S -->|Yes| T["Return successful tool result"]
+    S -->|No| U["Return failure and error"]
+
+    G --> R
+    O --> V["Qwen receives tool result"]
+    T --> V
+    U --> V
+
+    V --> W[/Qwen generates final response/]
+    F --> X["Update recent conversation<br/>history in RAM"]
+    I --> X
+    J --> X
+    W --> X
+
+    X --> Y([END])
+
+    classDef start fill:#def3e9,stroke:#26846a,color:#155443
+    classDef process fill:#e6eeff,stroke:#4d78c0,color:#193d79
+    classDef decision fill:#fff0ce,stroke:#c28c2b,color:#674514
+    classDef datastore fill:#eee6fc,stroke:#9165c0,color:#4f3178
+    classDef output fill:#e8f5f4,stroke:#339b8e,color:#19554f
+
+    class A,Y start
+    class C,D,G,K,N,P,Q,T,U,V,X process
+    class E,H,L,M,S decision
+    class R datastore
+    class B,F,I,J,O,W output
+</script>
 </section>
 <section class="section" id="categories"><div class="section-head"><div><span class="eyebrow">Eight evaluation dimensions</span><h2>Performance by category</h2><p class="section-lead">Stage 02.1 pass, partial and fail judgments by category. Select a category to inspect the updated responses and tool results.</p></div></div>
 <div class="category-grid" id="category-bars">
@@ -276,5 +277,42 @@ document.querySelectorAll('[data-cat]').forEach(el=>el.addEventListener('click',
 document.querySelectorAll('[data-focus]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();const id=el.dataset.focus;search.value=id;category.value='all';setStatus('all');const block=document.querySelector(`[data-id="${id}"]`);if(block)block.open=true;document.getElementById('question-browser').scrollIntoView({behavior:'smooth'})}));
 document.getElementById('theme-toggle').addEventListener('click',()=>{const v=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=v;try{localStorage.setItem('portfolio-theme',v)}catch(e){}});
 render();
+</script>
+<script type="module">
+/* Load Mermaid only when a visitor expands the Stage 02.1 flowchart. */
+const pipeline = document.getElementById('execution-pipeline');
+const canvas = document.getElementById('hm-mermaid-render');
+const source = document.getElementById('hm-mermaid-source').textContent.trim();
+let loading;
+async function showOriginalHomeMindFlowchart(){
+  if (pipeline.dataset.ready === 'true') return;
+  if (loading) return loading;
+  loading = (async () => {
+    try {
+      const {default:mermaid} = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
+      mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: 'strict',
+        theme: 'base',
+        themeVariables: {
+          primaryColor:'#e6eeff',primaryTextColor:'#193d79',
+          lineColor:'#64748b',fontFamily:'Inter, system-ui, sans-serif',
+          fontSize:'15px'
+        },
+        flowchart: {htmlLabels:true, useMaxWidth:true, curve:'basis'},
+      });
+      const {svg,bindFunctions} = await mermaid.render('hm-stage021-mermaid-graph',source);
+      canvas.innerHTML = svg;
+      bindFunctions?.(canvas);
+      pipeline.dataset.ready='true';
+    } catch(err) {
+      canvas.textContent = 'Unable to load the interactive diagram. Please check your connection and try closing and reopening this section.';
+      loading = null;
+    }
+  })();
+  return loading;
+}
+pipeline.addEventListener('toggle', () => {if(pipeline.open) void showOriginalHomeMindFlowchart();});
+if (location.hash === '#execution-pipeline') {pipeline.open = true;void showOriginalHomeMindFlowchart();}
 </script>
 </body></html>
