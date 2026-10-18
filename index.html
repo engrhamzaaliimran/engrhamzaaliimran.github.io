@@ -554,11 +554,12 @@
 <span class="project-status project-status-progress">Agentic AI</span>
 </div>
 <h3>HomeMind: from a local LLM to a verifiable smart-home agent</h3>
-<p>A local Qwen3-1.7B smart-home agent using LangChain tool calling and simulated JSON device state. Stage 02.1 added Python device-ID normalization and safe concurrent state access. On the same 100-scenario benchmark, verified action sequences improved from 14/35 to 33/35; qualitative full passes rose from 52 to 73. Next: capability enforcement, clarification and execution honesty before persistent conversation memory.</p>
+<p>A local Qwen3-1.7B smart-home agent using LangChain tool calling and simulated JSON device state. Stage 02.1 improved verified actions from 14/35 to 33/35 through Python device-ID normalization (73/100 judged full passes). Stage 02.2 prompt safeguards reduced unauthorized state changes from 4 to 1 of 100 cases without reducing verified actions; execution-honesty failures remain. Next: deterministic capability validation before conversation memory.</p>
 <div aria-label="HomeMind progress highlights" class="practice-metrics">
 <span><strong>100</strong> evaluated scenarios</span>
 <span><strong>73 / 100</strong> full passes (judge)</span>
 <span><strong>33 / 35</strong> verified actions</span>
+<span><strong>99 / 100</strong> no unauthorized changes (02.2 prompt)</span>
 </div>
 <div class="tag-row"><span>Qwen3-1.7B</span><span>Ollama</span><span>LangChain</span><span>Python normalization</span><span>LLM-as-judge</span></div>
 <div class="practice-links">
