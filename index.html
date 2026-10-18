@@ -550,17 +550,17 @@
 </article>
 <article class="practice-project-card reveal" id="explore-19">
 <div class="practice-project-topline">
-<span class="project-number">04 · Work in progress</span>
+<span class="project-number">03 · Evaluated · In progress</span>
 <span class="project-status project-status-progress">Agentic AI</span>
 </div>
 <h3>HomeMind: from a local LLM to a verifiable smart-home agent</h3>
-<p>A local Qwen3 smart-home agent using LangChain tool calling and JSON-backed simulated devices. Stage 01 explored execution-hallucination failures; Stage 02 added one-shot tool prompting after tests revealed false refusals and function-call-like text without execution. Real Python tool calls now work in manual tests. Persistent conversation memory/context management and a 100-scenario benchmark come next, before advanced LangGraph workflows and LoRA.</p>
+<p>A local Qwen3-1.7B smart-home agent using LangChain tool calling and simulated JSON device state. Stage 02.1 added Python device-ID normalization and safe concurrent state access. On the same 100-scenario benchmark, verified action sequences improved from 14/35 to 33/35; qualitative full passes rose from 52 to 73. Next: capability enforcement, clarification and execution honesty before persistent conversation memory.</p>
 <div aria-label="HomeMind progress highlights" class="practice-metrics">
-<span><strong>4</strong> registered Python tools</span>
-<span><strong>Stage 02</strong> tool execution working</span>
-<span><strong>100</strong> scenarios planned</span>
+<span><strong>100</strong> evaluated scenarios</span>
+<span><strong>73 / 100</strong> full passes (judge)</span>
+<span><strong>33 / 35</strong> verified actions</span>
 </div>
-<div class="tag-row"><span>Qwen3-1.7B</span><span>Ollama</span><span>LangChain</span><span>LangGraph planned</span><span>LoRA planned</span></div>
+<div class="tag-row"><span>Qwen3-1.7B</span><span>Ollama</span><span>LangChain</span><span>Python normalization</span><span>Agent evaluation</span></div>
 <div class="practice-links">
 <a class="button button-primary" href="homemind.html">View project progress <span aria-hidden="true">→</span></a>
 <a class="text-link" href="https://github.com/engrhamzaaliimran/HomeMind" rel="noopener noreferrer" target="_blank">GitHub <span>↗</span></a>
@@ -568,7 +568,7 @@
 </article>
 <article class="practice-project-card reveal" id="explore-18">
 <div class="practice-project-topline">
-<span class="project-number">03 · Implemented</span>
+<span class="project-number">04 · Implemented</span>
 <span class="project-status">Edge-RAG</span>
 </div>
 <h3>Portfolio Edge-RAG: validated retrieval with browser-local generation</h3>
