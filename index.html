@@ -553,17 +553,17 @@
 <span class="project-number">03 · Evaluated · In progress</span>
 <span class="project-status project-status-progress">Agentic AI</span>
 </div>
-<h3>HomeMind: from a local LLM to a verifiable smart-home agent</h3>
-<p>A local Qwen3-1.7B smart-home agent using LangChain tool calling and simulated JSON device state. Stage 02.1 raised verified actions from 14/35 to 33/35 through Python device-ID normalization. In Stage 02.2, prompt safeguards reduced unauthorized state changes from 4 to 1 per 100 scenarios. The latest qualitative review reports 73 full passes, 16 partial passes and 11 failures; execution-honesty limitations remain.</p>
+<h3>HomeMind: agentic smart-home AI and model benchmarking</h3>
+<p>An independently developed local agent using LangChain, Ollama and simulated smart-home controls. Benchmarking Qwen3 0.6B, 1.7B and 4B on the same 100 scenarios reveals that larger does not automatically mean better: the tested 1.7B configuration achieved 73 full passes and 33/35 verified actions. Prompt and generation-limit differences mean results are configuration-specific, not proof of inherent model superiority.</p>
 <div aria-label="HomeMind progress highlights" class="practice-metrics">
-<span><strong>100</strong> evaluated scenarios</span>
-<span><strong>73 / 100</strong> full passes (02.2 review)</span>
-<span><strong>33 / 35</strong> verified actions</span>
-<span><strong>99 / 100</strong> no unauthorized changes (02.2 prompt)</span>
+<span><strong>3</strong> model sizes benchmarked</span>
+<span><strong>73 / 100</strong> full passes (1.7B)</span>
+<span><strong>33 / 35</strong> verified actions (1.7B)</span>
+<span><strong>100</strong> test scenarios per model</span>
 </div>
-<div class="tag-row"><span>Qwen3-1.7B</span><span>Ollama</span><span>LangChain</span><span>Python normalization</span><span>LLM-as-judge</span></div>
+<div class="tag-row"><span>Qwen3 0.6B / 1.7B / 4B</span><span>Model benchmarking</span><span>Ollama</span><span>LangChain</span><span>Python normalization</span><span>LLM-as-judge</span></div>
 <div class="practice-links">
-<a class="button button-primary" href="homemind.html">View project progress <span aria-hidden="true">→</span></a>
+<a class="button button-primary" href="homemind.html#model-benchmark">Explore model benchmarks <span aria-hidden="true">→</span></a>
 <a class="text-link" href="https://github.com/engrhamzaaliimran/HomeMind" rel="noopener noreferrer" target="_blank">GitHub <span>↗</span></a>
 </div>
 </article>
