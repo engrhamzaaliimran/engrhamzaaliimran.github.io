@@ -87,6 +87,65 @@ h1{font-size:clamp(2.5rem,5vw,4.45rem);line-height:1.06;letter-spacing:-.055em;m
 .hm-evidence-version a{display:inline-block;margin-top:12px;color:var(--primary);font-size:.78rem;font-weight:700}
 @media(max-width:650px){.hm-evidence-pair{grid-template-columns:1fr}.hm-evidence-case>summary{grid-template-columns:55px 1fr 14px;gap:8px;padding:13px}.hm-evidence-body{padding:13px}}
 </style>
+
+<style>
+/* Stage 02.2 cross-model evaluation, scoped to avoid changing earlier charts. */
+.hero-model-note{margin-top:16px;max-width:790px;font-size:.91rem;line-height:1.65;color:var(--text-soft)}
+.hero-model-note strong{color:var(--text)}
+.hero-model-note a{color:var(--primary);font-weight:760;text-decoration:none}
+.hm-benchmark{scroll-margin-top:145px}
+.mb-intro{max-width:940px}
+.mb-tabs{display:inline-flex;gap:5px;padding:5px;background:var(--surface-soft);border:1px solid var(--line);border-radius:14px;flex-wrap:wrap;margin:0 0 18px}
+.mb-tab{border:0;border-radius:10px;padding:10px 16px;background:transparent;color:var(--text-soft);font-weight:750;font-size:.83rem}
+.mb-tab[aria-selected=true]{background:var(--surface);color:var(--primary);box-shadow:var(--shadow-sm)}
+.mb-tab:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.mb-panel{border:1px solid var(--line);background:var(--surface);border-radius:19px;padding:24px;box-shadow:var(--shadow-sm)}
+.mb-panel[hidden]{display:none}
+.mb-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.mb-model{border:1px solid var(--line);background:var(--surface-soft);border-radius:15px;padding:19px;min-width:0}
+.mb-model.best{border-color:color-mix(in srgb,var(--green) 55%,var(--line))}
+.mb-label{font-weight:800;color:var(--text);font-size:.9rem}
+.mb-label small{color:var(--green);font-weight:700;font-size:.69rem;margin-left:6px}
+.mb-big{font-size:2.8rem;font-weight:850;letter-spacing:-.07em;line-height:1.2;margin:7px 0 2px;color:var(--text)}
+.mb-caption{font-size:.78rem;color:var(--text-soft)}
+.mb-stack{display:flex;width:100%;height:13px;overflow:hidden;border-radius:30px;margin:15px 0 9px;background:var(--line)}
+.mb-stack span{display:block;height:100%}
+.mb-pass{background:var(--green)}.mb-partial{background:var(--amber)}.mb-fail{background:var(--red)}
+.mb-split{display:flex;flex-wrap:wrap;gap:9px;font-size:.72rem;color:var(--text-soft)}
+.mb-split b{color:var(--text)}
+.mb-legend{display:flex;flex-wrap:wrap;gap:16px;margin:0 0 17px;font-size:.76rem;color:var(--text-soft)}
+.mb-legend i{display:inline-block;vertical-align:middle;width:9px;height:9px;border-radius:3px;margin-right:5px}
+.mb-subhead{font-size:1.09rem;font-weight:800;margin:24px 0 9px;letter-spacing:-.02em;color:var(--text)}
+.mb-action-grid{display:grid;gap:12px;margin-top:12px}
+.mb-action{display:grid;grid-template-columns:106px minmax(0,1fr) 88px;gap:12px;align-items:center;font-size:.82rem}
+.mb-action label{font-weight:760;color:var(--text)}
+.mb-action strong{text-align:right;color:var(--text);font-variant-numeric:tabular-nums}
+.mb-track{background:var(--surface-soft);border:1px solid var(--line);height:17px;border-radius:30px;overflow:hidden}
+.mb-fill{height:100%;display:block;border-radius:30px}
+.mb-06{background:var(--primary)}.mb-17{background:var(--green)}.mb-4{background:var(--amber)}
+.mb-note{background:var(--surface-soft);border-radius:12px;padding:15px 17px;color:var(--text-soft);font-size:.82rem;line-height:1.75;margin-top:18px}
+.mb-note strong{color:var(--text)}
+.mb-table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:13px}
+.mb-table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:645px}
+.mb-table th{background:var(--surface-soft);color:var(--text-soft);font-size:.75rem}
+.mb-table td,.mb-table th{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left}
+.mb-table tr:last-child td{border-bottom:0}
+.mb-table td:first-child{font-weight:720;color:var(--text)}
+.mb-cell-meter{display:flex;align-items:center;gap:9px;min-width:105px}
+.mb-cell-meter>strong{min-width:37px;font-variant-numeric:tabular-nums;text-align:right}
+.mb-cell-track{height:8px;width:90px;border-radius:10px;background:var(--surface-soft);overflow:hidden;flex:none}
+.mb-cell-track i{display:block;height:100%;border-radius:10px}
+.mb-table .mb-total td{font-weight:850;background:color-mix(in srgb,var(--primary) 4%,var(--surface))}
+.mb-reliability{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.mb-reliability div{background:var(--surface-soft);border:1px solid var(--line);border-radius:13px;padding:17px}
+.mb-reliability b{display:block;font-size:1.45rem;line-height:1.3;letter-spacing:-.04em;color:var(--text)}
+.mb-reliability span{display:block;font-size:.78rem;color:var(--text-soft);line-height:1.6;margin-top:6px}
+.mb-reliability h3{margin:0 0 9px}
+.mb-method{margin-top:15px;font-size:.8rem;color:var(--text-soft);line-height:1.75}
+.mb-method a{color:var(--primary);font-weight:700}
+@media(max-width:850px){.mb-card-grid,.mb-reliability{grid-template-columns:1fr}.mb-model{padding:16px}}
+@media(max-width:620px){.mb-panel{padding:15px}.mb-tabs{display:flex}.mb-tab{flex:1;min-width:100px;padding:9px 10px}.mb-action{grid-template-columns:72px minmax(0,1fr) 67px;gap:8px;font-size:.76rem}.mb-cell-track{width:70px}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -95,21 +154,95 @@ h1{font-size:clamp(2.5rem,5vw,4.45rem);line-height:1.06;letter-spacing:-.055em;m
 <nav class="desktop-nav" aria-label="Portfolio navigation"><a href="https://engrhamzaaliimran.github.io/index.html#research">Research</a><a href="https://engrhamzaaliimran.github.io/index.html#publications">Publications</a><a href="https://engrhamzaaliimran.github.io/index.html#experience">Experience</a><a class="active" href="https://engrhamzaaliimran.github.io/index.html#practice-projects">Projects</a><a href="https://engrhamzaaliimran.github.io/events.html">Events</a><a href="https://engrhamzaaliimran.github.io/index.html#about">About</a></nav>
 <button type="button" class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle colour theme"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
 </div></header>
-<nav class="project-nav" aria-label="HomeMind sections"><div class="shell project-nav-inner"><span class="project-title">HomeMind</span><div class="project-links"><a href="#overview">Overview</a><a href="#evaluation">Evaluation</a><a href="#categories">Categories</a><a href="#question-browser">100 questions</a><a href="#stage-02-2-cases">Improvements</a><a href="#roadmap">Roadmap</a><a href="#methods">Methods</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/engrhamzaaliimran/HomeMind">GitHub ↗</a></div></div></nav>
+<nav class="project-nav" aria-label="HomeMind sections"><div class="shell project-nav-inner"><span class="project-title">HomeMind</span><div class="project-links"><a href="#overview">Overview</a><a href="#model-benchmark">Models</a><a href="#evaluation">Evaluation</a><a href="#categories">Categories</a><a href="#question-browser">100 questions</a><a href="#stage-02-2-cases">Improvements</a><a href="#roadmap">Roadmap</a><a href="#methods">Methods</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/engrhamzaaliimran/HomeMind">GitHub ↗</a></div></div></nav>
 <main id="main">
 <section class="hm-hero" id="overview"><div class="shell"><div class="hero-main">
 <div><span class="eyebrow">Independent AI engineering project · Stage 02.2 prompt safeguards evaluated</span>
 <h1>HomeMind <span style="color:var(--primary)">/</span> an agentic smart-home assistant</h1>
-<p class="hero-lead">Building a local, small-model assistant that translates natural-language requests into safe, verifiable simulated smart-home actions. Stage 02.1 improved verified tool execution through Python device-ID normalization. Stage 02.2 tested execution-honesty prompting: unauthorized device changes fell from four scenarios to one, but fabricated success claims remain unresolved.</p>
+<p class="hero-lead">Building a local, small-model assistant that translates natural-language requests into safe, verifiable simulated smart-home actions. With Qwen3-1.7B, Stage 02.1 improved verified tool execution through Python device-ID normalization. Stage 02.2 tested execution-honesty prompting, and the latest work benchmarks three Qwen3 sizes.</p>
+<p class="hero-model-note"><strong>Larger does not always mean better:</strong> the 1.7B configuration outperformed the tested 4B run, although the 4B output limit was a major confound. <a href="#model-benchmark">See model benchmarks →</a></p>
 <div class="button-row"><a class="button button-primary" href="#evaluation">Explore evaluation ↓</a><a class="button button-secondary" href="#question-browser">Browse all 100 questions</a></div>
 </div>
-<aside class="hero-aside" aria-label="Current development status"><span class="eyebrow">Current focus</span><strong>Reliability before memory</strong><p>Stage 02.2 prompt safeguards were tested with 100 scenarios. Next: enforce capability boundaries and truthful action reporting before persistent conversation memory.</p><hr class="mini-divider"><p><b style="color:var(--text)">Benchmark date</b><br>18 October 2026 · Qwen3-1.7B, local Ollama</p></aside>
+<aside class="hero-aside" aria-label="Current development status"><span class="eyebrow">Current focus</span><strong>Reliability before memory</strong><p>Stage 02.2 prompt safeguards were tested with 100 scenarios. Next: enforce capability boundaries and truthful action reporting before persistent conversation memory.</p><hr class="mini-divider"><p><b style="color:var(--text)">Benchmark runs</b><br>18–20 October 2026 · Qwen3 0.6B / 1.7B / 4B</p></aside>
 </div>
-<div class="quick-stats"><div class="quick-stat"><strong>Qwen3-1.7B</strong><span>Local inference · Ollama + LangChain</span></div><div class="quick-stat"><strong>100 scenarios</strong><span>120 requests including context setup turns</span></div><div class="quick-stat"><strong>4 structured tools</strong><span>State reads · thermostats · lights · door locks</span></div></div>
+<div class="quick-stats"><div class="quick-stat"><strong>3 Qwen3 sizes</strong><span>0.6B · 1.7B · 4B · local Ollama</span></div><div class="quick-stat"><strong>100 scenarios</strong><span>120 requests including context setup turns</span></div><div class="quick-stat"><strong>4 structured tools</strong><span>State reads · thermostats · lights · door locks</span></div></div>
 </div></section>
 <div class="shell content">
 
-<section class="section" id="evaluation"><div class="section-head"><div><span class="eyebrow">Stage 02.2 · Latest qualitative review</span><h2>What the evaluation revealed</h2><p class="section-lead">All 100 Stage 02.2 prompt-only responses were reviewed against expected behavior, actual tool calls and simulated state changes. The same scenario set and evaluation dimensions were retained.</p></div><a class="section-link" href="https://github.com/engrhamzaaliimran/HomeMind/blob/main/experiments/results/stage_02_02_prompt_qualitative_review_20261020.jsonl" target="_blank" rel="noopener noreferrer">100-case qualitative review ↗</a></div>
+<section class="section hm-benchmark" id="model-benchmark" aria-labelledby="model-benchmark-title">
+  <div class="section-head"><div class="mb-intro">
+    <span class="eyebrow">Stage 02.2 · Cross-model evaluation · 20 October 2026</span>
+    <h2 id="model-benchmark-title">A larger model does not necessarily make a better agent.</h2>
+    <p class="section-lead">The same 100 simulated smart-home scenarios were run with Qwen3 0.6B, 1.7B and 4B. In the tested configurations, <strong>1.7B performed best</strong> on verified actions and qualitative outcomes. The 4B run frequently exhausted its 200-token generation limit, so these results describe <em>configurations</em>, not intrinsic model capability.</p>
+  </div></div>
+  <div class="mb-tabs" role="tablist" aria-label="Model benchmark chart views">
+    <button type="button" class="mb-tab" role="tab" id="mb-tab-overview" aria-controls="mb-panel-overview" aria-selected="true" tabindex="0" data-mb-view="overview">Overview</button>
+    <button type="button" class="mb-tab" role="tab" id="mb-tab-categories" aria-controls="mb-panel-categories" aria-selected="false" tabindex="-1" data-mb-view="categories">Category breakdown</button>
+    <button type="button" class="mb-tab" role="tab" id="mb-tab-reliability" aria-controls="mb-panel-reliability" aria-selected="false" tabindex="-1" data-mb-view="reliability">Reliability</button>
+  </div>
+  <div class="mb-panel" id="mb-panel-overview" role="tabpanel" aria-labelledby="mb-tab-overview">
+    <h3 style="font-size:1.16rem;margin-bottom:14px">Qualitative evaluation outcomes</h3>
+    <div class="mb-legend"><span><i class="mb-pass"></i>Full pass</span><span><i class="mb-partial"></i>Partial</span><span><i class="mb-fail"></i>Fail</span></div>
+    <div class="mb-card-grid"><div class="mb-model">
+  <div class="mb-label">Qwen3 0.6B</div>
+  <div class="mb-big">41%</div><div class="mb-caption">Full passes · 100 scenarios</div>
+  <div class="mb-stack" role="img" aria-label="Qwen3 0.6B: 41 full passes, 15 partial, 44 failures">
+    <span class="mb-pass" style="width:41%"></span><span class="mb-partial" style="width:15%"></span><span class="mb-fail" style="width:44%"></span>
+  </div>
+  <div class="mb-split"><span><b>41</b> pass</span><span><b>15</b> partial</span><span><b>44</b> fail</span></div>
+</div>
+<div class="mb-model best">
+  <div class="mb-label">Qwen3 1.7B <small>Best observed</small></div>
+  <div class="mb-big">73%</div><div class="mb-caption">Full passes · 100 scenarios</div>
+  <div class="mb-stack" role="img" aria-label="Qwen3 1.7B: 73 full passes, 16 partial, 11 failures">
+    <span class="mb-pass" style="width:73%"></span><span class="mb-partial" style="width:16%"></span><span class="mb-fail" style="width:11%"></span>
+  </div>
+  <div class="mb-split"><span><b>73</b> pass</span><span><b>16</b> partial</span><span><b>11</b> fail</span></div>
+</div>
+<div class="mb-model">
+  <div class="mb-label">Qwen3 4B</div>
+  <div class="mb-big">4%</div><div class="mb-caption">Full passes · 100 scenarios</div>
+  <div class="mb-stack" role="img" aria-label="Qwen3 4B: 4 full passes, 34 partial, 62 failures">
+    <span class="mb-pass" style="width:4%"></span><span class="mb-partial" style="width:34%"></span><span class="mb-fail" style="width:62%"></span>
+  </div>
+  <div class="mb-split"><span><b>4</b> pass</span><span><b>34</b> partial</span><span><b>62</b> fail</span></div>
+</div></div>
+    <h3 class="mb-subhead">Verified expected action sequences</h3>
+    <p class="small-note">Actual successful tool executions after deterministic Python device-ID normalization; 35 applicable expected action sequences per run. This is not an overall accuracy score.</p>
+    <div class="mb-action-grid"><div class="mb-action"><label>0.6B</label><div class="mb-track" role="img" aria-label="Qwen3 0.6B: 18 of 35 verified action sequences"><span class="mb-fill mb-06" style="width:51.4%"></span></div><strong>18 / 35</strong></div>
+<div class="mb-action"><label>1.7B</label><div class="mb-track" role="img" aria-label="Qwen3 1.7B: 33 of 35 verified action sequences"><span class="mb-fill mb-17" style="width:94.3%"></span></div><strong>33 / 35</strong></div>
+<div class="mb-action"><label>4B</label><div class="mb-track" role="img" aria-label="Qwen3 4B: 1 of 35 verified action sequences"><span class="mb-fill mb-4" style="width:2.9%"></span></div><strong>1 / 35</strong></div></div>
+    <p class="mb-note"><strong>Reading the result:</strong> 1.7B achieved 73 full passes and 33/35 verified actions; 0.6B achieved 41 and 18/35; 4B achieved 4 and 1/35. A completed benchmark scenario is not necessarily a correct agent response.</p>
+  </div>
+  <div class="mb-panel" id="mb-panel-categories" role="tabpanel" aria-labelledby="mb-tab-categories" hidden>
+    <h3 style="font-size:1.16rem;margin-bottom:8px">Full passes by scenario category</h3>
+    <p class="small-note" style="margin-bottom:15px">Bars are normalized within each category; each cell shows full passes / scenarios in that category. Partial passes are excluded. These scores are one-pass qualitative judgments.</p>
+    <div class="mb-legend"><span><i class="mb-06"></i>0.6B</span><span><i class="mb-17"></i>1.7B</span><span><i class="mb-4"></i>4B</span></div>
+    <div class="mb-table-wrap"><table class="mb-table">
+      <thead><tr><th scope="col">Scenario category</th><th scope="col">Cases</th><th scope="col">Qwen3 0.6B</th><th scope="col">Qwen3 1.7B</th><th scope="col">Qwen3 4B</th></tr></thead>
+      <tbody><tr><td>Single-device control</td><td>20</td><td><div class="mb-cell-meter"><strong>12/20</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-06" style="width:60.0%"></i></div></div></td><td><div class="mb-cell-meter"><strong>20/20</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-17" style="width:100.0%"></i></div></div></td><td><div class="mb-cell-meter"><strong>0/20</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-4" style="width:0.0%"></i></div></div></td></tr>
+<tr><td>Home-state queries</td><td>15</td><td><div class="mb-cell-meter"><strong>2/15</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-06" style="width:13.3%"></i></div></div></td><td><div class="mb-cell-meter"><strong>11/15</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-17" style="width:73.3%"></i></div></div></td><td><div class="mb-cell-meter"><strong>0/15</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-4" style="width:0.0%"></i></div></div></td></tr>
+<tr><td>Multi-device commands</td><td>10</td><td><div class="mb-cell-meter"><strong>1/10</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-06" style="width:10.0%"></i></div></div></td><td><div class="mb-cell-meter"><strong>9/10</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-17" style="width:90.0%"></i></div></div></td><td><div class="mb-cell-meter"><strong>0/10</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-4" style="width:0.0%"></i></div></div></td></tr>
+<tr><td>Unsupported / invalid</td><td>15</td><td><div class="mb-cell-meter"><strong>11/15</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-06" style="width:73.3%"></i></div></div></td><td><div class="mb-cell-meter"><strong>12/15</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-17" style="width:80.0%"></i></div></div></td><td><div class="mb-cell-meter"><strong>1/15</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-4" style="width:6.7%"></i></div></div></td></tr>
+<tr><td>Ambiguity & clarification</td><td>10</td><td><div class="mb-cell-meter"><strong>1/10</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-06" style="width:10.0%"></i></div></div></td><td><div class="mb-cell-meter"><strong>4/10</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-17" style="width:40.0%"></i></div></div></td><td><div class="mb-cell-meter"><strong>0/10</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-4" style="width:0.0%"></i></div></div></td></tr>
+<tr><td>General knowledge</td><td>10</td><td><div class="mb-cell-meter"><strong>7/10</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-06" style="width:70.0%"></i></div></div></td><td><div class="mb-cell-meter"><strong>9/10</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-17" style="width:90.0%"></i></div></div></td><td><div class="mb-cell-meter"><strong>2/10</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-4" style="width:20.0%"></i></div></div></td></tr>
+<tr><td>Conversation context</td><td>10</td><td><div class="mb-cell-meter"><strong>5/10</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-06" style="width:50.0%"></i></div></div></td><td><div class="mb-cell-meter"><strong>7/10</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-17" style="width:70.0%"></i></div></div></td><td><div class="mb-cell-meter"><strong>0/10</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-4" style="width:0.0%"></i></div></div></td></tr>
+<tr><td>Execution honesty</td><td>10</td><td><div class="mb-cell-meter"><strong>2/10</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-06" style="width:20.0%"></i></div></div></td><td><div class="mb-cell-meter"><strong>1/10</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-17" style="width:10.0%"></i></div></div></td><td><div class="mb-cell-meter"><strong>1/10</strong><div class="mb-cell-track" aria-hidden="true"><i class="mb-4" style="width:10.0%"></i></div></div></td></tr><tr class="mb-total"><td>Total full passes</td><td>100</td><td>41 / 100</td><td>73 / 100</td><td>4 / 100</td></tr></tbody>
+    </table></div>
+    <p class="mb-note"><strong>Patterns:</strong> 1.7B leads in action control; 0.6B can call tools but often mishandles schemas and state queries. 4B rarely reached real tool execution with this generation budget. Execution-honesty full-pass counts alone should not be interpreted as safety rates.</p>
+  </div>
+  <div class="mb-panel" id="mb-panel-reliability" role="tabpanel" aria-labelledby="mb-tab-reliability" hidden>
+    <h3 style="font-size:1.16rem;margin-bottom:14px">Reliability and generation behavior</h3>
+    <div class="mb-reliability"><div><h3>Qwen3 0.6B</h3><b>4 / 100</b><span>Scenarios with unrequested device-state changes</span><hr class="mini-divider"><b>66</b><span>Actual structured tool calls</span><hr class="mini-divider"><b>0 / 120</b><span>Model responses reaching the 200-token limit</span></div>
+<div><h3>Qwen3 1.7B</h3><b>1 / 100</b><span>Scenarios with unrequested device-state changes</span><hr class="mini-divider"><b>Not recorded</b><span>Actual structured tool calls in available comparison record</span><hr class="mini-divider"><b>Not recorded</b><span>Model responses reaching the 200-token limit</span></div>
+<div><h3>Qwen3 4B</h3><b>0 / 100</b><span>Scenarios with unrequested device-state changes</span><hr class="mini-divider"><b>2</b><span>Actual structured tool calls</span><hr class="mini-divider"><b>117 / 120</b><span>Model responses reaching the 200-token limit</span></div></div>
+    <p class="mb-note"><strong>Zero changes does not mean zero risk.</strong> The 4B model made no unauthorized changes partly because it executed almost no device actions. For 0.6B, unrequested changes occurred in HM060, HM063, HM065 and HM093; for 1.7B, HM059. The 4B model reached its 200-token limit on 117 of 120 requests, consistent with frequently unfinished responses.</p>
+  </div>
+  <p class="mb-method"><strong>Comparability:</strong> Each model was evaluated in one local 100-scenario run. The 0.6B and 4B runs share a system-prompt fingerprint; the 1.7B prompt differs. All runs used the same scenario dataset. The pass/partial/fail reviews are qualitative and do not establish production reliability or that a smaller model is inherently superior. The detailed <a href="#evaluation">1.7B evaluation</a> and <a href="#question-browser">100-case explorer</a> remain below.</p>
+</section>
+
+
+<section class="section" id="evaluation"><div class="section-head"><div><span class="eyebrow">Stage 02.2 · Qwen3-1.7B qualitative review</span><h2>What the evaluation revealed</h2><p class="section-lead">All 100 Qwen3-1.7B Stage 02.2 prompt-only responses were reviewed against expected behavior, actual tool calls and simulated state changes. The same scenario set and evaluation dimensions were retained.</p></div><a class="section-link" href="https://github.com/engrhamzaaliimran/HomeMind/blob/main/experiments/results/stage_02_02_prompt_qualitative_review_20261020.jsonl" target="_blank" rel="noopener noreferrer">100-case qualitative review ↗</a></div>
 <p class="small-note" style="margin:0 0 17px;padding:14px 17px;border-left:3px solid var(--green);background:var(--surface-soft);border-radius:0 10px 10px 0"><b>Latest result — Stage 02.2:</b> <b>73 full pass / 16 partial / 11 fail</b>, compared with <b>73 / 7 / 20</b> in Stage 02.1. Prompt safeguards reduced unauthorized device changes from <b>4 to 1</b> while expected action execution remained <b>33/35</b>. Full-pass count did not rise; some previous failures became partially correct responses.</p>
 <div class="summary-grid">
 <div class="card"><div class="donut-wrap"><div class="donut" role="img" aria-label="73 pass, 16 partial pass, 11 fail, out of 100"><div class="donut-inner"><strong>73</strong><span>full passes / 100</span></div></div></div><div class="legend"><div class="legend-item"><strong><span class="dot pass"></span>73</strong><small>Passed</small></div><div class="legend-item"><strong><span class="dot partial"></span>16</strong><small>Partial</small></div><div class="legend-item"><strong><span class="dot fail"></span>11</strong><small>Failed</small></div></div><p style="font-size:.75rem;margin-top:17px;text-align:center">GPT-6 qualitative review · Stage 02.2 prompt only</p></div>
@@ -434,5 +567,33 @@ async function showOriginalHomeMindFlowchart(){
 }
 pipeline.addEventListener('toggle', () => {if(pipeline.open) void showOriginalHomeMindFlowchart();});
 if (location.hash === '#execution-pipeline') {pipeline.open = true;void showOriginalHomeMindFlowchart();}
+</script>
+
+<script>
+/* Accessible benchmark tabs, no external chart dependency. */
+(() => {
+  const root=document.getElementById('model-benchmark');
+  if(!root) return;
+  const tabs=Array.from(root.querySelectorAll('[data-mb-view]'));
+  const activate=(selected,focus=false)=>{
+    tabs.forEach(tab=>{
+      const active=tab===selected;
+      tab.setAttribute('aria-selected',String(active));
+      tab.tabIndex=active?0:-1;
+      document.getElementById('mb-panel-'+tab.dataset.mbView).hidden=!active;
+    });
+    if(focus) selected.focus();
+  };
+  tabs.forEach((tab,index)=>{
+    tab.addEventListener('click',()=>activate(tab));
+    tab.addEventListener('keydown',e=>{
+      const advance=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;
+      if(!advance&&e.key!=='Home'&&e.key!=='End')return;
+      e.preventDefault();
+      const next=e.key==='Home'?0:e.key==='End'?tabs.length-1:(index+advance+tabs.length)%tabs.length;
+      activate(tabs[next],true);
+    });
+  });
+})();
 </script>
 </body></html>
