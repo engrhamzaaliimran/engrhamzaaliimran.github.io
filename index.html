@@ -553,18 +553,18 @@
 <span class="project-number">03 · Evaluated · In progress</span>
 <span class="project-status project-status-progress">Agentic AI</span>
 </div>
-<h3>GharMind: agentic smart-home AI and model benchmarking</h3>
+<h3>GharMind: agentic AI and evidence-guided self-correction</h3>
 <p style="font-size:.82rem;margin:5px 0 10px"><a href="homemind.html#naming-history">Previously HomeMind — about the rename ↗</a></p>
-<p>An independently developed local agent using LangChain, Ollama and simulated smart-home controls. Benchmarking Qwen3 0.6B, 1.7B and 4B on the same 100 scenarios reveals that larger does not automatically mean better: the tested 1.7B configuration achieved 73 full passes and 33/35 verified actions. The 4B run often reached its generation limit, so the results do not establish inherent model superiority.</p>
+<p>Independent local agentic-AI research with Qwen3, LangChain, Ollama and simulated smart-home controls. Current Stage 02.4 studies <strong>evidence-guided self-correction</strong>: a 0.6B model extracts claims, Python verifies execution evidence, and the 1.7B main LLM revises unsupported answers <strong>without extra tool access</strong>. On 100 scenarios: 76 full passes, 17 partial, 7 failures (Stage 02.3: 75/15/10). This is a preliminary between-run comparison, not proof of causal improvement.</p>
 <div aria-label="GharMind progress highlights" class="practice-metrics">
-<span><strong>3</strong> model sizes benchmarked</span>
-<span><strong>73 / 100</strong> full passes (1.7B)</span>
-<span><strong>33 / 35</strong> verified actions (1.7B)</span>
-<span><strong>100</strong> test scenarios per model</span>
+<span><strong>02.4</strong> self-correction study</span>
+<span><strong>76 / 100</strong> qualitative full passes</span>
+<span><strong>33 / 35</strong> verified write sequences</span>
+<span><strong>100</strong> isolated test scenarios</span>
 </div>
-<div class="tag-row"><span>Qwen3 0.6B / 1.7B / 4B</span><span>Model benchmarking</span><span>Ollama</span><span>LangChain</span><span>Python normalization</span><span>LLM-as-judge</span></div>
+<div class="tag-row"><span>Qwen3 1.7B + 0.6B</span><span>Evidence-guided correction</span><span>Python verification</span><span>Ollama</span><span>LangChain</span><span>LLM-as-judge</span></div>
 <div class="practice-links">
-<a class="button button-primary" href="homemind.html#model-benchmark">Explore model benchmarks <span aria-hidden="true">→</span></a>
+<a class="button button-primary" href="homemind.html#stage-02-4">Explore self-correction results <span aria-hidden="true">→</span></a>
 <a class="text-link" href="https://github.com/engrhamzaaliimran/HomeMind" rel="noopener noreferrer" target="_blank">GitHub <span>↗</span></a>
 </div>
 </article>
