@@ -1864,17 +1864,7 @@
   </header>
 
   <main id="main">
-    <aside class="edge-deployment-notice" aria-labelledby="edge-deployment-title">
-      <div class="shell">
-        <div class="edge-deployment-notice__inner">
-          <h2 id="edge-deployment-title">Known issue: GitHub Pages chatbot demo</h2>
-          <p>The chatbot's model-based answers are currently unreliable on the hosted GitHub Pages version. The same project works when served locally; the hosting-related issue is still under investigation.</p>
-          <p><strong>Want to try the working local version?</strong> <a href="https://github.com/engrhamzaaliimran/engrhamzaaliimran.github.io">Clone or download the website repository</a>, open a terminal in the repository's root directory, and run:</p>
-          <pre><code>python3 -m http.server 8000</code></pre>
-          <p>Then open <a href="http://localhost:8000/edge-rag-chatbot.html"><code>http://localhost:8000/edge-rag-chatbot.html</code></a> in your browser and initialize the demo. The Qwen model downloads on first use, so an internet connection is required.</p>
-        </div>
-      </div>
-    </aside>
+
 
     <section class="eval-hero section">
       <div class="shell eval-hero-grid">
@@ -1894,8 +1884,9 @@
             retrieval, compact evidence selection, and Qwen3-0.6B for grounded local answer generation.
           </p>
 
-          <div class="hero-actions">
-            <a class="button button-primary" href="#live-demo">Try live demo</a>
+          <details id="worked-example"><summary><strong>Inspect a benchmark question: What is the focus of Hamza’s doctoral research?</strong></summary><p>BM25 ranked an event summary first. The second passage described excitation strategies and impedance modelling for MOS gas sensors. The third described frequency-domain impedance and model-based representations. The benchmark labels mark the second and third passages relevant, making this a successful top-three retrieval even though the first result missed.</p><a href="#doctoral-passages">Read the recorded passages below</a></details>
+<div class="hero-actions">
+            <a class="button button-primary" href="#live-demo">Open chatbot demo</a>
             <a class="button button-secondary" href="#project">System design</a>
             <a class="button button-secondary" href="#results">Retrieval results</a>
           </div>
@@ -2114,7 +2105,18 @@
 
 
 
-    <section class="section section-tint edge-demo-section" id="live-demo">
+        <aside class="edge-deployment-notice" aria-labelledby="edge-deployment-title">
+      <div class="shell">
+        <div class="edge-deployment-notice__inner">
+          <h2 id="edge-deployment-title">Known issue: GitHub Pages chatbot demo</h2>
+          <p>The chatbot's model-based answers are currently unreliable on the hosted GitHub Pages version. The same project works when served locally; the hosting-related issue is still under investigation.</p>
+          <p><strong>Want to try the working local version?</strong> <a href="https://github.com/engrhamzaaliimran/engrhamzaaliimran.github.io">Clone or download the website repository</a>, open a terminal in the repository's root directory, and run:</p>
+          <pre><code>python3 -m http.server 8000</code></pre>
+          <p>Then open <a href="http://localhost:8000/edge-rag-chatbot.html"><code>http://localhost:8000/edge-rag-chatbot.html</code></a> in your browser and initialize the demo. The Qwen model downloads on first use, so an internet connection is required.</p>
+        </div>
+      </div>
+    </aside>
+<section class="section section-tint edge-demo-section" id="live-demo">
       <div class="shell">
         <div class="section-heading reveal">
           <div>
@@ -2349,7 +2351,7 @@
             </div>
             
       <details class="retrieval-detail">
-        <summary>Show Top-3 retrieved text</summary>
+        <summary id="doctoral-passages">Show Top-3 retrieved text</summary>
         <div class="retrieval-method-grid">
           
           <div class="retrieval-method">

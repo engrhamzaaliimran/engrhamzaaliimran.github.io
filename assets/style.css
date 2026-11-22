@@ -1077,3 +1077,7 @@ html[data-theme="dark"] .teaching-section {
 @media (max-width: 600px) {
   .hero-copy h1 { font-size: clamp(1.95rem, 8vw, 2.8rem); }
 }
+
+.featured-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr)); gap:2rem; }
+.featured-links article { border-top:2px solid var(--line); padding-top:1rem; }
+.featured-links h3 a { color:var(--primary); }
