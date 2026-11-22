@@ -1,13 +1,5 @@
-# Hamza Ali Imran Portfolio — Integrated Version 4
+# Hamza Ali Imran’s personal website
 
-This version presents one sensor-intelligence research identity across wearable inertial and impedance-based chemical sensing.
+This repository hosts my personal website, where I share my applied AI projects, sensor research, publications, and professional experience.
 
-## Main narrative
-
-**Measure → Model → Learn → Deploy**
-
-The two sensing modalities are shown as applications of the same methodology rather than as separate research identities.
-
-## Deployment
-
-Upload the contents of this folder to the root of the GitHub Pages repository. Keep the `assets` directory beside `index.html` and `events.html`.
+Visit my website at [engrhamzaaliimran.github.io](https://engrhamzaaliimran.github.io/).
