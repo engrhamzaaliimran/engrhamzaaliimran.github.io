@@ -356,9 +356,8 @@ h1 em { color: var(--primary); font-style: normal; }
   padding: 0 0 15px;
   border-bottom: 2px solid color-mix(in srgb, var(--accent) 55%, var(--line));
 }
-.publication-group-heading.wearable-group {
+.publication-list + .publication-group-heading {
   margin-top: 64px;
-  border-bottom-color: color-mix(in srgb, var(--primary) 58%, var(--line));
 }
 .publication-group-heading span {
   color: var(--muted);
